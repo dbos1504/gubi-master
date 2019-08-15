@@ -1,0 +1,178 @@
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+ html, body {
+   background-color: #fff;
+   color: #636b6f;
+   font-family: 'Source Sans Pro', sans-serif;
+   font-weight: 200;
+   height: 100vh;
+   margin: 0;
+ }
+
+.full-height {
+  height: 100vh;
+}
+
+.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.position-ref {
+  position: relative;
+}
+
+.top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 84px;
+}
+
+.links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.m-b-md {
+  margin-bottom: 30px;
+}
+
+.panel-title > a.collapsed:before {
+  float: right !important;
+  content: "\f067";
+  font-size: 9px;
+  margin-top: 5px;
+}
+
+.panel-title > a:before {
+  float: right !important;
+  font-family: FontAwesome;
+  content:"\f068";
+  padding-right: 5px;
+  font-size: 9px;
+  margin-top: 5px;
+}
+.panel-title > a[data-toggle='collapse-nema'].collapsed:before {
+  float: right !important;
+  content:"";
+  font-size: 9px;
+  margin-top: 5px;
+}
+.panel-title > a[data-toggle='collapse-nema']:before {
+  float: right !important;
+  font-family: FontAwesome;
+  content:"";
+  padding-right: 5px;
+  font-size: 9px;
+  margin-top: 5px;
+}
+.panel-default:last-child {
+  border-bottom: 0;
+}
+#result {
+  display: flex;
+  margin-top: 7px;
+}
+#result div {
+  padding: 5px;
+  position: relative;
+  text-align: center;
+  width: 25%;
+}
+#result div a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 6px;
+  background: #bd3232;
+  color: white;
+  font-size: 8px;
+  border-radius: 15px;
+}
+#results-var {
+  display: flex;
+  margin-top: 7px;
+}
+#results-var div {
+  padding: 5px;
+  position: relative;
+  text-align: center;
+  width: 25%;
+}
+#results-var div img {
+  display: inline;
+}
+#results-var div a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 6px;
+  background: #bd3232;
+  color: white;
+  font-size: 8px;
+  border-radius: 15px;
+}
+.shop-width {
+  width: 31.86%;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.shop-width:nth-child(3n) {
+  margin-right: 0;
+}
+.product-gallery-width {
+  width: 31%;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.product-gallery-width:nth-child(3n) {
+  margin-right: 0;
+}
+.product-inquiry-width {
+  width: 16%;
+}
+.admin-product-gallery-width {
+  width: 17%;
+  margin-right: 5px;
+  text-align: center;
+}
+.admin-product-gallery-width img {
+  display: inline;
+}
+.admin-product-gallery-width a {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  padding: 2px 6px;
+  background: #bd3232;
+  color: white;
+  font-size: 8px;
+  border-radius: 15px;
+}
+.contact-map {
+  width: 65%;
+}
+.contact-addresse {
+  width: 35%;
+}
