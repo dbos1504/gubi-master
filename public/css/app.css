@@ -21862,6 +21862,24 @@ html, body {
   width: 35%;
 }
 
+.button-cancel {
+  background: #fff;
+  color: #707070;
+  border-radius: 50%;
+  position: absolute;
+  top: -16px;
+  right: -12px;
+  box-shadow: 0 0 6px 0 #333;
+}
+
+.button-cancel button {
+  padding: 4px 12px;
+}
+
+.v--modal-overlay .v--modal-box {
+  overflow: visible !important;
+}
+
 @media (min-width: 640px){
   .sm\:sr-only{
     position: absolute;

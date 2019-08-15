@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <form>
         <button @click.prevent="$modal.show('inquiry')"
                 class="px-4 py-2 border font-bold text-xs"
         >
@@ -16,30 +16,73 @@
                 <div class="lg:w-3/5 p-12">
                     <h4 class="font-serif uppercase text-center text-black text-3xl">Upplýsingar um vöru</h4>
                     <hr>
-                    <div class="form-group flex">
-                        <input class="p-2 border w-full mr-2" type="text" v-model="firstname" name="firstname" placeholder="First Name">
-                        <input class="p-2 border w-full" type="text" v-model="lastname" name="lastname" placeholder="Last Name">
+                    <div class="form-group lg:flex">
+                        <div class="w-full mr-2">
+                            <input class="p-2 w-full"
+                                   type="text"
+                                   v-model="firstname"
+                                   v-validate="'required'"
+                                   :class="errors.first('firstname') ? 'border-b border-red-700' : 'border'"
+                                   name="firstname"
+                                   placeholder="First Name"
+                            >
+                            <span class="text-red-500 italic text-xs greska">{{ errors.first('firstname') }}</span>
+                        </div>
+                        <div class="w-full">
+                            <input class="p-2 w-full"
+                                   type="text"
+                                   v-model="lastname"
+                                   v-validate="'required'"
+                                   name="lastname"
+                                   :class="errors.first('lastname') ? 'border-b border-red-700' : 'border'"
+                                   placeholder="Last Name"
+                            >
+                            <span class="text-red-500 italic text-xs greska">{{ errors.first('lastname') }}</span>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input class="p-2 border w-full" v-model="simi" type="text" name="simi" placeholder="Simi*">
+                        <input class="p-2 w-full"
+                               v-model="simi"
+                               type="text"
+                               name="simi"
+                               :class="errors.first('simi') ? 'border-b border-red-700' : 'border'"
+                               v-validate="'required'"
+                               placeholder="Simi*">
+                        <span class="text-red-500 italic text-xs greska">{{ errors.first('simi') }}</span>
                     </div>
                     <div class="form-group">
-                        <input class="p-2 border w-full" type="email" v-model="email" name="email" placeholder="Netfang*">
+                        <input class="p-2 w-full"
+                               type="email"
+                               v-model="email"
+                               :class="errors.first('email') ? 'border-b border-red-700' : 'border'"
+                               v-validate="'required'"
+                               name="email"
+                               placeholder="Netfang*"
+                        >
+                        <span class="text-red-500 italic text-xs greska">{{ errors.first('email') }}</span>
                     </div>
                     <div class="form-group flex">
                         <p class="p-2 w-full border border-black text-black mr-2">{{ products.headline }} | {{ upit }}</p>
                         <p class="product-inquiry-width p-2 border border-black text-black text-center">{{ kolicina }}</p>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Message*" class="w-full p-2 border border-black" name="messageText" id="" cols="30" rows="5" v-model="message"></textarea>
+                        <textarea placeholder="Message*"
+                                  class="w-full p-2 border-black"
+                                  name="message"
+                                  id="" cols="30" rows="5"
+                                  v-model="message"
+                                  :class="errors.first('message') ? 'border-b border-red-700' : 'border'"
+                                  v-validate="'required'"
+                        ></textarea>
+                        <span class="text-red-500 italic text-xs greska">{{ errors.first('message') }}</span>
                     </div>
                     <div class="form-group text-right">
-                        <button class="text-xs font-bold text-black py-2 px-12 border" type="submit">SUBMIT</button>
+                        <button class="text-xs font-bold text-black py-2 px-12 border" @click.prevent="sendInquiry" type="submit">SUBMIT</button>
                     </div>
                 </div>
             </form>
         </modal>
-    </div>
+    </form>
 </template>
 
 <script>
@@ -56,6 +99,37 @@
                 email: '',
                 message: '',
             }
+        },
+
+        methods: {
+            sendInquiry() {
+                this.$validator.validate().then(valid => {
+                    if (valid) {
+                        axios.post('/', {
+                            firstname: this.firstname,
+                            lastname: this.lastname,
+                            email: this.email,
+                            simi: this.simi,
+                            message: this.message,
+                        }).then(
+                            this.$modal.show('success'),
+                            this.firstname = '',
+                            this.lastname = '',
+                            this.email = '',
+                            this.simi = '',
+                            this.message = '',
+                            this.$validator.reset(),
+                            this.hide(),
+                        );
+                    }
+                });
+            },
+
+            hide() {
+                setTimeout(() => {
+                    this.$modal.hide('success');
+                }, 5000)
+            },
         }
     }
 </script>

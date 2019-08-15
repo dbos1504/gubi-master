@@ -38,10 +38,10 @@ if (token) {
 }
 
 import Vue from 'vue';
-// import VeeValidate from 'vee-validate';
+import VeeValidate from 'vee-validate';
 import VModal from 'vue-js-modal';
 
-// Vue.use(VeeValidate);
+Vue.use(VeeValidate);
 Vue.use(VModal);
 
 window.events = new Vue();

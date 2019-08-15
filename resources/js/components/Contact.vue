@@ -1,40 +1,59 @@
 <template>
-    <form @click.submit="sendMessage" >
+    <form>
         <div class="form-group lg:flex lg:justify-between">
-            <input class="p-2 border bg-transparent w-full mr-2"
+            <div class="mr-2 w-full">
+            <input class="p-2 bg-transparent w-full"
                    type="text"
                    name="firstname"
+                   :class="errors.first('firstname') ? 'border-b border-red-700' : 'border'"
+                   v-validate="'required'"
                    placeholder="Nafn"
                    id="firstname"
                    v-model="firstname">
-            <input class="p-2 border w-full"
+            <span class="text-red-500 italic text-xs greska">{{ errors.first('firstname') }}</span>
+            </div>
+            <div class="w-full">
+            <input class="p-2 w-full"
                    type="text"
                    name="lastname"
+                   :class="errors.first('lastname') ? 'border-b border-red-700' : 'border'"
+                   v-validate="'required'"
                    placeholder="Eftirnafn"
                    v-model="lastname">
+            <span class="text-red-500 italic text-xs greska">{{ errors.first('lastname') }}</span>
+            </div>
         </div>
         <div class="form-group">
-            <input class="p-2 border w-full"
+            <input class="p-2 w-full"
                    type="email"
                    name="email"
+                   :class="errors.first('email') ? 'border-b border-red-700' : 'border'"
+                   v-validate="'required|email'"
                    placeholder="Netfang*"
                    v-model="email">
+            <span class="text-red-500 italic text-xs greska">{{ errors.first('email') }}</span>
         </div>
         <div class="form-group">
-            <input class="p-2 border w-full"
+            <input class="p-2 w-full"
                    type="text"
                    name="subject"
+                   :class="errors.first('subject') ? 'border-b border-red-700' : 'border'"
+                   v-validate="'required'"
                    placeholder="Titill*"
                    v-model="subject">
+            <span class="text-red-500 italic text-xs greska">{{ errors.first('subject') }}</span>
         </div>
         <div class="form-group">
-            <textarea class="p-2 border w-full"
+            <textarea class="p-2 w-full"
                       name="message" cols="30" rows="5"
                       placeholder="Skilaboð*"
+                      v-validate="'required'"
+                      :class="errors.first('message') ? 'border-b border-red-700' : 'border'"
                       v-model="message"></textarea>
+            <span class="text-red-500 italic text-xs greska">{{ errors.first('message') }}</span>
         </div>
         <div class="form-group text-right">
-            <button class="py-2 px-12 border border-black font-bold text-black uppercase" type="submit">Senda</button>
+            <button class="py-2 px-12 border border-black font-bold text-black uppercase" @click.prevent="sendMessage" type="submit">Senda</button>
         </div>
         <modal name="success" classes="modal_contact bg-white" height="auto">
             <section class="okolo_poruka m-3 p-2 border-2 border-grey text-center relative">

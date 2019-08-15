@@ -122,7 +122,7 @@
                                         </div>
                                         <br>
                                         <div class="form-group border p-3">
-                                            <h4 class="font-bold text-3xl font-serif" for="insp-image">Current Product variations images / Text:</h4>
+                                            <h4 class="font-bold text-2xl font-serif" for="insp-image">Current Product variations images / Text:</h4>
                                             <hr>
                                             <div class="w-full text-center relative flex flex-wrap">
                                                 @foreach ($product->subvariations as $img)
@@ -179,7 +179,7 @@
                                         </div>
                                         <hr>
                                         <div class="form-group text-right">
-                                            <button type="submit" class="text-xs uppercase text-white bg-gray-900 font-bold py-2 px-16 border">Bæta {{ $product->headline }}</button>
+                                            <button type="submit" class="text-xs uppercase text-white bg-gray-900 font-bold py-2 px-10 border">Bæta {{ $product->headline }}</button>
                                         </div>
                                     </article>
                                 </form>

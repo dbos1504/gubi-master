@@ -24,16 +24,16 @@
         <p class="mt-2">Mánudaga til föstudaga 9-18 | Laugardaga 11-15 í nóv og des</p>
         <h6 class="font-serif font-bold text-sm uppercase mt-4 mb-3">Follow</h6>
         <div class="footer-social mb-10 flex justify-center">
-            <a href="">
+            <a class="mx-2" href="">
                 <img src="/img/pinterest.svg" alt="Pinterst">
             </a> &nbsp;
-            <a href="">
+            <a class="mx-2" href="">
                 <img src="/img/facebook.svg" alt="Facebook">
             </a> &nbsp;
-            <a href="">
+            <a class="mx-2" href="">
                 <img src="/img/linkedin.svg" alt="Linkedin">
             </a> &nbsp;
-            <a href="">
+            <a class="mx-2" href="">
                 <img src="/img/instagram.svg" alt="Instagram">
             </a>
         </div>

@@ -160,7 +160,7 @@ class HomeController extends Controller
             $new_name = $image->getClientOriginalName();
             $imagee->move(public_path('img/products'), $new_name);
             $podaci['image'] = $new_name;
-            $podaci['alt'] = request('name_var' . $br++);
+            $podaci['alt'] = request('name_var' . $br++) ? request('name_var' . $br++) : 'Gubi image';
 
             ProductsImages::create($podaci);
         }
