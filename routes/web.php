@@ -35,4 +35,6 @@ Route::patch('/home/{product}/price-status', 'HomeController@editPriceStatus');
 
 Route::post('/home/{product}/add-variation', 'HomeController@addVariation');
 Route::post('/home/{product}/add-variation-images', 'HomeController@addVariationImages');
-Route::post('/home/{product}/add-i
+Route::post('/home/{product}/add-images', 'HomeController@addImages');
+
+Route::post('/home/add-product', 'HomeController@productStore');
