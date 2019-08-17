@@ -17,39 +17,76 @@
                                 @include('auth.aside')
                             </aside>
                             <main class="w-10/12 p-6">
-                                <div class="border p-3 mb-3">
-                                    <h4 class="font-serif font-bold text=xl">Enable/Disable Price</h4>
-                                    <hr>
-                                    <form action="/home/{{ $product->location }}/price-status" method="POST">
-                                        @csrf
-                                        @method('PATCH')
-                                        @if ($product->price_status == 1)
-                                            <div class="flex justify-between items-center">
-                                                <label>
-                                                    <span class="font-bold text-base">{{ $product->price }} {{ $product->currency }}</span>  &nbsp;
-                                                    Price is <span class="text-green-500">enabled</span>
-                                                </label>
-                                                <input type="hidden" value="0" name="price_status">
-                                                <button class="text-xs font-bold border py-1 px-2 text-red-400 uppercase" type="submit">
-                                                    <i class="far fa-eye-slash"></i> &nbsp;
-                                                    Disable price
-                                                </button>
-                                            </div>
-                                        @else
-                                            <div class="flex justify-between items-center">
-                                                <label>
-                                                    <span class="font-bold text-base">{{ $product->price }} {{ $product->currency }}</span>  &nbsp;
-                                                    Price is <span class="text-red-400">disabled</span>
-                                                </label>
-                                                <input type="hidden" value="1" name="price_status">
-                                                <button class="text-xs font-bold border py-1 px-2 text-green-500 uppercase" type="submit">
-                                                    <i class="far fa-eye"></i> &nbsp;
-                                                    Enable price
-                                                </button>
-                                            </div>
-                                        @endif
-                                    </form>
-                                </div>
+                                <section class="flex">
+                                    <div class="w-full mr-3">
+                                        <div class="border p-3 mb-3">
+                                            <h4 class="font-serif font-bold text=xl">Enable/Disable Price</h4>
+                                            <hr>
+                                            <form action="/home/{{ $product->location }}/price-status" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                @if ($product->price_status == 1)
+                                                    <div class="flex justify-between items-center">
+                                                        <label>
+                                                            <span class="font-bold text-base">{{ $product->price }} {{ $product->currency }}</span>  &nbsp;
+                                                            Price is <span class="text-green-500">enabled</span>
+                                                        </label>
+                                                        <input type="hidden" value="0" name="price_status">
+                                                        <button class="text-xs font-bold border py-1 px-2 text-red-400 uppercase" type="submit">
+                                                            <i class="far fa-eye-slash"></i> &nbsp;
+                                                            Disable price
+                                                        </button>
+                                                    </div>
+                                                @else
+                                                    <div class="flex justify-between items-center">
+                                                        <label>
+                                                            <span class="font-bold text-base">{{ $product->price }} {{ $product->currency }}</span>  &nbsp;
+                                                            Price is <span class="text-red-400">disabled</span>
+                                                        </label>
+                                                        <input type="hidden" value="1" name="price_status">
+                                                        <button class="text-xs font-bold border py-1 px-2 text-green-500 uppercase" type="submit">
+                                                            <i class="far fa-eye"></i> &nbsp;
+                                                            Enable price
+                                                        </button>
+                                                    </div>
+                                                @endif
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div class="border p-3 mb-3">
+                                            <h4 class="font-serif font-bold text=xl">Enable/Disable Product</h4>
+                                            <hr>
+                                            <form action="/home/{{ $product->location }}/product-status" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                @if ($product->status == 1)
+                                                    <div class="flex justify-between items-center">
+                                                        <label>
+                                                            Product is <span class="text-green-500">enabled</span>
+                                                        </label>
+                                                        <input type="hidden" value="0" name="status">
+                                                        <button class="text-xs font-bold border py-1 px-2 text-red-400 uppercase" type="submit">
+                                                            <i class="far fa-eye-slash"></i> &nbsp;
+                                                            Disable product
+                                                        </button>
+                                                    </div>
+                                                @else
+                                                    <div class="flex justify-between items-center">
+                                                        <label>
+                                                            Product is <span class="text-red-400">disabled</span>
+                                                        </label>
+                                                        <input type="hidden" value="1" name="status">
+                                                        <button class="text-xs font-bold border py-1 px-2 text-green-500 uppercase" type="submit">
+                                                            <i class="far fa-eye"></i> &nbsp;
+                                                            Enable product
+                                                        </button>
+                                                    </div>
+                                                @endif
+                                            </form>
+                                        </div>
+                                    </div>
+                                </section>
                                 <form action="/home/{{ $product->location }}/edit" method="POST" class="flex admin-product-form" enctype="multipart/form-data">
                                     <article class="w-3/5 mr-2">
                                         <h3 class="font-serif font-bold text-3xl">Breyta - {{ $product->headline }}</h3>
@@ -76,15 +113,15 @@
                                                 <option {{ $product->currency == '€' ? 'selected' : '' }} value="€">€</option>
                                             </select>
                                         </div>
-                                        {{--<div class="form-group border p-3">--}}
-                                            {{--<label class="uppercase text-xs font-bold" for="designers_id">Breyta a designer (optional):</label>--}}
-                                            {{--<select class="form-control" name="designers_id" id="designers_id" size="{{ count($designers) + 1 }}">--}}
-                                                {{--<option value="0">Breyta designer...</option>--}}
-                                                {{--@foreach($designers as $designer)--}}
-                                                    {{--<option {{ $product->designers_id == $designer->id ? 'selected' : '' }} value="{{ $designer->id }}">{{ $designer->id }}. {{ $designer->name }}</option>--}}
-                                                {{--@endforeach--}}
-                                            {{--</select>--}}
-                                        {{--</div>--}}
+                                        <div class="form-group border p-3">
+                                            <label class="uppercase text-xs font-bold" for="designers_id">Breyta a designer (optional):</label>
+                                            <select class="form-control" name="designers_id" id="designers_id" size="{{ count($designers) + 1 }}">
+                                                <option value="0">Breyta designer...</option>
+                                                @foreach($designers as $designer)
+                                                    <option {{ $product->designers_id == $designer->id ? 'selected' : '' }} value="{{ $designer->id }}">{{ $designer->id }}. {{ $designer->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         {{--<div class="form-group border p-3">--}}
                                             {{--<label class="uppercase text-xs font-bold" for="collections_id">Breyta collection (optional):</label>--}}
                                             {{--<select class="form-control" name="collections_id" id="collections_id" size="{{ count($collections) + 1 }}">--}}
@@ -134,7 +171,7 @@
                                                     @else
                                                         <div class="admin-product-gallery-width relative">
                                                             <img width="90" height="90" id="blah" src="{{ $img->image ? '/img/products/' . $img->image : '#' }}" alt="Choose image.." />
-                                                            <input class="w-full border p-1 mt-1" type="text" value="{{ $img->name }}">
+                                                            <input class="w-full border p-1 mt-1 text-xs" type="text" value="{{ $img->name }}">
                                                             <a href="/home/{{ $img->id }}/destroy-image">X</a>
                                                         </div>
                                                     @endif

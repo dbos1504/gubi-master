@@ -1,0 +1,89 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        <section class="flex flex-wrap">
+                            <aside class="w-1/6 bg-gray-900 p-6">
+                                @include('auth.aside')
+                            </aside>
+                            <main class="w-10/12 p-6">
+                                <h3 class="font-serif font-bold text-3xl flex justify-between items-center">
+                                    Innblástur
+                                    <a class="font-sans uppercase text-xs bg-blue-800 font-bold text-white py-1 px-3" href="/home/add-inspiration">
+                                        <i class="fas fa-plus-circle text-white pr-2 text-sm"></i>
+                                        Add inspiration
+                                    </a>
+                                </h3>
+                                <br>
+                                <table class="w-full">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-xs">ID</th>
+                                        <th class="px-2 text-xs">Inspiration</th>
+                                        <th class="px-2 text-xs">Enable/Disable</th>
+                                        <th class="px-2 text-xs">Edit</th>
+                                        <th class="px-2 text-xs">Delete</th>
+                                    </tr>
+                                    </thead>
+                                    @foreach($inspirations as $inspiration)
+                                        <tr class="border">
+                                            <td class="border-r px-2 bg-gray-100">{{ $inspiration->id }}.</td>
+                                            <td class="border-r px-2 w-1/2">
+                                                <img class="inline" src="/img/{{ $inspiration->image }}" alt="img" width="30%"> &nbsp;
+                                                <a href="/home/inspiration/{{ $inspiration->location }}/edit">{{ $inspiration->name }}</a>
+                                            </td>
+                                            <td class="border-r px-2 text-center">
+                                                @if ($inspiration->status == 1)
+                                                    <form action="/home/inspiration/{{ $inspiration->location }}/disable" method="POST">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button class="text-red-400 text-xs" type="submit">
+                                                            <i class="far fa-eye-slash"></i> Disable
+                                                        </button>
+                                                    </form>
+                                                @else
+                                                    <form action="/home/inspiration/{{ $inspiration->location }}/enable" method="POST">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button class="text-green-500 text-xs" type="submit">
+                                                            <i class="far fa-eye"></i> Enable
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            </td>
+                                            <td class="px-2 bg-gray-100 border-r px-2 text-center">
+                                                <a class="text-xs" href="/home/inspiration/{{ $inspiration->location }}/edit"><i class="far fa-edit"></i></a>
+                                            </td>
+                                            <td class="px-2 text-center">
+                                                <form action="/home/inspiration/{{ $inspiration->location }}/destroy" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="text-red-500 text-xs" type="submit">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            </main>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+
+

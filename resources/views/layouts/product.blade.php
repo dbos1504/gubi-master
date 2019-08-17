@@ -17,12 +17,12 @@
                             </h4>
                         </div>
                         <div id="collapse{{ $category->id }}"
-                             class="panel-collapse collapse in"
+                             class="panel-collapse collapse in {{ $product->categories_id == $category->id ? 'show' : ''}}"
                              role="tabpanel" aria-labelledby="heading{{ $category->id }}">
                             <div class="panel-body text-sm">
                                 <ul>
                                     @foreach($category->subcategory as $sub)
-                                        <li class="py-1"><a href="/subcategories/{{ $sub->location }}">{{ $sub->headline }}</a></li>
+                                        <li class="py-1"><a class="{{ $product->sub_category_id == $sub->id ? 'font-bold' : '' }}" href="/subcategories/{{ $sub->location }}">{{ $sub->headline }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -36,7 +36,7 @@
                 <section class="lg:flex lg:flex-wrap px-4 py-2 -mr-4 mt-3">
                     <article class="lg:w-1/2">
                         <!-- MAIN PRODUCT IMAGE -->
-                        <img ref="image" src="/img/products/{{ $product->image }}" alt="{{ $product->alt }}">
+                            <img ref="image" src="/img/products/{{ $product->image }}" alt="{{ $product->alt }}">
                         <!-- END MAIN PRODUCT IMAGE -->
                         <!-- GALLERY -->
                         <article class="lg:flex lg:flex-wrap mt-3">
@@ -48,7 +48,7 @@
                         </article>
                         <!-- END GALLERY -->
                     </article>
-                    <article class="lg:w-1/2 px-12">
+                    <article class="lg:w-1/2 pl-12">
                         <h1 class="text-2xl font-serif py-2 text-black">
                             <a href="/product/{{ $product->location }}">
                                 {{ $product->headline }}
@@ -57,20 +57,26 @@
                         @if ($product->price_status == 1)
                             <p class="mt-2 text-2xl text-black font-medium">Price: {{ $product->price }} {{ $product->currency }}</p>
                         @endif
-                        <div class="lg:flex lg:flex-wrap mt-2">
+                        <div class="lg:flex mt-2">
                             @foreach($product->variations as $variation)
-                                <div class="lg:w-1/3">
+                                <div class="mr-3">
                                     <label class="text-xs" for="">{{ $variation->name }}</label> <br>
-                                    <variation @inquiry="upit" @created="slika" :data="{{ $variation->subvariations }}" :product="{{ $product }}"></variation>
+                                    <variation @inquiry="upit"
+                                               @varijacija="variacija"
+                                               @created="slika"
+                                               :data="{{ $variation->subvariations }}"
+                                               :product="{{ $product }}"
+                                    >
+                                    </variation>
                                 </div>
                             @endforeach
-                                 <div class="lg:w-1/3 {{ count($product->variations) == 0 ? '' : 'pl-10' }}">
+                                 <div class="{{ count($product->variations) == 0 ? '' : 'ml-1' }}">
                                      <label class="text-xs">Quantity</label>
                                      <input class="p-1 bg-gray-200 w-full" type="number" v-model="qty">
                                  </div>
                         </div>
                         <div class="inquiry mt-6">
-                            <inquiry :img="img" :kolicina="qty" :upit="inquirys" :product="{{ $product }}"></inquiry>
+                            <inquiry :img="img" :variacija="vari" :kolicina="qty" :upit="inquirys" :product="{{ $product }}"></inquiry>
                         </div>
                         <div class="product-body mt-8">
                             {!! $product->body !!}

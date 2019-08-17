@@ -1,5 +1,5 @@
 <template>
-    <select class="bg-gray-200 p-1 mr-2" v-model="variation" @change="onChange(variation)">
+    <select class="bg-gray-200 p-1" v-model="variation" @change="onChange(variation)">
         <option v-for="subvariation in subvariations"
                 v-if="subvariation.products_id === product.id"
                 :value="subvariation"
@@ -24,8 +24,14 @@
         methods: {
             onChange(event) {
                 this.image = event.image ? event.image : this.product.image;
-                if (event.name == 'Brass Base') {
-                    console.log('Neznam sta');
+                if (event.variations_id === 6) {
+                    this.$emit('varijacija', event);
+                }
+                if (event.variations_id === 1)  {
+                    this.$emit('varijacija', event);
+                }
+                if (event.variations_id === 7) {
+                    this.$emit('varijacija', event);
                 }
                 this.$emit('created', event);
                 this.$emit('inquiry', event);

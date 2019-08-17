@@ -42,15 +42,15 @@
                                                 <option value="€">€</option>
                                             </select>
                                         </div>
-                                        {{--<div class="form-group border p-3">--}}
-                                            {{--<label class="uppercase text-xs font-bold" for="designers_id">Choose a designer (optional):</label>--}}
-                                            {{--<select class="form-control" name="designers_id" id="designers_id">--}}
-                                                {{--<option value="0">Choose designer...</option>--}}
-                                                {{--@foreach($designers as $designer)--}}
-                                                    {{--<option value="{{ $designer->id }}">{{ $designer->id }}. {{ $designer->name }}</option>--}}
-                                                {{--@endforeach--}}
-                                            {{--</select>--}}
-                                        {{--</div>--}}
+                                        <div class="form-group border p-3">
+                                            <label class="uppercase text-xs font-bold" for="designers_id">Choose a designer (optional):</label>
+                                            <select class="form-control" name="designers_id" id="designers_id">
+                                                <option value="0">Choose designer...</option>
+                                                @foreach($designers as $designer)
+                                                    <option value="{{ $designer->id }}">{{ $designer->id }}. {{ $designer->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         {{--<div class="form-group border p-3">--}}
                                             {{--<label class="uppercase text-xs font-bold" for="collections_id">Choose collection (optional):</label>--}}
                                             {{--<select class="form-control" name="collections_id" id="collections_id">--}}

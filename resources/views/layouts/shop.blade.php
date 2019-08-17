@@ -24,7 +24,7 @@
                             <div class="panel-body text-sm">
                                 <ul>
                                     @foreach($category->subcategory as $sub)
-                                        <li class="py-2"><a class="text-xs" href="/subcategories/{{ $sub->location }}">{{ $sub->headline }}</a></li>
+                                        <li class="py-2"><a href="/subcategories/{{ $sub->location }}">{{ $sub->headline }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

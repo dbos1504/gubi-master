@@ -11,6 +11,7 @@
                 inquirys: '',
                 img: this.data.image,
                 qty: 1,
+                vari: '',
             }
         },
 
@@ -34,6 +35,10 @@
                 this.img = e.image === '' ? this.data.image : e.image;
                 this.inquirys = e.name;
             },
+
+            variacija(e) {
+                this.vari = e.name;
+            }
         }
     }
 </script>

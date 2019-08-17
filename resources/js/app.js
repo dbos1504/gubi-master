@@ -19,11 +19,15 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+import ConfirmDialog from './components/ConfirmDialog.vue';
+
+Vue.component('confirm-dialog', ConfirmDialog);
 Vue.component('variation', require('./components/Variation.vue').default);
 Vue.component('flash', require('./components/Flash.vue').default);
 Vue.component('product', require('./components/Product.vue').default);
 Vue.component('inquiry', require('./components/Inquiry.vue').default);
 Vue.component('contact', require('./components/Contact.vue').default);
+Vue.component('slider', require('./components/Slider').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

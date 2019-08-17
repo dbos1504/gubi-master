@@ -17,12 +17,12 @@
         @endforeach
     </article>
     <article class="adresse">
-        <h6 class="font-serif font-bold text-sm mt-4">GUBI STORE</h6>
+        <h6 class="font-serif font-bold text-sm mt-4">GUBI</h6>
         <p class="mt-2">Skipholt 37, 105 Reykjavík, Iceland</p>
         <p>+354-568-8388</p>
         <h6 class="font-serif font-bold text-sm uppercase mt-4">Opnunartími</h6>
         <p class="mt-2">Mánudaga til föstudaga 9-18 | Laugardaga 11-15 í nóv og des</p>
-        <h6 class="font-serif font-bold text-sm uppercase mt-4 mb-3">Follow</h6>
+        <h6 class="font-serif font-bold text-sm uppercase mt-4 mb-3">Fylgstu með okkur</h6>
         <div class="footer-social mb-10 flex justify-center">
             <a class="mx-2" href="">
                 <img src="/img/pinterest.svg" alt="Pinterst">

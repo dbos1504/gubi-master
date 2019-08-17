@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\CategoriesProducts;
+use App\Contact;
+use App\Designers;
+use App\Inquiry;
+use App\Inspirations;
+use App\InspirationsImages;
 use App\Products;
 use App\ProductsImages;
 use App\ProductsVariations;
@@ -31,9 +36,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
+        $products = Products::orderBy('views', 'DESC')->take(3)->get();
+        $inquiry = Inquiry::orderBy('created_at', 'DESC')->take(4)->get();
+        $messages = Contact::orderBy('created_at', 'DESC')->take(5)->get();
 
+        return view('home', compact('products','inquiry', 'messages'));
+    }
+            /*  PRODUCT  */
     public function products()
     {
         $products = Products::paginate(31);
@@ -43,16 +52,17 @@ class HomeController extends Controller
 
     public function addProduct()
     {
-//        $designers = Designers::all();
+        $designers = Designers::all();
         $categories = Categories::all();
         $subcategories = SubCategory::all();
 //        $collections = Collections::all();
-        return view('auth.add-product', compact( 'categories', 'subcategories'));
+        return view('auth.add-product', compact( 'categories', 'subcategories', 'designers'));
     }
 
     public function productStore()
     {
         $podaci['categories_id'] = request('categories_id');
+        $podaci['designers_id'] = request('designers_id');
         $podaci['sub_category_id'] = request('sub_category_id');
         $podaci['headline'] =  request('headline');
         $podaci['price'] =  request('price') ;
@@ -65,7 +75,7 @@ class HomeController extends Controller
         $podaci['alt'] = request('alt') ? request('alt') : 'Image';
         $podaci['price_status'] = 0;
         $podaci['status'] = 1;
-        $podaci['location'] = strtolower(str_replace(' ', '-', request('headline')));
+        $podaci['location'] = mb_strtolower(str_replace(' ', '-', request('headline')));
 
         $prod = Products::create($podaci);
 
@@ -87,7 +97,7 @@ class HomeController extends Controller
             $br = 0;
             foreach($images as $key => $image) {
                 $img['products_id'] = $prod->id;
-                $img['alt'] = request('name_var' . $br++);
+                $img['alt'] = 'Gubi image';
                 $imagee = $image;
                 $new_name = $image->getClientOriginalName();
                 $imagee->move(public_path('img/products'), $new_name);
@@ -102,14 +112,14 @@ class HomeController extends Controller
 
     public function editProduct(Products $product)
     {
-//        $designers = Designers::all();
+        $designers = Designers::all();
         $categories = Categories::all();
         $subcategories = Subcategory::all();
 //        $collections = Collections::all();
         $variations = Variations::all();
         $subvariations = ProductsVariations::where('products_id', $product->id)->get();
 
-        return view('auth.edit-product', compact('product', 'categories', 'subcategories', 'variations', 'subvariations'));
+        return view('auth.edit-product', compact('product', 'categories', 'subcategories', 'variations', 'subvariations', 'designers'));
     }
 
     public function editProductStore(Products $product)
@@ -142,7 +152,7 @@ class HomeController extends Controller
 
         return back()->with('flash', 'Success. Product edited.');
     }
-
+                  /*  PRICE  PRODUCT STATUS  */
     public function editPriceStatus(Products $product)
     {
         $product->update(['price_status' => request('price_status')]);
@@ -150,6 +160,13 @@ class HomeController extends Controller
         return back()->with('flash', 'Success. Product price status is edited.');
     }
 
+    public function editProductStatus(Products $product)
+    {
+        $product->update(['status' => request('status')]);
+
+        return back()->with('flash', 'Success. Product status is edited.');
+    }
+              /*  PRODUCT IMAGES GALLERY  */
     public function addImages(Products $product)
     {
         $images = request()->file('slika');
@@ -160,14 +177,14 @@ class HomeController extends Controller
             $new_name = $image->getClientOriginalName();
             $imagee->move(public_path('img/products'), $new_name);
             $podaci['image'] = $new_name;
-            $podaci['alt'] = request('name_var' . $br++) ? request('name_var' . $br++) : 'Gubi image';
+            $podaci['alt'] = 'Gubi-image';
 
             ProductsImages::create($podaci);
         }
 
         return back()->with('flash', 'Images are added');
     }
-
+             /*  VARIATION  */
     public function addVariation(Products $product)
     {
         $podaci['products_id'] = $product->id;
@@ -190,11 +207,12 @@ class HomeController extends Controller
                 $new_name = $image->getClientOriginalName();
                 $imagee->move(public_path('img/products'), $new_name);
                 $podaci['image'] = $new_name ? $new_name : '';
-                $podaci['name'] = request('name_var' . $br++);
+                $podaci['name'] = request('vari'.$br) ? request('vari'.$br++) : 'Gubi image';
                 $podaci['variation_name'] = request('variation_name') ? request('variation_name') : '';
 
                 SubVariations::create($podaci);
             }
+
         } else {
             $podaci['products_id'] = $product->id;
             $podaci['variations_id'] = request('variations_id');
@@ -205,5 +223,178 @@ class HomeController extends Controller
             SubVariations::create($podaci);
         }
         return back()->with('flash', 'You added variation images');
+    }
+
+    public function variations()
+    {
+        $variations = Variations::all();
+
+        return view('auth.add-variations', compact('variations'));
+    }
+
+    public function variationsStore()
+    {
+        request()->validate([
+            'name' => 'required'
+        ]);
+
+        $podaci['name'] = request('name');
+
+        Variations::create($podaci);
+
+        return back()->with('flash', 'New variation is added.');
+    }
+              /*  CATEGORY  */
+    public function categories()
+    {
+        $categories = Categories::all();
+
+        return view('auth.categories', compact('categories'));
+    }
+
+    public function categoriesStore()
+    {
+        $podaci = request()->validate([
+            'name' => 'required'
+        ]);
+
+//        $podaci['name'] = request('name');
+        $podaci['subcategories_id'] = 0;
+        $podaci['location'] = mb_strtolower(str_replace(' ', '-', request('name')));
+        $podaci['status'] = 1;
+
+        Categories::create($podaci);
+
+        return redirect('/home/add-category')->with('flash', 'Success. New Category added.');
+    }
+
+    public function categoriesStatus(Categories $categorie)
+    {
+        $categorie->update(['status' => request('status')]);
+
+        return back()->with('flash', 'Success. Category Status is updated');
+    }
+
+    public function categoriesDestroy(Categories $categorie)
+    {
+        $categorie->delete();
+
+        return back()->with('flash', 'Success. Category is deleted');
+    }
+              /*  SUBCATEGORY  */
+    public function subCategories()
+    {
+        $categories = Categories::all();
+
+        return view('auth.subcategories', compact('categories'));
+    }
+
+    public function subCategoriesStatus(SubCategory $subcategorie)
+    {
+        $subcategorie->update(['status' => request('status')]);
+
+        return back()->with('flash', 'Success. Sub-Category Status is updated');
+    }
+
+    public function subCategoriesStore()
+    {
+        $podaci = request()->validate([
+            'categories_id' => 'required',
+            'headline' => 'required',
+        ]);
+
+//        $podaci['categories_id'] = request('categories_id');
+//        $podaci['headline'] = request('headline');
+        $podaci['designer_id'] = 0;
+        $podaci['collection_id'] = 0;
+        $podaci['location'] = mb_strtolower(str_replace(' ', '-', request('headline')));
+        $podaci['status'] = 1;
+
+        SubCategory::create($podaci);
+
+        return redirect('/home/add-subcategory')->with('flash', 'Success. New Sub-Category added.');
+    }
+
+    public function subCategoriesDestroy(SubCategory $subcategorie)
+    {
+        $subcategorie->delete();
+
+        return back()->with('flash', 'Success. SubCategory is deleted');
+    }
+              /*  MESSAGES  */
+    public function messages()
+    {
+        $messages = Contact::all();
+
+        return view('auth.messages', compact('messages'));
+    }
+    public function showMessages(Contact $message)
+    {
+        $message->update(['status' => 1]);
+
+        return view('auth.message', compact('message'));
+    }
+    public function destroyMessages(Contact $message)
+    {
+        $message->delete();
+
+        return redirect('/home/messages')->with('flash', 'Message was deleted');
+    }
+            /*  INQUIRY  */
+    public function inquiry()
+    {
+        $inquiry = Inquiry::all();
+
+        return view('auth.inquiry', compact('inquiry'));
+    }
+
+    public function singleInquiry(Inquiry $inquiry)
+    {
+        $inquiry->update(['status' => 1]);
+
+        return view('auth.single-inquiry', compact('inquiry'));
+    }
+    public function destroyInquiry(Inquiry $inquiry)
+    {
+        $inquiry->delete();
+
+        return redirect('/home/inquiry')->with('flash', 'Inquiry was deleted');
+    }
+          /*  INSPIRATION  */
+    public function inspirations()
+    {
+        $inspirations = Inspirations::all();
+
+        return view('auth.inspirations', compact('inspirations'));
+    }
+
+    public function inspirationsEdit(Inspirations $inspiration)
+    {
+        return view('auth.edit-inspiration', compact('inspiration'));
+    }
+    /*  INSPIRATION  GALLERY */
+    public function inspirationsAddGalleryImages(Inspirations $inspiration)
+    {
+        $images = request()->file('image');
+        $br = 0;
+        foreach($images as $key => $image) {
+            $podaci['inspirations_id'] = $inspiration->id;
+            $imagee = $image;
+            $new_name = $image->getClientOriginalName();
+            $imagee->move(public_path('img/inspirations'), $new_name);
+            $podaci['image'] = $new_name;
+            $podaci['alt'] = 'Gubi-image';
+
+            InspirationsImages::create($podaci);
+        }
+
+        return back()->with('flash', 'Images are added');
+    }
+
+    public function galleryStatus(Inspirations $inspiration)
+    {
+        $inspiration->update(['gallery_status' => request('gallery_status')]);
+
+        return back()->with('flash', 'Inspiration gallery status updated');
     }
 }

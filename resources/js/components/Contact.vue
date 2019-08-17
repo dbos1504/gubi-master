@@ -47,7 +47,7 @@
             <textarea class="p-2 w-full"
                       name="message" cols="30" rows="5"
                       placeholder="Skilaboð*"
-                      v-validate="'required'"
+                      v-validate="'required|min:3'"
                       :class="errors.first('message') ? 'border-b border-red-700' : 'border'"
                       v-model="message"></textarea>
             <span class="text-red-500 italic text-xs greska">{{ errors.first('message') }}</span>
@@ -86,7 +86,7 @@
             sendMessage() {
                 this.$validator.validate().then(valid => {
                     if (valid) {
-                        axios.post('/contact', {
+                        axios.post('/hafdu-samband', {
                             firstname: this.firstname,
                             lastname: this.lastname,
                             email: this.email,

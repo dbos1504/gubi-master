@@ -22,6 +22,7 @@ class CreateInspirationsTable extends Migration
             $table->text('description');
             $table->text('body');
             $table->integer('status');
+            $table->integer('gallery_status');
         });
     }
 

@@ -1,17 +1,17 @@
 <template>
-    <form>
+    <form :key="uuid">
         <button @click.prevent="$modal.show('inquiry')"
                 class="px-4 py-2 border font-bold text-xs"
         >
             HAFĐU SAMBAND FYRIR UPPLÝSINGAR
         </button>
-        <modal name="inquiry" classes="bg-white relative" height="auto" width="65%">
+        <modal name="inquiry" classes="bg-white relative" height="auto" width="75%">
             <div class="button-cancel">
                 <button type="button" @click="$modal.hide('inquiry')">X</button>
             </div>
             <form action="" method="POST" class="lg:flex lg:flex-wrap lg:items-center">
                 <div class="lg:w-2/5">
-                    <img :src="'/img/products/' + img" :alt="products.alt">
+                    <img :src="'/img/products/' + img" :alt="product.alt">
                 </div>
                 <div class="lg:w-3/5 p-12">
                     <h4 class="font-serif uppercase text-center text-black text-3xl">Upplýsingar um vöru</h4>
@@ -21,7 +21,7 @@
                             <input class="p-2 w-full"
                                    type="text"
                                    v-model="firstname"
-                                   v-validate="'required'"
+                                   v-validate.persist="'required'"
                                    :class="errors.first('firstname') ? 'border-b border-red-700' : 'border'"
                                    name="firstname"
                                    placeholder="First Name"
@@ -32,7 +32,7 @@
                             <input class="p-2 w-full"
                                    type="text"
                                    v-model="lastname"
-                                   v-validate="'required'"
+                                   v-validate.persist="'required'"
                                    name="lastname"
                                    :class="errors.first('lastname') ? 'border-b border-red-700' : 'border'"
                                    placeholder="Last Name"
@@ -42,28 +42,29 @@
                     </div>
                     <div class="form-group">
                         <input class="p-2 w-full"
-                               v-model="simi"
+                               v-model="phone"
                                type="text"
-                               name="simi"
-                               :class="errors.first('simi') ? 'border-b border-red-700' : 'border'"
-                               v-validate="'required'"
+                               name="phone"
+                               :class="errors.first('phone') ? 'border-b border-red-700' : 'border'"
+                               v-validate.persist="'required'"
                                placeholder="Simi*">
-                        <span class="text-red-500 italic text-xs greska">{{ errors.first('simi') }}</span>
+                        <span class="text-red-500 italic text-xs greska">{{ errors.first('phone') }}</span>
                     </div>
                     <div class="form-group">
                         <input class="p-2 w-full"
                                type="email"
                                v-model="email"
                                :class="errors.first('email') ? 'border-b border-red-700' : 'border'"
-                               v-validate="'required'"
+                               v-validate.persist="'required|email'"
                                name="email"
                                placeholder="Netfang*"
                         >
                         <span class="text-red-500 italic text-xs greska">{{ errors.first('email') }}</span>
                     </div>
                     <div class="form-group flex">
-                        <p class="p-2 w-full border border-black text-black mr-2">{{ products.headline }} | {{ upit }}</p>
-                        <p class="product-inquiry-width p-2 border border-black text-black text-center">{{ kolicina }}</p>
+                        <p class="inquiry-border p-2 w-full border border-black text-black mr-2">{{ product.headline }} | {{ upit }}</p>
+                        <p v-if="variacija" class="inquiry-border product-inquiry-width p-2 border border-black text-black text-center mr-2">{{ variacija }}</p>
+                        <p class="inquiry-border product-inquiry-width p-2 border border-black text-black text-center">{{ kolicina }}</p>
                     </div>
                     <div class="form-group">
                         <textarea placeholder="Message*"
@@ -72,32 +73,42 @@
                                   id="" cols="30" rows="5"
                                   v-model="message"
                                   :class="errors.first('message') ? 'border-b border-red-700' : 'border'"
-                                  v-validate="'required'"
+                                  v-validate.persist="'required|min:3'"
                         ></textarea>
                         <span class="text-red-500 italic text-xs greska">{{ errors.first('message') }}</span>
                     </div>
-                    <div class="form-group text-right">
+                    <div class="form-group text-right flex justify-end items-center">
+                        <a class="text-xs font-bold mr-4" @click.prevent="cancelInquiry" href="">Cancel</a>
                         <button class="text-xs font-bold text-black py-2 px-12 border" @click.prevent="sendInquiry" type="submit">SUBMIT</button>
                     </div>
                 </div>
             </form>
+        </modal>
+        <modal name="success" classes="bg-white relative" height="auto">
+            Proslo
         </modal>
     </form>
 </template>
 
 <script>
     export default {
-        props: ['product', 'upit', 'kolicina', 'img'],
+        props: ['product', 'upit', 'kolicina', 'img', 'variacija'],
 
         data() {
             return {
-                products: this.product,
+                products: '',
                 inquiry: this.upit,
                 firstname: '',
                 lastname: '',
-                simi: '',
+                phone: '',
                 email: '',
                 message: '',
+                variation: '',
+                image: '',
+                inq: '',
+                qty: '',
+                uuid: 22
+
             }
         },
 
@@ -105,24 +116,39 @@
             sendInquiry() {
                 this.$validator.validate().then(valid => {
                     if (valid) {
-                        axios.post('/', {
+                        axios.post('/product/' + this.product.location + '/inquiry' , {
                             firstname: this.firstname,
                             lastname: this.lastname,
                             email: this.email,
-                            simi: this.simi,
+                            phone: this.phone,
                             message: this.message,
+                            products: this.product.headline,
+                            variation: this.variacija,
+                            inq: this.upit,
+                            qty: this.kolicina,
+                            image: this.img,
                         }).then(
+                            this.$modal.hide('inquiry'),
                             this.$modal.show('success'),
                             this.firstname = '',
                             this.lastname = '',
                             this.email = '',
-                            this.simi = '',
+                            this.phone = '',
                             this.message = '',
-                            this.$validator.reset(),
                             this.hide(),
+                            this.$validator.reset(),
                         );
                     }
                 });
+            },
+
+            cancelInquiry() {
+                this.$modal.hide('inquiry');
+                this.firstname = '';
+                this.lastname = '';
+                this.email = '';
+                this.simi = '';
+                this.message = '';
             },
 
             hide() {
@@ -133,7 +159,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

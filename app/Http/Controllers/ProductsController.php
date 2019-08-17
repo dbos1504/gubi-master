@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Categories;
+use App\Inquiry;
 use App\Products;
 
 class ProductsController extends Controller
@@ -15,5 +15,25 @@ class ProductsController extends Controller
         $product->increment('views');
 
         return view('layouts.product', compact('product', 'categories', 'relateds'));
+    }
+
+    public function inquiry(Products $product)
+    {
+        $podaci = request()->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'products' => 'required',
+            'qty' => 'required',
+            'message' => 'required|min:3',
+            'image' => 'required',
+        ]);
+        $podaci['inq'] = request('inq') ? request('inq') : '';
+        $podaci['variation'] = request('variation') ? request('variation') : '';
+
+        Inquiry::create($podaci);
+
+        return back()->with('flash', 'Thanks. Your inquiry in its the way, we will contact you as soon as possible.');
     }
 }

@@ -152,7 +152,7 @@
                         let picFile = event.target;
                         let div = document.createElement("div");
                         div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
-                            "title='" + picFile.name + "' width='80' height='80'/> <a class='remove_pict cursor-pointer'>X</a><input class='w-full border mt-1' name='name_var" + i +"' type='text'>";
+                            "title='" + picFile.name + "' width='80' height='80'/> <a class='remove_pict cursor-pointer'>X</a><input class='w-full border mt-1' name='vari" + i +"' type='text'>";
                         output.insertBefore(div,null);
                         div.children[1].addEventListener("click", function(event){
                             div.parentNode.removeChild(div);
@@ -171,6 +171,34 @@
             filesInput.addEventListener("change", function(event){
                 let files = event.target.files; //FileList object
                 let output = document.getElementById("result");
+                for(let i = 0; i< files.length; i++) {
+                    let file = files[i];
+                    if(!file.type.match('image'))
+                        continue;
+                    let picReader = new FileReader();
+                    picReader.addEventListener("load",function(event){
+                        let picFile = event.target;
+                        let div = document.createElement("div");
+                        div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                            "title='" + picFile.name + "' width='80' height='80'/> <a class='remove_pict cursor-pointer'>X</a><input class='w-full border mt-1' name='name_var" + i +"' type='text'>";
+                        output.insertBefore(div,null);
+                        div.children[1].addEventListener("click", function(event){
+                            div.parentNode.removeChild(div);
+                        });
+                    });
+                    picReader.readAsDataURL(file);
+                }
+            });
+        }
+    })
+</script>
+<script>
+    $(function() {
+        let filesInput = document.getElementById("inspiration");
+        if (filesInput) {
+            filesInput.addEventListener("change", function(event){
+                let files = event.target.files; //FileList object
+                let output = document.getElementById("results-insp");
                 for(let i = 0; i< files.length; i++) {
                     let file = files[i];
                     if(!file.type.match('image'))

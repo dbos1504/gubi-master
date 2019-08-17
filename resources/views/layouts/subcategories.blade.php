@@ -23,7 +23,7 @@
                                 <ul>
                                     @foreach($category->subcategory as $sub)
                                         <li class="py-2">
-                                            <a class="{{ $subcategory->id == $sub->id ? 'font-bold' : '' }} text-xs" href="/subcategories/{{ $sub->location }}">
+                                            <a class="{{ $subcategory->id == $sub->id ? 'font-bold' : '' }}" href="/subcategories/{{ $sub->location }}">
                                                 {{ $sub->headline }}
                                             </a>
                                         </li>

@@ -40,7 +40,9 @@ if (token) {
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import VModal from 'vue-js-modal';
+import Viewer from 'v-viewer';
 
+Vue.use(Viewer);
 Vue.use(VeeValidate);
 Vue.use(VModal);
 
