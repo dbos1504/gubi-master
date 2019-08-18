@@ -75,7 +75,7 @@
                                </section>
                                 <section class="flex">
                                     <article class="w-1/2 px-4 py-6">
-                                        <h3 class="font-bold font-serif text-2xl">Something</h3>
+                                        <h3 class="font-bold font-serif text-2xl">Numbers</h3>
                                         <hr>
                                     </article>
                                     <article class="w-1/2 px-4 py-6">

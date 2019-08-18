@@ -11,6 +11,8 @@ class SubCategoryController extends Controller
     {
         $categories = Categories::with('subcategory')->where('status', 1)->get();
 
-        return view('layouts.subcategories', compact('categories', 'subcategory'));
+        $paginate  = $subcategory->products()->paginate(21);
+
+        return view('layouts.subcategories', compact('categories', 'subcategory', 'paginate'));
     }
 }

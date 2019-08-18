@@ -45,6 +45,7 @@
                                                     </td>
                                                     <td class="border-r px-2 text-center">{{ $inq->qty }}</td>
                                                     <td class="px-2 text-center">
+
                                                         <form action="/home/inquiry/{{ $inq->id }}/destroy" method="POST">
                                                             @csrf
                                                             @method('DELETE')

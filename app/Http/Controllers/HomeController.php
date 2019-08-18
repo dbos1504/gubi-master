@@ -15,7 +15,6 @@ use App\ProductsVariations;
 use App\SubCategory;
 use App\SubVariations;
 use App\Variations;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -368,6 +367,30 @@ class HomeController extends Controller
         return view('auth.inspirations', compact('inspirations'));
     }
 
+    public function addInspirations()
+    {
+        return view('auth.add-inspiration');
+    }
+
+    public function addInspirationsStore()
+    {
+        $podaci['name'] = request('name');
+        $podaci['description'] = request('description');
+        $podaci['body'] =  request('body') ? request('body') : '';
+        $podaci['location'] = mb_strtolower(str_replace(' ', '-', request('name')));
+        $podaci['alt'] = request('alt') ? request('alt') : 'Image';
+        $podaci['status'] = 1;
+        $podaci['gallery_status'] = 0;
+        $image = request()->file('image');
+        $new_name = request()->file('image')->getClientOriginalName();
+        $image->move(public_path('img/products'), $new_name);
+        $podaci['image'] = $new_name;
+
+        $ins = Inspirations::create($podaci);
+
+        return redirect('/home/inspiration/' . $ins->location . '/edit')->with('flash', 'Success. Inspiration is created.');
+    }
+
     public function inspirationsEdit(Inspirations $inspiration)
     {
         return view('auth.edit-inspiration', compact('inspiration'));
@@ -396,5 +419,12 @@ class HomeController extends Controller
         $inspiration->update(['gallery_status' => request('gallery_status')]);
 
         return back()->with('flash', 'Inspiration gallery status updated');
+    }
+
+    public function inspirationsStatus(Inspirations $inspiration)
+    {
+        $inspiration->update(['status' => request('status')]);
+
+        return back()->with('flash', 'Inspiration status updated');
     }
 }

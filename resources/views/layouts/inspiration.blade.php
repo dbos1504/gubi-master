@@ -3,7 +3,7 @@
 @section('content')
     <section class="container">
         <h1 class="text-3xl text-center uppercase font-serif p-4 text-black">{{ $inspiration->name }}</h1>
-        <p class="mt-3 text-center font-serif text-black text-sm mb-8">{{ $inspiration->description }}</p>
+        <div class="mt-3 text-center font-serif text-black text-sm mb-8">{!! $inspiration->description !!}</div>
         <hr>
         <article class="inspiration-images my-8">
             @if ($inspiration->gallery_status == 1)

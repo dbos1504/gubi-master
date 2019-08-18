@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Inspirations;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class InspirationsController extends Controller
 {
@@ -26,5 +24,15 @@ class InspirationsController extends Controller
     public function heimilid()
     {
         return view('layouts.heimilid');
+    }
+
+    public function vinnusvodi()
+    {
+        return view('layouts.vinnusvodi');
+    }
+
+    public function urboklingum()
+    {
+        return view('layouts.ur-boklingum');
     }
 }

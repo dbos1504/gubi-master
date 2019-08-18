@@ -1855,18 +1855,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['data'],
+  data: function data() {
+    return {
+      action: '/home/inquiry/' + this.data.id + '/destroy'
+    };
+  },
   methods: {
     cancelClick: function cancelClick() {
       this.$modal.hide('confirm');
     },
-    handleClick: function handleClick(confirmed) {
-      if (confirmed) {
-        this.$el.click();
-        this.$modal.hide('confirm');
-      }
+    handleClick: function handleClick() {
+      axios["delete"]('/home/inquiry/destroy/' + this.data.id);
+      this.$modal.hide('confirm');
     }
   }
 });
@@ -54287,63 +54289,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
+  return _c("modal", { attrs: { name: "confirm" } }, [
+    _c("p", { staticClass: "text-center text-3xl mt-10 py-16" }, [
+      _vm._v("Are you sure ?")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex justify-center items-center m-auto" }, [
       _c(
         "button",
         {
-          staticClass: "text-red-600",
-          attrs: { title: "Delete", type: "submit" },
+          staticClass:
+            "text-base rounded-lg py-1 px-6 text-white bg-gray-500 mx-2",
           on: {
             click: function($event) {
               $event.preventDefault()
-              return _vm.$modal.show("confirm")
+              return _vm.cancelClick($event)
             }
           }
         },
-        [_c("i", { staticClass: "far fa-trash-alt" })]
+        [_vm._v("\n            Cancel\n        ")]
       ),
       _vm._v(" "),
-      _c("modal", { attrs: { name: "confirm" } }, [
-        _c("p", { staticClass: "text-center text-3xl mt-10 py-16" }, [
-          _vm._v("Are you sure ?")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex justify-center items-center m-auto" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "text-base rounded-lg py-1 px-6 text-white bg-gray-500 mx-2",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.cancelClick($event)
-                }
-              }
-            },
-            [_vm._v("\n                Cancel\n            ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass:
-                "text-base  rounded-lg py-1 px-6 text-white bg-red-600 text-white mx-2",
-              on: {
-                click: function($event) {
-                  return _vm.handleClick(true)
-                }
-              }
-            },
-            [_vm._v("\n                YES\n            ")]
-          )
-        ])
-      ])
-    ],
-    1
-  )
+      _c(
+        "button",
+        {
+          staticClass:
+            "text-base  rounded-lg py-1 px-6 text-white bg-red-600 text-white mx-2",
+          on: {
+            click: function($event) {
+              return _vm.handleClick()
+            }
+          }
+        },
+        [_vm._v("\n            YES\n        ")]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

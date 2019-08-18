@@ -14,7 +14,11 @@ Route::get('/subcategories/{subcategory}', 'SubcategoryController@show');
 Route::get('/innblastur', 'InspirationsController@index');
 Route::get('/innblastur/{inspiration}', 'InspirationsController@show');
 
+/* Inspiration single page*/
 Route::get('/heimilid', 'InspirationsController@heimilid');
+Route::get('/vinnusvodi', 'InspirationsController@vinnusvodi');
+Route::get('/ur-boklingum', 'InspirationsController@urboklingum');
+/* End Inspiration single page*/
 
 Route::get('/honnudir', 'DesignersController@index');
 Route::get('/honnudir/{designer}', 'DesignersController@show');
@@ -66,6 +70,9 @@ Route::get('/home/inquiry/{inquiry}', 'HomeController@singleInquiry')->name('hom
 Route::delete('/home/inquiry/{inquiry}/destroy', 'HomeController@destroyInquiry');
 /* INSPIRATIONS */
 Route::get('/home/inspiration', 'HomeController@inspirations');
+Route::get('/home/add-inspiration', 'HomeController@addInspirations');
+Route::post('/home/add-inspiration', 'HomeController@addInspirationsStore');
 Route::get('/home/inspiration/{inspiration}/edit', 'HomeController@inspirationsEdit');
 Route::post('/home/inspiration{inspiration}/add-inspiration-gallery-images', 'HomeController@inspirationsAddGalleryImages');
 Route::patch('/home/inspiration/{inspiration}/gallery-status', 'HomeController@galleryStatus');
+Route::patch('/home/inspiration/{inspiration}/status', 'HomeController@inspirationsStatus');

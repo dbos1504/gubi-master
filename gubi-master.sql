@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 17, 2019 at 07:19 PM
+-- Generation Time: Aug 18, 2019 at 12:20 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.1
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 --
 
 INSERT INTO `categories` (`id`, `subcategories_id`, `name`, `location`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Featured', 'Featured', 1, '2019-08-17 17:15:21', '2019-08-17 17:15:21'),
+(1, 1, 'Featured', 'featured', 1, '2019-08-17 17:15:21', '2019-08-17 17:15:21'),
 (2, 2, 'Lighting', 'lighting', 1, NULL, NULL),
 (3, 3, 'Seating', 'seating', 1, NULL, NULL),
 (4, 4, 'Tables', 'tables', 1, NULL, NULL),
@@ -135,14 +135,14 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `contacts`
 --
 
 INSERT INTO `contacts` (`id`, `firstname`, `lastname`, `email`, `subject`, `message`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Marko', 'Boskovic', 'info@greyapartments.is', 'Test poruka', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus sagittis enim id fermentum. Suspendisse lacinia hendrerit sapien, et dictum eros accumsan a', 1, '2019-08-16 20:32:49', '2019-08-16 20:32:59');
+(3, 'Marko', 'Boskovic', 'info@greyapartments.is', 'sfsdfs', 'qqqq', 0, '2019-08-17 21:37:59', '2019-08-17 21:37:59');
 
 -- --------------------------------------------------------
 
@@ -199,15 +199,14 @@ CREATE TABLE IF NOT EXISTS `inquiries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inquiries`
 --
 
 INSERT INTO `inquiries` (`id`, `firstname`, `lastname`, `email`, `phone`, `products`, `variation`, `inq`, `qty`, `message`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(25, 'Marko', 'Boskovic', 'info@greyapartments.is', '1231234', '9602 Floor Lamp', '', 'Wicker Willow', '1', 'test 2', 'floor1.jpg', 1, '2019-08-17 17:04:21', '2019-08-17 17:04:49'),
-(27, 'Marko', 'Boskovic', 'info@greyapartments.is', '064 123 1234', 'Bat Dining Chair - Un-Upholstered, Conic base', 'Brass Base', 'Pure White Shell Brass', '2', 'test 4', 'bras-wh.jpg', 1, '2019-08-17 17:10:27', '2019-08-17 17:10:36');
+(34, 'dfgdfg', 'Boskovic', 'info@greyapartments.is', '345345', 'Bat Dining Chair - Un-Upholstered, Conic base', 'Black Base', 'Pure White Shell Black', '1', '345345345', 'white.webp', 1, '2019-08-17 20:28:24', '2019-08-17 20:35:40');
 
 -- --------------------------------------------------------
 
@@ -219,24 +218,24 @@ DROP TABLE IF EXISTS `inspirations`;
 CREATE TABLE IF NOT EXISTS `inspirations` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alt` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alt` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) NOT NULL DEFAULT '1',
   `gallery_status` bigint(20) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inspirations`
 --
 
 INSERT INTO `inspirations` (`id`, `image`, `alt`, `location`, `name`, `description`, `body`, `status`, `gallery_status`, `created_at`, `updated_at`) VALUES
-(1, 'flora.png', 'flora', 'flora', 'FLORA DANICA', 'Project Maison du Danemark, Paris, France • Collection Beetle Chair, Beetle Bar Chair, TS Column Table • Interior GamFratesi', '', 1, 1, '0000-00-00 00:00:00', '2019-08-17 12:25:28'),
+(1, 'flora.png', 'flora', 'flora', 'FLORA DANICA', 'Project Maison du Danemark, Paris, France • Collection Beetle Chair, Beetle Bar Chair, TS Column Table • Interior GamFratesi', '', 1, 1, '0000-00-00 00:00:00', '2019-08-17 20:40:06'),
 (2, 'copen.png', 'Copenhague', 'copenhague', 'COPENHAGUE', 'Project Maison du Danemark, Paris, France • Collection Masculo Chair, Cobra Wall Lamp • Interior GamFratesi', '', 1, 1, '0000-00-00 00:00:00', '2019-08-17 12:27:01'),
 (3, 'standard-image.png', 'THE STANDARD', 'the-standard', 'THE STANDARD', 'Project The Standard, Copenhagen, Denmark • Collection Beetle Chair, Beetle Bar Chair, TS Table, Bestlite BL3 Floor Lamp, Cobra Wall Lamp • Interior GamFratesi', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (4, 'roch.png', 'LE ROCH', 'le-roch', 'LE ROCH', 'Project Le Roch Hotel & Spa, Paris, France • Collection Beetle Chair, GUBI Table 2.0, Beetle Lounge Chair, Modern Line Sofa • Interior Maison Sarah Lavione • Photographer Francis Amiand', '', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -436,19 +435,19 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`id`, `designers_id`, `categories_id`, `sub_category_id`, `collections_id`, `image`, `alt`, `headline`, `price`, `price_status`, `currency`, `location`, `body`, `status`, `views`, `created_at`, `updated_at`) VALUES
-(1, 0, 1, 2, 0, 'floor.jpg', 'Canvas', '9602 Floor Lamp', '949.00', 0, '€', '9602-floor-lamp', '<p>The 9602 Floor Lamp, also known as &ldquo;Chinese Hat&rdquo; was designed by Paavo Tynell in 1935 for the Hotel Aulanko. Characterised by its elegant and airy lampshade and rattan-covered stem, the 9602 Floor Lamp shows the designer&rsquo;s limitless imagination and unparalleled ability to create designs of enduring beauty. Adding a playful, exuberant quality to the top, balanced by the more static form of the base, the 9602 Floor Lamp is perfectly suited for creating a gentle ambient light in the domestic living room.</p>', 1, 100, '2019-08-12 19:32:28', '2019-08-17 17:09:50'),
-(2, 0, 1, 0, 0, 'adnet.jpg', 'Adnet Wall Mirror', 'Adnet Wall Mirror - Circular - Dia. 58 Alcantara', '854.00', 0, '€', 'adnet-wall-mirror-circular-dia.-58-alcantara', 'We proudly present the iconic Adnet Circulaire Mirror with a new and contemporary Alcantara frame to further extend this classic collection designed in 1946 by Jacques Adnet. The remarkable and extremely durable Alcantara fabric has a tactile feel and aesthetic qualities, that is pleasing to the eye.\r\n\r\nKnown for being an innovative thinker, Adnet was one of the first designers to integrate metal and glass in the structure and decoration of furniture. Accordingly, he designed the elegant, distinctive round mirror with equestrian inspired detailing - the Adnet Circulaire Mirror.\r\n\r\nThe timeless Adnet Circulaire Mirror adds a sculptural value and outstanding expression to any hallway, bathroom or living room.', 1, 138, '2019-08-13 18:05:48', '2019-08-17 16:02:13'),
+(1, 0, 1, 2, 0, 'floor.jpg', 'Canvas', '9602 Floor Lamp', '949.00', 0, '€', '9602-floor-lamp', '<p>The 9602 Floor Lamp, also known as &ldquo;Chinese Hat&rdquo; was designed by Paavo Tynell in 1935 for the Hotel Aulanko. Characterised by its elegant and airy lampshade and rattan-covered stem, the 9602 Floor Lamp shows the designer&rsquo;s limitless imagination and unparalleled ability to create designs of enduring beauty. Adding a playful, exuberant quality to the top, balanced by the more static form of the base, the 9602 Floor Lamp is perfectly suited for creating a gentle ambient light in the domestic living room.</p>', 1, 104, '2019-08-12 19:32:28', '2019-08-17 20:13:30'),
+(2, 0, 1, 0, 0, 'adnet.jpg', 'Adnet Wall Mirror', 'Adnet Wall Mirror - Circular - Dia. 58 Alcantara', '854.00', 0, '€', 'adnet-wall-mirror-circular-dia.-58-alcantara', 'We proudly present the iconic Adnet Circulaire Mirror with a new and contemporary Alcantara frame to further extend this classic collection designed in 1946 by Jacques Adnet. The remarkable and extremely durable Alcantara fabric has a tactile feel and aesthetic qualities, that is pleasing to the eye.\r\n\r\nKnown for being an innovative thinker, Adnet was one of the first designers to integrate metal and glass in the structure and decoration of furniture. Accordingly, he designed the elegant, distinctive round mirror with equestrian inspired detailing - the Adnet Circulaire Mirror.\r\n\r\nThe timeless Adnet Circulaire Mirror adds a sculptural value and outstanding expression to any hallway, bathroom or living room.', 1, 139, '2019-08-13 18:05:48', '2019-08-17 19:17:48'),
 (3, 0, 1, 5, 0, 'bat.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Crisp 04115', '869.00', 0, '€', 'bat-dining-chair,-conic-base-fully-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Antique Brass Conic base and upholstery in Crisp, Gabriel (04115).', 1, 45, '2019-08-13 18:52:24', '2019-08-16 20:57:10'),
-(4, 0, 1, 5, 0, 'bat1.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Remix 123', '909.00', 0, '€', 'bat-dining-chair,-conic-base-fully-upholstered-in-remix-123', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Antique Brass Conic base and upholstery in Remix, Kvadrat (123).', 1, 28, '2019-08-13 19:17:33', '2019-08-17 16:04:57'),
-(5, 0, 1, 5, 0, 'batt.webp', 'Bat Dining Chair', 'Bat Dining Chair - Un-Upholstered, Conic base', '309.00', 0, '€', 'bat-dining-chair-un-upholstered-conic-base', 'The Bat Dining Chair, designed by Danish-Italian design-duo GamFratesi, carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat’s wingspan.\r\n\r\nBalancing between the traditional and surprising, the Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism while also\r\ncarrying a strong embedded story and associations expressed in a minimalist idiom. The wide range of upholstery options and different bases makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.', 1, 333, '2019-08-14 18:24:34', '2019-08-17 17:10:27'),
+(4, 0, 1, 5, 0, 'bat1.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Remix 123', '909.00', 0, '€', 'bat-dining-chair,-conic-base-fully-upholstered-in-remix-123', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Antique Brass Conic base and upholstery in Remix, Kvadrat (123).', 1, 30, '2019-08-13 19:17:33', '2019-08-17 20:28:36'),
+(5, 0, 1, 5, 0, 'batt.webp', 'Bat Dining Chair', 'Bat Dining Chair - Un-Upholstered, Conic base', '309.00', 0, '€', 'bat-dining-chair-un-upholstered-conic-base', 'The Bat Dining Chair, designed by Danish-Italian design-duo GamFratesi, carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat’s wingspan.\r\n\r\nBalancing between the traditional and surprising, the Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism while also\r\ncarrying a strong embedded story and associations expressed in a minimalist idiom. The wide range of upholstery options and different bases makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.', 1, 337, '2019-08-14 18:24:34', '2019-08-17 20:28:25'),
 (6, 0, 6, 0, 0, 'bed.jpg', 'Stay Bed', 'Stay Bed - Fully Upholstered, Low back', '3,886.00', 0, '€', 'stay-bed-fully-upholstered-low-back', 'Stay here, stay with me, stay relaxed, stay and read... with the Stay Bed you do not want to do anything else than stay in bed. With its soft shape and gentle lines, it is a statement furniture for the private home and hotels. The new Stay Bed, is perfectly suited for relaxed times, and unifies luxury with comfort to enjoy the ultimate homely feeling, even though you are in a hotel. The organic shape gives a contemporary look and is almost like a singular continuous pencil stroke wrapping a solid texture. Combine it with the Stay Lounge Chair to get the optimal relaxation.\r\n\r\nSlatted bed base and mattresses not included. Fits box, sprung and foam mattresses. If foam or sprung mattress is used, a slatted bed base is needed. Box mattresses can be used directly in the frame.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 57, '2019-08-15 06:01:45', '2019-08-17 17:04:39'),
 (7, 0, 8, 0, 0, 'metgot.jpg', 'Matégot Flower Pot', 'Matégot Flower Pot', '99.00', 0, '€', 'mategot-flower-pot', 'Designed in 1953 during Mathieu Matégot’s heydays, the Matégot Flower Pot is a proof of his success in turning perforated metal sheet into a refined, elegant material in which design, art and engineering are perfectly combined. This distinctive fabric-like metal sheet, which Matégot named Rigitulle, is crinkled and results in an airy grace that contributes to its genuine sculpture. \r\n\r\nAvailable in three different sizes, the Matégot Flower Pot allows playing with its appearance - whether the beauty is seen in pairs of the same sizes, one flower pot on its own or a number of flower pots in different sizes to create a perfect asymmetry. The largest pot can with its multipurpose nature, advantageously, also be used as a wastepaper basket.\r\n\r\nAvailable in Venetian Gold in Ø15.5 cm and Ø21 cm, and Midnight Black in all sizes.', 1, 42, '2019-08-15 10:16:46', '2019-08-16 19:46:48'),
 (8, 0, 8, 0, 0, 'bowl.jpg', 'Matégot Bowl', 'Mategot Bowl', '159.00', 0, '€', 'mategot-bowl', 'Ahead of his time and with a modern spirit, Mathieu Matégot designed his contemporary Matégot bowl in 1953. The characteristic appearance of the transparent metal adds a light expression to this unique and spacious fruit bowl. As for many of Matégot\'s designs, the Matégot Bowl is trademarked by the solid yet light material Rigitulle; a thin perforated metal sheet tantamount to metal lace, where the inspiration is drawn from the material itself to explore all sorts of expression possible to create. \r\n\r\nThis luxurious material permitted Matégot to revamp the regular fruit bowl into an artistic and decorative bowl that besides from storing fruit in an elegant way, also acts as a piece of great design adorning any room. The Matégot Bowl is an easy and beautiful way to add a pop of colour to any setting.', 1, 10, '2019-08-15 10:19:14', '2019-08-16 15:19:24'),
 (9, 0, 1, 12, 0, 'coffe.jpg', 'Adnet Coffee Table', 'Adnet Coffee Table - Circular, Ø70', '1,386.00', 0, '€', 'adnet-coffee-table-circular-070', 'The Adnet Coffee Table was originally designed by French Modernist Jacques Adnet (1901 - 1981) in the 1950’s. Adnet was always ahead of contemporary trends and became famous for his avant-garde designs and unusual combination of leather, metal and glass. The iconic Adnet Coffee Table exemplifies everything the French architect and interior designer stands for and perfectly merges his Art Deco style with his strong commitment to functionalist principles.\r\n\r\nPlaced on three soft curved metal legs, elegantly meeting in the heart of the table, the round glass top is edged with a hand-made leather rim and adorned with three gilded brass rings. The timeless design of the Adnet Coffee Table embodies modern materials and superb craftsmanship and adds a distinctive value to any home or professional space.', 1, 37, '2019-08-15 18:01:43', '2019-08-17 16:05:00'),
-(10, 0, 1, 5, 0, 'wood.jpg', 'Bat Dining Chair, Wood Base', 'Bat Dining Chair, Wood Base - Front Upholstered in Crisp 04115', '559.00', 0, '€', 'bat-dining-chair,-wood-base-front-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan.\r\n\r\nThe wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.\r\n\r\nDue to its unique design, the textile of the front upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Black Stained Beech wood base, New Beige Shell and upholstery in Crisp, Gabriel (04115).', 1, 45, '2019-08-16 10:37:24', '2019-08-17 16:51:11'),
+(10, 0, 1, 5, 0, 'wood.jpg', 'Bat Dining Chair, Wood Base', 'Bat Dining Chair, Wood Base - Front Upholstered in Crisp 04115', '559.00', 0, '€', 'bat-dining-chair,-wood-base-front-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan.\r\n\r\nThe wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.\r\n\r\nDue to its unique design, the textile of the front upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Black Stained Beech wood base, New Beige Shell and upholstery in Crisp, Gabriel (04115).', 1, 46, '2019-08-16 10:37:24', '2019-08-17 22:04:54'),
 (11, 4, 3, 6, 0, 'carlo.png', 'CDC.1 Lounge Chair', 'CDC.1 Lounge Chair', '2,186.00', 0, '€', 'cdc.1-lounge-chair', 'CDC.1 Lounge Chair was designed by Carlo De Carli in 1954 and features the elegantly minimalist design style, typical of the era.\r\n\r\nThe CDC.1 Lounge Chair meets the ground in a graceful and slender way; its arms swooping like wings, giving the furniture a sense of poetic depth, whilst carrying a strong character. With its sleek silhouette and dynamic, angular lines the lounge chair marries streamlined functionalism with playful whimsy and is well-suited for conversation and relaxation in the modern residential environment.', 1, 5, '2019-08-16 20:50:39', '2019-08-17 12:30:21'),
-(12, 3, 2, 4, 0, 'mat.webp', 'Semi Pendant', 'Semi Pendant - Dia.30', '349.00', 0, '€', 'semi-pendant-dia-30', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 35, '2019-08-17 16:10:21', '2019-08-17 17:04:00'),
-(13, 3, 2, 4, 0, 'bond.jpg', 'Semi Pendant - Dia.47', 'Semi Pendant - Dia.47', '579.00', 0, '€', 'semi-pendant-dia-47', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 14, '2019-08-17 16:40:58', '2019-08-17 16:51:21');
+(12, 3, 2, 4, 0, 'mat.webp', 'Semi Pendant', 'Semi Pendant - Dia.30', '349.00', 0, '€', 'semi-pendant-dia-30', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 41, '2019-08-17 16:10:21', '2019-08-17 22:20:06'),
+(13, 3, 2, 4, 0, 'bond.jpg', 'Semi Pendant - Dia.47', 'Semi Pendant - Dia.47', '579.00', 0, '€', 'semi-pendant-dia-47', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 21, '2019-08-17 16:40:58', '2019-08-17 22:19:36');
 
 -- --------------------------------------------------------
 
@@ -518,7 +517,8 @@ CREATE TABLE IF NOT EXISTS `products_variations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `products_id` (`products_id`)
+  KEY `products_id` (`products_id`),
+  KEY `variations_id` (`variations_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -584,7 +584,9 @@ CREATE TABLE IF NOT EXISTS `sub_categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `categories_id` (`categories_id`)
+  KEY `categories_id` (`categories_id`),
+  KEY `designer_id` (`designer_id`),
+  KEY `collection_id` (`collection_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -627,7 +629,8 @@ CREATE TABLE IF NOT EXISTS `sub_variations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `products_id` (`products_id`)
+  KEY `products_id` (`products_id`),
+  KEY `variations_id` (`variations_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
