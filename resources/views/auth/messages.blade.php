@@ -27,6 +27,7 @@
                                                 <th class="px-2">ID</th>
                                                 <th class="px-2">Email</th>
                                                 <th class="px-2"></th>
+                                                <th class="px-2">Sent date</th>
                                                 <th class="px-2">Delete</th>
                                             </tr>
                                             </thead>
@@ -41,11 +42,13 @@
                                                     <td class="px-2 border-r px-2 text-center">
                                                         <a class="text-xs" href="/home/messages/{{ $message->id }}">Read</a>
                                                     </td>
+                                                    <td class="border-r px-2">{{ $message->created_at->format('m/d/Y') }}.</td>
                                                     <td class="px-2 text-center">
                                                         <form action="/home/messages/{{  $message->id }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
+                                                            <confirm-dialog></confirm-dialog>
+{{--                                                            <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>--}}
                                                         </form>
                                                     </td>
                                                 </tr>

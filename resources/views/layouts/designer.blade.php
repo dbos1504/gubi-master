@@ -36,6 +36,10 @@
             </section>
         </section>
         <hr>
+        <section class="designer-video text-center py-10">
+            {!! $designer->video !!}
+        </section>
+        <hr>
         <div class="designer-names text-center mb-4 mt-6">
             <a class="font-serif font-bold text-xs" href="/honnudir">ALL</a>&nbsp; &bullet;
         @foreach($designers as $designer)

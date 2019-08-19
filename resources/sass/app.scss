@@ -320,11 +320,54 @@
 .v--modal-overlay .v--modal-background-click {
   background: rgba(255, 255, 255, 0.07);
 }
+.hooper-list li {
+  outline: none !important;
+}
+iframe {
+  display: inline;
+}
+.hooper-next {
+  right: -80px !important;
+}
+.hooper-prev {
+  left: -80px !important;
+}
+#accordion div.navbar {
+  padding: 0 !important;
+}
+#cate {
+  flex-direction: column;
+}
+#cate div.panel {
+  width: 100% !important;
+}
+.alert-danger {
+  position: fixed;
+  bottom: 10px;
+  right: 50px;
+}
+.navbar-light .navbar-toggler {
+   border-color: transparent;
+}
 
 
 @media (max-width: 640px) {
   .shop-width {
     width: 90%;
     margin: auto;
+  }
+  .hooper-next {
+    right: 0 !important;
+    top: 105% !important;
+  }
+  .hooper-prev {
+    left: 0 !important;
+    top: 105% !important;
+  }
+  .navbar-expand-lg {
+    text-align: center !important;
+  }
+  .navbar-expand-lg button {
+    width: 100% !important;
   }
 }

@@ -9,7 +9,7 @@ Route::post('/product/{product}/inquiry', 'ProductsController@inquiry');
 
 Route::get('/category/{cat}', 'CategoriesController@show');
 
-Route::get('/subcategories/{subcategory}', 'SubcategoryController@show');
+Route::get('/subcategories/{subcategory}', 'SubCategoryController@show');
 
 Route::get('/innblastur', 'InspirationsController@index');
 Route::get('/innblastur/{inspiration}', 'InspirationsController@show');
@@ -57,6 +57,8 @@ Route::patch('/home/{product}/product-status', 'HomeController@editProductStatus
 Route::post('/home/{product}/add-variation', 'HomeController@addVariation');
 Route::post('/home/{product}/add-variation-images', 'HomeController@addVariationImages');
 Route::post('/home/{product}/add-images', 'HomeController@addImages');
+Route::delete('/home/{product}/destroy-image/{img}', 'HomeController@destroyProductGalleryImage');
+Route::delete('/home/{product}/destroy-variation-image/{img}', 'HomeController@destroyProductGalleryVariationImage');
 /* ADD NEW PRODUCT VARIATION */
 Route::get('/home/add-new-variation', 'HomeController@variations')->name('home-add-new-variations');
 Route::post('/home/add-new-variation', 'HomeController@variationsStore');
@@ -69,10 +71,26 @@ Route::get('/home/inquiry', 'HomeController@inquiry')->name('home-inquiry');
 Route::get('/home/inquiry/{inquiry}', 'HomeController@singleInquiry')->name('home-single-inquiry');
 Route::delete('/home/inquiry/{inquiry}/destroy', 'HomeController@destroyInquiry');
 /* INSPIRATIONS */
-Route::get('/home/inspiration', 'HomeController@inspirations');
-Route::get('/home/add-inspiration', 'HomeController@addInspirations');
+Route::get('/home/inspiration', 'HomeController@inspirations')->name('home-inspiration');
+Route::get('/home/add-inspiration', 'HomeController@addInspirations')->name('home-add-inspiration');
 Route::post('/home/add-inspiration', 'HomeController@addInspirationsStore');
 Route::get('/home/inspiration/{inspiration}/edit', 'HomeController@inspirationsEdit');
-Route::post('/home/inspiration{inspiration}/add-inspiration-gallery-images', 'HomeController@inspirationsAddGalleryImages');
+Route::post('/home/inspiration/{inspiration}/add-inspiration-gallery-images', 'HomeController@inspirationsAddGalleryImages');
 Route::patch('/home/inspiration/{inspiration}/gallery-status', 'HomeController@galleryStatus');
 Route::patch('/home/inspiration/{inspiration}/status', 'HomeController@inspirationsStatus');
+/* DESIGNERS */
+Route::get('/home/designers', 'HomeController@designers')->name('home-designers');
+Route::get('/home/add-designer', 'HomeController@addDesigner')->name('home-add-designer');
+Route::post('/home/add-designer', 'HomeController@storeDesigner');
+Route::get('/home/designers/{designer}/edit', 'HomeController@designerEdit');
+Route::patch('/home/designers/{designer}/status', 'HomeController@designerStatus');
+Route::delete('/home/designers/{designer}/destroy', 'HomeController@destroyDesigner');
+/* NEWS */
+Route::get('/home/news', 'HomeController@news')->name('home-news');
+Route::get('/home/add-news', 'HomeController@addNews')->name('home-add-news');
+Route::post('/home/add-news', 'HomeController@storeNews');
+Route::get('/home/news/{new}/edit', 'HomeController@newsEdit');
+Route::patch('/home/news/{new}/gallery-status', 'HomeController@newsGalleryStatus');
+Route::post('/home/news/{new}/add-news-gallery-images', 'HomeController@newsAddGalleryImages');
+Route::patch('/home/news/{new}/status', 'HomeController@newsStatus');
+Route::delete('/home/news/{new}/destroy', 'HomeController@destroyNews');

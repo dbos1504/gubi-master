@@ -129,9 +129,9 @@
                                 <section class="admin-inspiration-gallery">
                                     <h3 class="font-serif font-bold text-3xl">Inspiration gallery</h3>
                                     <hr>
-                                    <article class="flex">
+                                    <article class="flex flex-wrap">
                                         @foreach ($inspiration->images as $img)
-                                            <div class="mr-3">
+                                            <div class="mr-3 mb-3 w-2/12">
                                                 <img src="/img/inspirations/{{ $img->image }}" alt="img">
                                                 <form action="" method="POST">
                                                     @csrf
@@ -142,7 +142,7 @@
                                         @endforeach
                                     </article>
                                     <hr>
-                                    <form action="/home/inspiration{{ $inspiration->location }}/add-inspiration-gallery-images" method="POST" enctype="multipart/form-data">
+                                    <form action="/home/inspiration/{{ $inspiration->location }}/add-inspiration-gallery-images" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <label class="uppercase text-xs font-bold" for="alt">Add gallery image (you can add multiple images):</label>
                                         <input class="form-control" id="inspiration" type="file" name="image[]"  multiple/>

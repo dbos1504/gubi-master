@@ -9,6 +9,8 @@ use App\Designers;
 use App\Inquiry;
 use App\Inspirations;
 use App\InspirationsImages;
+use App\News;
+use App\NewsImages;
 use App\Products;
 use App\ProductsImages;
 use App\ProductsVariations;
@@ -113,7 +115,7 @@ class HomeController extends Controller
     {
         $designers = Designers::all();
         $categories = Categories::all();
-        $subcategories = Subcategory::all();
+        $subcategories = SubCategory::all();
 //        $collections = Collections::all();
         $variations = Variations::all();
         $subvariations = ProductsVariations::where('products_id', $product->id)->get();
@@ -183,6 +185,14 @@ class HomeController extends Controller
 
         return back()->with('flash', 'Images are added');
     }
+
+    public function destroyProductGalleryImage(Products $product, ProductsImages $img)
+    {
+        $img->delete();
+
+        return back()->with('flash', 'Success. Image is deleted.');
+    }
+
              /*  VARIATION  */
     public function addVariation(Products $product)
     {
@@ -235,6 +245,8 @@ class HomeController extends Controller
     {
         request()->validate([
             'name' => 'required'
+        ], [
+            'name.required' => 'A Variation Name is required',
         ]);
 
         $podaci['name'] = request('name');
@@ -243,6 +255,14 @@ class HomeController extends Controller
 
         return back()->with('flash', 'New variation is added.');
     }
+
+    public function destroyProductGalleryVariationImage(Products $product, SubVariations $img)
+    {
+        $img->delete();
+
+        return back()->with('flash', 'Success. Variation Image is deleted.');
+    }
+
               /*  CATEGORY  */
     public function categories()
     {
@@ -255,6 +275,8 @@ class HomeController extends Controller
     {
         $podaci = request()->validate([
             'name' => 'required'
+        ],[
+            'name.required' => 'A Category Name is required',
         ]);
 
 //        $podaci['name'] = request('name');
@@ -300,6 +322,9 @@ class HomeController extends Controller
         $podaci = request()->validate([
             'categories_id' => 'required',
             'headline' => 'required',
+        ],[
+            'categories_id.required' => 'Please select category for subcategory.',
+            'headline.required' => 'A SubCategory Name is required.',
         ]);
 
 //        $podaci['categories_id'] = request('categories_id');
@@ -323,7 +348,7 @@ class HomeController extends Controller
               /*  MESSAGES  */
     public function messages()
     {
-        $messages = Contact::all();
+        $messages = Contact::orderBy('created_at', 'DESC')->get();
 
         return view('auth.messages', compact('messages'));
     }
@@ -342,7 +367,7 @@ class HomeController extends Controller
             /*  INQUIRY  */
     public function inquiry()
     {
-        $inquiry = Inquiry::all();
+        $inquiry = Inquiry::orderBy('created_at', 'DESC')->get();
 
         return view('auth.inquiry', compact('inquiry'));
     }
@@ -374,6 +399,16 @@ class HomeController extends Controller
 
     public function addInspirationsStore()
     {
+        request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'image' => 'required'
+        ],[
+            'name.required' => 'A Name is required',
+            'description.required'  => 'A Description is required',
+            'image.required'  => 'A Inspiration Image is required',
+        ]);
+
         $podaci['name'] = request('name');
         $podaci['description'] = request('description');
         $podaci['body'] =  request('body') ? request('body') : '';
@@ -426,5 +461,159 @@ class HomeController extends Controller
         $inspiration->update(['status' => request('status')]);
 
         return back()->with('flash', 'Inspiration status updated');
+    }
+    /*  DESIGNERS  */
+    public function designers()
+    {
+        $designers = Designers::all();
+
+        return view('auth.designers', compact('designers'));
+    }
+
+    public function designerEdit(Designers $designer)
+    {
+        return view('auth.edit-designer', compact('designer'));
+    }
+
+    public function addDesigner()
+    {
+        return view('auth.add-designer');
+    }
+
+    public function storeDesigner()
+    {
+        request()->validate([
+            'name' => 'required',
+            'body' => 'required',
+            'image' => 'required'
+        ],[
+            'name.required' => 'A Name is required',
+            'body.required'  => 'A Designer Bio is required',
+            'image.required'  => 'A Designer Image is required',
+        ]);
+        $podaci['name'] = request('name');
+        $podaci['body'] = request('body');
+        $podaci['alt'] = request('alt') ? request('alt') : 'Gubi image';
+
+        $image = request()->file('image');
+        $new_name = request()->file('image')->getClientOriginalName();
+        $image->move(public_path('img/'), $new_name);
+        $podaci['image'] = $new_name;
+
+        $image = request()->file('main_image');
+        $new_name = request()->file('main_image')->getClientOriginalName();
+        $image->move(public_path('img/'), $new_name);
+        $podaci['main_image'] = $new_name;
+
+        $podaci['main_image_alt'] = request('alt') ? request('alt') : 'Gubi image';
+
+        $podaci['video'] = request('video') ? request('video') : '';
+        $podaci['status'] = 1;
+        $podaci['location'] = mb_strtolower(str_replace(' ', '-', request('name')));
+        $podaci['collections_id'] = 0;
+
+        $des = Designers::create($podaci);
+
+        return redirect('/home/designers/' . $des->location . '/edit')->with('flash', 'Success. New designer added');
+    }
+
+    public function designerStatus(Designers $designer)
+    {
+        $designer->update(['status' => request('status')]);
+
+        return back()->with('flash', 'Success. Designer status is edited.');
+    }
+
+    public function destroyDesigner(Designers $designer)
+    {
+        $designer->delete();
+
+        return back()->with('flash', 'Success. Designer is deleted.');
+    }
+    /*  N E W S  */
+    public function news()
+    {
+        $news = News::all();
+
+        return view('auth.news', compact('news'));
+    }
+
+    public function addNews()
+    {
+        return view('auth.add-news');
+    }
+
+    public function storeNews()
+    {
+        request()->validate([
+            'headline' => 'required',
+            'description' => 'required',
+            'image' => 'required'
+        ],[
+            'headline.required' => 'A Name is required',
+            'description.required'  => 'A Description is required',
+            'image.required'  => 'A News Image is required',
+        ]);
+
+        $podaci['headline'] = request('headline');
+        $podaci['description'] = request('description');
+        $image = request()->file('image');
+        $new_name = request()->file('image')->getClientOriginalName();
+        $image->move(public_path('img/'), $new_name);
+        $podaci['image'] = $new_name;
+        $podaci['alt'] = request('alt') ? request('alt') : 'Gubi image';
+        $podaci['location'] = mb_strtolower(str_replace(' ', '-', request('headline')));
+        $podaci['body'] = request('body') ? request('body') : '';
+        $podaci['status'] = 1;
+        $podaci['gallery_status'] = 0;
+
+        $new = News::create($podaci);
+
+        return redirect('/home/news/' . $new->location . '/edit')->with('flash', 'Success. News is added');
+    }
+
+    public function newsEdit(News $new)
+    {
+        return view('auth.edit-news', compact('new'));
+    }
+
+    public function newsGalleryStatus(News $new)
+    {
+        $new->update(['gallery_status' => request('gallery_status')]);
+
+        return back()->with('flash', 'News gallery status updated');
+    }
+
+    public function newsStatus(News $new)
+    {
+        $new->update(['status' => request('status')]);
+
+        return back()->with('flash', 'News status updated');
+    }
+
+    public function destroyNews(News $new)
+    {
+        $new->delete();
+
+        return back()->with('flash', 'Success. News is deleted.');
+    }
+
+    /*  NEWS  GALLERY */
+    public function newsAddGalleryImages(News $new)
+    {
+        $images = request()->file('image');
+        $br = 0;
+        foreach($images as $key => $image) {
+            $podaci['news_id'] = $new->id;
+            $imagee = $image;
+            $new_name = $image->getClientOriginalName();
+            $imagee->move(public_path('img/news'), $new_name);
+            $podaci['image'] = $new_name;
+            $podaci['alt'] = 'Gubi-image';
+
+            NewsImages::create($podaci);
+        }
+
+        return back()->with('flash', 'Images are added');
     }
 }

@@ -69,10 +69,10 @@
                                     @csrf
                                     <div class="form-group border p-3">
                                         <label class="text-xs font-bold uppercase" for="headline">Sub-Categories name:</label>
-                                        <input class="border p-1 w-full" type="text" name="headline" id="headline" placeholder="SubCategories name..">
+                                        <input class="border p-1 w-full @error('headline') is-invalid @enderror" type="text" name="headline" id="headline" placeholder="SubCategories name..">
                                         <label class="text-xs font-bold uppercase mt-6" for="categories_id">SubCategories belongs to category:</label>
-                                        <select class="border p-1 w-full" name="categories_id" id="categories_id">
-                                            <option value="0">Choose..</option>
+                                        <select class="border p-1 w-full @error('categories_id') is-invalid @enderror" name="categories_id" id="categories_id">
+                                            <option value="">Choose..</option>
                                             @foreach ($categories as $categorie)
                                                 <option value="{{ $categorie->id }}">
                                                     {{ $categorie->id }}.

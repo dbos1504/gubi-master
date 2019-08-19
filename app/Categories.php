@@ -20,7 +20,7 @@ class Categories extends Model
 
     public function subcategory()
     {
-        return $this->hasMany(Subcategory::class)->where('status', 1);
+        return $this->hasMany(SubCategory::class)->where('status', 1);
     }
 
 }

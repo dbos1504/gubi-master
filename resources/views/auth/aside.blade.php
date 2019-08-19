@@ -6,6 +6,12 @@
         </a>
     </li>
     <li class="border-b py-2">
+        <a class="text-sm font-bold {{ \Request::route()->getName() == 'home-slider' ? 'text-green-700' : 'text-white' }}" href="/home/slider">
+            <i class="fas fa-sliders-h text-white pr-2 text-sm"></i>
+            Home page slider
+        </a>
+    </li>
+    <li class="border-b py-2">
         <a class="text-sm font-bold {{ \Request::route()->getName() == 'home-add-categories' ? 'text-green-700' : 'text-white' }}" href="/home/add-category">
             <i class="fas fa-align-justify text-white pr-2 text-sm"></i>
             Category
@@ -42,7 +48,7 @@
         </a>
     </li>
     <li class="border-b py-2">
-        <a class="text-white text-sm font-bold" href="/home/designer">
+        <a class="text-sm font-bold {{ \Request::route()->getName() == 'home-designers' ? 'text-green-700' : 'text-white' }}" href="/home/designers">
             <i class="fas fa-ruler-combined text-white pr-2 text-sm"></i>
             Designer
         </a> <br>
@@ -52,7 +58,7 @@
         </a>
     </li>
     <li class="border-b py-2">
-        <a class="text-white text-sm font-bold" href="/home/news">
+        <a class="text-sm font-bold {{ \Request::route()->getName() == 'home-news' ? 'text-green-700' : 'text-white' }}" href="/home/news">
             <i class="far fa-newspaper text-white pr-2 text-sm"></i>
             News
         </a> <br>

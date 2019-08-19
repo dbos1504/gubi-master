@@ -43,23 +43,27 @@
                                                 <a href="/home/inspiration/{{ $inspiration->location }}/edit">{{ $inspiration->name }}</a>
                                             </td>
                                             <td class="border-r px-2 text-center">
-                                                @if ($inspiration->status == 1)
-                                                    <form action="/home/inspiration/{{ $inspiration->location }}/disable" method="POST">
-                                                        @csrf
-                                                        @method('PATCH')
-                                                        <button class="text-red-400 text-xs" type="submit">
-                                                            <i class="far fa-eye-slash"></i> Disable
-                                                        </button>
-                                                    </form>
-                                                @else
-                                                    <form action="/home/inspiration/{{ $inspiration->location }}/enable" method="POST">
-                                                        @csrf
-                                                        @method('PATCH')
-                                                        <button class="text-green-500 text-xs" type="submit">
-                                                            <i class="far fa-eye"></i> Enable
-                                                        </button>
-                                                    </form>
-                                                @endif
+                                                <form action="/home/inspiration/{{ $inspiration->location }}/status" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    @if ($inspiration->status == 1)
+                                                        <div class="flex justify-between items-center">
+                                                            <input type="hidden" value="0" name="status">
+                                                            <button class="text-xs font-bold py-1 px-2 text-red-400 uppercase" type="submit">
+                                                                <i class="far fa-eye-slash"></i> &nbsp;
+                                                                Disable
+                                                            </button>
+                                                        </div>
+                                                    @else
+                                                        <div class="flex justify-between items-center">
+                                                            <input type="hidden" value="1" name="status">
+                                                            <button class="text-xs font-bold py-1 px-2 text-green-500 uppercase" type="submit">
+                                                                <i class="far fa-eye"></i> &nbsp;
+                                                                Enable
+                                                            </button>
+                                                        </div>
+                                                    @endif
+                                                </form>
                                             </td>
                                             <td class="px-2 bg-gray-100 border-r px-2 text-center">
                                                 <a class="text-xs" href="/home/inspiration/{{ $inspiration->location }}/edit"><i class="far fa-edit"></i></a>

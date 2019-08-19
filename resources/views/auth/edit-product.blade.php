@@ -150,7 +150,7 @@
                                             @foreach ($subvariations as $variation)
                                                 @foreach(\App\Variations::where('id', $variation->variations_id)->get() as $id)
                                                     <div class="mt-3 flex justify-between items-center">
-                                                        {{--                                                                <input type="checkbox" {{ $option->id == $id ? 'checked' : '' }} name="{{ $option->variation }}" id="{{ $option->variation }}" value="{{ $option->id }}"> &nbsp; &nbsp;--}}
+                                                        {{-- <input type="checkbox" {{ $option->id == $id ? 'checked' : '' }} name="{{ $option->variation }}" id="{{ $option->variation }}" value="{{ $option->id }}"> &nbsp; &nbsp;--}}
                                                         <label class="text-base font-bold uppercase mb-0" for="color">- {{ $id->name }}</label>
                                                         <button><i class="far fa-trash-alt"></i></button>
                                                     </div>
@@ -158,27 +158,6 @@
                                             @endforeach
                                         </div>
                                         <br>
-                                        <div class="form-group border p-3">
-                                            <h4 class="font-bold text-2xl font-serif" for="insp-image">Current Product variations images / Text:</h4>
-                                            <hr>
-                                            <div class="w-full text-center relative flex flex-wrap">
-                                                @foreach ($product->subvariations as $img)
-                                                    @if ($img->image == '')
-                                                        <p class="mx-2">
-                                                            {{ $img->variation_name }}
-                                                            <a href="/home/{{ $img->id }}/destroy-image">X</a>
-                                                        </p>
-                                                    @else
-                                                        <div class="admin-product-gallery-width relative">
-                                                            <img width="90" height="90" id="blah" src="{{ $img->image ? '/img/products/' . $img->image : '#' }}" alt="Choose image.." />
-                                                            <input class="w-full border p-1 mt-1 text-xs" type="text" value="{{ $img->name }}">
-                                                            <a href="/home/{{ $img->id }}/destroy-image">X</a>
-                                                        </div>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                            <br>
-                                        </div>
                                     </article>
                                     <article class="ml-2 w-2/5">
                                         <img src="/img/admin-prod.jpg" alt="img">
@@ -220,7 +199,38 @@
                                         </div>
                                     </article>
                                 </form>
-
+                                <div class="form-group border p-3">
+                                    <h4 class="font-bold text-2xl font-serif" for="insp-image">Current Product variations images / Text:</h4>
+                                    <hr>
+                                    <div class="w-full text-center relative flex flex-wrap">
+                                        @foreach ($product->subvariations as $img)
+                                            @if ($img->image == '')
+                                                <div class="admin-product-gallery-width relative">
+                                                <p class="">
+                                                    {{ $img->variation_name }}
+                                                </p><br>
+                                                <form action="/home/{{ $product->location }}/destroy-variation-image/{{ $img->id }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
+                                                </form>
+                                                </div>
+                                            @else
+                                                <div class="admin-product-gallery-width relative">
+                                                    <img width="150" height="150" id="blah" src="{{ $img->image ? '/img/products/' . $img->image : '#' }}" alt="Choose image.." />
+                                                    <p class="w-full p-1 mt-1 text-xs">{{ $img->name }}</p>
+{{--                                                    <input class="w-full border p-1 mt-1 text-xs" type="text" value="{{ $img->name }}">--}}
+                                                    <form action="/home/{{ $product->location }}/destroy-variation-image/{{ $img->id }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
+                                                    </form>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <br>
+                                </div>
                                 <div class="w-full flex justify-between mx-auto p-4 border bg-white">
                                     <div class="p-4 w-1/3 border-r">
                                         <h4 class="text-xs font-serif font-bold text-3xl">Add new variation</h4>
@@ -251,7 +261,7 @@
                                             <div>
                                                 <output class="result-add-var" id="results-var" />
                                             </div>
-                                            <label class="uppercase text-xs font-bold mt-6" for="">Variation name (if no products images are provided)</label><br>
+                                            <label class="uppercase text-xs font-bold mt-6" for="">Variation name (if no variations images are provided)</label><br>
                                             <input type="text" name="variation_name" class="border p-1 w-full" placeholder="Variation name...">
                                             <div class="mt-3" >
                                                 <label class="uppercase text-xs font-bold" for="">Image is for variation?</label><br>
@@ -282,9 +292,14 @@
                                     <div class="w-full text-center relative flex flex-wrap">
                                         @foreach ($product->images as $img)
                                             <div class="admin-product-gallery-width relative">
-                                                <img width="90" height="90" id="blah" src="{{ $img->image ? '/img/products/' . $img->image : '#' }}" alt="Choose image.." />
-                                                <input class="w-full border p-1 mt-1 text-xs" type="text" value="{{ $img->alt }}">
-                                                <a href="/home/{{ $img->id }}/destroy-image">X</a>
+                                                <img width="150" height="150" id="blah" src="{{ $img->image ? '/img/products/' . $img->image : '#' }}" alt="Choose image.." />
+                                                <p class="w-full p-1 mt-1 text-xs">{{ $img->alt }}</p>
+{{--                                                <input class="w-full border p-1 mt-1 text-xs" type="text" value="{{ $img->alt }}">--}}
+                                                <form action="/home/{{ $product->location }}/destroy-image/{{ $img->id }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
+                                                </form>
                                             </div>
                                         @endforeach
                                     </div>

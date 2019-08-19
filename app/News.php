@@ -12,4 +12,9 @@ class News extends Model
     {
         return 'location';
     }
+
+    public function images()
+    {
+        return $this->hasMany(NewsImages::class);
+    }
 }

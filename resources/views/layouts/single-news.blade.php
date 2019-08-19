@@ -3,12 +3,17 @@
 @section('content')
     <section class="container">
         <h1 class="text-3xl text-center uppercase font-serif font-bold mt-4 mb-6">{{ $news->headline }}</h1>
-        <p class="mt-3 italic font-serif text-center text-xs mb-3">{{ $news->created_at->format('F j Y') }}</p>
-        <p class="text-center mb-6 lg:w-3/5 m-auto text-gray-800 mb-4">{{ $news->description }}</p>
+        <p class="mt-3 italic font-serif text-center text-xs mb-3">{{ $news->created_at->format('F j, Y') }}</p>
+        <div class="mb-6 lg:w-9/12 m-auto text-gray-800 mb-4">{!! $news->description !!} </div>
         <hr>
         <article class="inspiration-images my-8">
-{{--            <news-slider :data="{{ $news->images }}"></news-slider>--}}
+            @if ($news->gallery_status == 1)
+                <slider-news :data="{{ $news->images }}"></slider-news>
+            @endif
         </article>
+        <div class="insp-body">
+            {!! $news->body !!}
+        </div>
         <section class="social-news text-center flex justify-center mb-16">
             <a class="mx-3" href="">
                 <img src="/img/facebook.svg" alt="facebook"> &nbsp; &nbsp;

@@ -28,6 +28,7 @@ Vue.component('product', require('./components/Product.vue').default);
 Vue.component('inquiry', require('./components/Inquiry.vue').default);
 Vue.component('contact', require('./components/Contact.vue').default);
 Vue.component('slider', require('./components/Slider').default);
+Vue.component('slider-news', require('./components/SliderNews').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

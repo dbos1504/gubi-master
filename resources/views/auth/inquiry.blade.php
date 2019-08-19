@@ -27,6 +27,7 @@
                                                 <th>ID</th>
                                                 <th>Product</th>
                                                 <th>Variation</th>
+                                                <th>Sent Date</th>
                                                 <th>Qty.</th>
                                                 <th>Delete</th>
                                             </tr>
@@ -34,7 +35,7 @@
                                             @foreach($inquiry as $inq)
                                                 <tr class="border">
                                                     <td class="border-r px-2 text-center">{{ $inq->id }}.</td>
-                                                    <td class="{{ $inq->status == 0 ? 'font-bold' : 'font-normal' }} border-r px-2 w-7/12">
+                                                    <td class="{{ $inq->status == 0 ? 'font-bold' : 'font-normal' }} border-r px-2 w-1/2">
                                                         <a class="text-sm" href="/home/inquiry/{{ $inq->id }}">
                                                             <img class="inline" src="/img/products/{{ $inq->image }}" alt="img" width="8%">
                                                             {{ $inq->products }}
@@ -43,6 +44,7 @@
                                                     <td class="border-r px-2 text-center">
                                                         {{ $inq->variation }} - {{ $inq->inq }}
                                                     </td>
+                                                    <td class="border-r px-2 text-center">{{ $inq->created_at->format('d/m/Y') }}</td>
                                                     <td class="border-r px-2 text-center">{{ $inq->qty }}</td>
                                                     <td class="px-2 text-center">
 

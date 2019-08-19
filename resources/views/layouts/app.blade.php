@@ -12,8 +12,6 @@
     <!-- Scripts -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900|Source+Sans+Pro:300,400,600,700,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5c4b9f650a.js"></script>
-
-    <script src="https://kit.fontawesome.com/5c4b9f650a.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -78,6 +76,16 @@
 
         <main class="py-4">
             @yield('content')
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </main>
         <flash message="{{ session('flash') }}"></flash>
     </div>
@@ -99,6 +107,22 @@
 
             reader.onload = function (e) {
                 $('#blah')
+                    .attr('src', e.target.result)
+                    .width(330)
+                    .height(300);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script>
+    function readURLL(input) {
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blahh')
                     .attr('src', e.target.result)
                     .width(330)
                     .height(300);
@@ -219,4 +243,9 @@
             });
         }
     })
+</script>
+<script>
+    setTimeout(() => {
+        $('.alert-danger').css('display', 'none')
+    }, 5000)
 </script>

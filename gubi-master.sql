@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 18, 2019 at 12:20 AM
+-- Generation Time: Aug 19, 2019 at 02:58 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.1
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
@@ -74,7 +74,8 @@ INSERT INTO `categories` (`id`, `subcategories_id`, `name`, `location`, `status`
 (4, 4, 'Tables', 'tables', 1, NULL, NULL),
 (5, 5, 'Storage & Desks', 'storage-desks', 1, NULL, '2019-08-16 08:00:00'),
 (6, 6, 'Beds', 'beds', 1, NULL, NULL),
-(7, 7, 'Mirrors', 'mirrors', 1, NULL, '2019-08-17 15:56:25');
+(7, 7, 'Mirrors', 'mirrors', 1, NULL, '2019-08-17 15:56:25'),
+(8, 8, 'Objects', 'objects', 1, '2019-08-18 20:14:52', '2019-08-19 05:44:05');
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `categories_products` (
   PRIMARY KEY (`id`),
   KEY `categories_products_categories_id_foreign` (`categories_id`),
   KEY `categories_products_product_id_foreign` (`products_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories_products`
@@ -115,7 +116,10 @@ INSERT INTO `categories_products` (`id`, `categories_id`, `products_id`, `create
 (31, 1, 10, NULL, NULL),
 (36, 7, 2, NULL, NULL),
 (37, 2, 12, '2019-08-17 16:10:21', '2019-08-17 16:10:21'),
-(38, 2, 13, '2019-08-17 16:40:58', '2019-08-17 16:40:58');
+(38, 2, 13, '2019-08-17 16:40:58', '2019-08-17 16:40:58'),
+(39, 8, 7, '2019-08-18 20:15:31', '2019-08-18 20:15:31'),
+(40, 8, 8, '2019-08-18 20:16:11', '2019-08-18 20:16:11'),
+(41, 5, 14, '2019-08-19 11:15:16', '2019-08-19 11:15:16');
 
 -- --------------------------------------------------------
 
@@ -135,14 +139,16 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `contacts`
 --
 
 INSERT INTO `contacts` (`id`, `firstname`, `lastname`, `email`, `subject`, `message`, `status`, `created_at`, `updated_at`) VALUES
-(3, 'Marko', 'Boskovic', 'info@greyapartments.is', 'sfsdfs', 'qqqq', 0, '2019-08-17 21:37:59', '2019-08-17 21:37:59');
+(3, 'Marko', 'Boskovic', 'info@greyapartments.is', 'sfsdfs', 'qqqq', 1, '2019-08-17 21:37:59', '2019-08-18 09:45:43'),
+(5, 'Marko', 'Boskovic', 'test@gmail.com', 'Test', 'ttttttttttttt', 1, '2019-08-19 11:36:57', '2019-08-19 11:52:48'),
+(6, 'Marko', 'Boskovic', 'admin@example.com', 'qqqqqqqqq', 'qqqqqqqqqqqqqqq', 0, '2019-08-19 11:54:12', '2019-08-19 11:54:12');
 
 -- --------------------------------------------------------
 
@@ -161,12 +167,12 @@ CREATE TABLE IF NOT EXISTS `designers` (
   `main_image` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `main_image_alt` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `video` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `designers`
@@ -174,7 +180,10 @@ CREATE TABLE IF NOT EXISTS `designers` (
 
 INSERT INTO `designers` (`id`, `collections_id`, `image`, `alt`, `location`, `name`, `main_image`, `main_image_alt`, `body`, `video`, `status`, `created_at`, `updated_at`) VALUES
 (3, 0, 'bond-image.png', 'BONDERUP & THORUP', 'bonderup-thorup', 'BONDERUP & THORUP', 'bond.jpeg', 'BONDERUP & THORUP', '<p>Torsten Thorup (born 1944) and Claus Bonderup (born 1943) are both graduates from the Royal Danish Academy of Fine Arts, School of Architecture in 1969, and subsequently went to work together at Danish architect, Henning Larsen\'s studio in Copenhagen. The two architects teamed up professionally and worked together for the majority of their careers. Together they have designed watches and in-store displays for Georg Jensen, the Arktikum museum in Finland and the harbour area in Elsinore, where they designed everything, from urban planning to the ticket offices. They have through their long career served many Danish and international clients.</p>\r\n<br><br>\r\n<p>Thorup and Bonderup works are characterised by its honest and classic simplicity, where attention has been payed on the design\'s details and quality, which can be proved in the Semi Pendant from 1968.</p>', '', 1, '2019-08-15 18:21:43', '2019-08-15 18:21:43'),
-(4, 0, 'carlo-image.png', 'CARLO DE CARLI', 'carlo-de-carli', 'CARLO DE CARLI', 'carlo-main-image.jpg', 'CARLO DE CARLI', '<p>Carlo De Carli (1910-1999) was not only an architect and designer, who made a profound impact on design in the 20th century, but also one of Italy’s leading and most respected professors, who left a fundamental mark of theoretical reflections and ethics of behaviour in an entire generation of architects.</p> \r\n<br><br>\r\n<p>Carlo De Carli graduated in architecture from the Politecnico di Milan in 1934 – a university in which he was strongly connected to throughout his career, being Dean of the Faculty of Architecture from 1965 to 1968 and teaching there until 1986. A respected academic and writer, his philosophy focused on the integration of space, material and the human body and gesture, and with this ideology he effectively engaged a dialog between design, universities and the craftsmanship world.</p> \r\n<br><br>\r\n<p>He worked with legendary architect and designer Gio Ponti, and his years with Ponti came to shape young Carlo De Carli’s language and approach to design. He later went on to set up a studio on his own, where his design quickly became widely recognized and manufactured by some of the most important and innovative Italian design companies.</p> \r\n<br><br>\r\n<p>A fine sense for modern material, design and industry and a willingness to experiment and invent, characterizes Carlo De Carli’s contribution to postwar architecture and design, and earned him a reputation as one of the greatest masters of Italian design.</p>', '', 1, NULL, NULL);
+(4, 0, 'carlo-image.png', 'CARLO DE CARLI', 'carlo-de-carli', 'CARLO DE CARLI', 'carlo-main-image.jpg', 'CARLO DE CARLI', '<p>Carlo De Carli (1910-1999) was not only an architect and designer, who made a profound impact on design in the 20th century, but also one of Italy’s leading and most respected professors, who left a fundamental mark of theoretical reflections and ethics of behaviour in an entire generation of architects.</p> \r\n<br><br>\r\n<p>Carlo De Carli graduated in architecture from the Politecnico di Milan in 1934 – a university in which he was strongly connected to throughout his career, being Dean of the Faculty of Architecture from 1965 to 1968 and teaching there until 1986. A respected academic and writer, his philosophy focused on the integration of space, material and the human body and gesture, and with this ideology he effectively engaged a dialog between design, universities and the craftsmanship world.</p> \r\n<br><br>\r\n<p>He worked with legendary architect and designer Gio Ponti, and his years with Ponti came to shape young Carlo De Carli’s language and approach to design. He later went on to set up a studio on his own, where his design quickly became widely recognized and manufactured by some of the most important and innovative Italian design companies.</p> \r\n<br><br>\r\n<p>A fine sense for modern material, design and industry and a willingness to experiment and invent, characterizes Carlo De Carli’s contribution to postwar architecture and design, and earned him a reputation as one of the greatest masters of Italian design.</p>', '', 1, NULL, NULL),
+(5, 0, 'corsini.png', 'CORSINI', 'corsini-&-ruiz-millet', 'CORSINI & RUIZ MILLET', 'corsini1.jpg', 'CORSINI', 'Barba Corsini (1916-2008) was a leading functionalist architect who won international praise for his architecture and his design for La Pedrera in Barcelona. Corsini was strongly inspired by the German architect Mies van der Rohe and the American architect Frank Lloyd Wright. He also had a great affinity to Finnish architecture, which he believed to be the finest in Europe on account of the powerful simplicity of the designs. \'Powerful simplicity\' is perhaps an apt description of Corsini\'s personal design style, as represented by the Pedrera Collection.\r\n\r\nJoaquim Ruiz Millet (born 1955) founded Galeria H20 in Barcelona in 1989, where he furthered his activities as gallery owner, cultural agitator, curator of exhibitions, and editor of books and design objects. During the restoration of La Pedrera in 1991, he discovered the beauty of the great floor lamp PD2 and rescued it from being thrown away. Ruiz Millet started to collaborate with Corsini in order to relaunch the original designs designed for La Pedrera. As Corsini\'s protegé, Ruiz Millet wanted to help rescuing his work, make it more known and available for the public. ', '', 1, '2019-08-19 06:02:35', '2019-08-19 06:02:35'),
+(6, 0, 'gamf.png', 'GAMFRATESI', 'gamfratesi', 'GAMFRATESI', 'gamfr.jpg', 'GAMFRATESI', '<p>GamFratesi Studio was established in 2006 by the Danish architect Stine Gam (born 1975) and the Italian architect Enrico Fratesi (born 1978). GamFratesi belongs to the latest generation of furniture architects and together they represent a new interpretation of the meeting between Danish and international design traditions.</p>\r\n<br>\r\n<p>GamFratesi\'s design takes its creative drive from a fusion of tradition and renewal and in an experimental approach to their chosen materials and techniques. With their diverse traditional background, they draw on the classic Danish furniture and craft tradition as well as the timeless Italian intellectual and conceptual approach. Understanding a tradition and addressing it actively in the workshop makes it possible to expand on it. From this cross-cultural partnership, they create furniture that respectfully reflect tradition while also featuring unique embedded stories, symbols and associations, often expressed in a minimalist idiom.</p>\r\n<br>\r\n<p>\"Our work is balancing between the traditional and surprising. Often it takes just a small detail to achieve or break an expression, and we are very curious about that. We work strictly with the Scandinavian approach to crafts, simplicity and functionalism, but there always happens to be a strong emotion to concept and story behind each work. Contrasts are often the center of our inspiration. Both in work and daily life we are constantly confronted with contrasts, and we do work a lot with references and respect to traditions in both our cultures. We both have roots in strong design cultures. Studying, researching and moving constantly between our two countries, it has become such a natural part of us, that it will also show in our work.\"</p>\r\n<br>\r\n<p>GamFratesi aim to create furniture that illustrates the process and the techniques that created it, and which reflect a persistent exploration of the diverse border zone between harmony and disharmony.</p>', '<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/31027129\" width=\"640\" height=\"360\" frameborder=\"0\" allowfullscreen></iframe>', 1, '2019-08-19 06:29:32', '2019-08-19 06:29:32'),
+(7, 0, 'gio.png', 'GIO PONTI', 'gio-ponti', 'GIO PONTI', 'gio1.jpg', 'GIO PONTI', '<p>Italian designer, architect and editor, Gio Ponti (1891-1979) is one of the most influential design visionaries of the 20th century. Ponti designed a wide array of furniture and products through his career - from cabinets, lamps and chairs to ceramics and glassware - and his buildings, including Pirelli tower in Milan, and Denver Art Museum, were erected in 14 countries. Through Domus, the design magazine he founded in 1928, Ponti promoted a new curiosity and open-mindedness towards new design thinking.</p>\r\n <br>\r\n<p>Gio Ponti was a conceptualist who always drew lines between the architecture and the interior design. Ponti never viewed architecture as simply creating buildings. Instead, he often conceived of the building\'s interior as well; creating furniture, lighting appliances, and even ceramics, glassware and silverware to fit the overall concept.</p>\r\n  <br>\r\n<p>Ponti\'s signature furniture designs, such as the sleek Superleggera chair for Cassina or his elegant mirror collection provide a new perspective on traditional Italian furniture and blend style with functionality. His design was influenced by la dolce vita; he encouraged everybody to use good design to enjoy life to the fullest. This exact colourful, joyful, sensual Italian good life is reflected in his portfolio, and will certainly continue to influence artists and designers well into the future.</p>\r\n  <br>\r\n<p>Today, a wide range of Ponti\'s designs are snapped up by savvy collectors who want to give their homes a touch of Italian panache and effortless chic.</p>', '', 1, '2019-08-19 07:54:54', '2019-08-19 07:59:21');
 
 -- --------------------------------------------------------
 
@@ -199,14 +208,17 @@ CREATE TABLE IF NOT EXISTS `inquiries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inquiries`
 --
 
 INSERT INTO `inquiries` (`id`, `firstname`, `lastname`, `email`, `phone`, `products`, `variation`, `inq`, `qty`, `message`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(34, 'dfgdfg', 'Boskovic', 'info@greyapartments.is', '345345', 'Bat Dining Chair - Un-Upholstered, Conic base', 'Black Base', 'Pure White Shell Black', '1', '345345345', 'white.webp', 1, '2019-08-17 20:28:24', '2019-08-17 20:35:40');
+(34, 'dfgdfg', 'Boskovic', 'info@greyapartments.is', '345345', 'Bat Dining Chair - Un-Upholstered, Conic base', 'Black Base', 'Pure White Shell Black', '1', '345345345', 'white.webp', 1, '2019-08-17 20:28:24', '2019-08-17 20:35:40'),
+(35, 'Marko', 'Boskovic', 'info@greyapartments.is', '064 555 6666', 'Matégot Flower Pot', 'Ø21 cm', 'Venetian Gold', '2', 'Test poruka', 'metgot-gold.jpg', 1, '2019-08-18 18:39:58', '2019-08-18 18:40:07'),
+(36, 'dfgdfg', 'Boskovic', 'info@greyapartments.is', '12321312', '9602 Floor Lamp', '', 'Wicker Willow', '1', '1231231232', 'floor1.jpg', 1, '2019-08-19 05:49:06', '2019-08-19 05:49:17'),
+(37, 'Marko', 'Boskovic', 'test@gmail.com', '123123 4', '62 Desk', '', '', '1', 'test', 'desk.jpg', 1, '2019-08-19 11:21:22', '2019-08-19 11:21:27');
 
 -- --------------------------------------------------------
 
@@ -228,24 +240,24 @@ CREATE TABLE IF NOT EXISTS `inspirations` (
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inspirations`
 --
 
 INSERT INTO `inspirations` (`id`, `image`, `alt`, `location`, `name`, `description`, `body`, `status`, `gallery_status`, `created_at`, `updated_at`) VALUES
-(1, 'flora.png', 'flora', 'flora', 'FLORA DANICA', 'Project Maison du Danemark, Paris, France • Collection Beetle Chair, Beetle Bar Chair, TS Column Table • Interior GamFratesi', '', 1, 1, '0000-00-00 00:00:00', '2019-08-17 20:40:06'),
+(1, 'flora.png', 'flora', 'flora', 'FLORA DANICA', 'Project Maison du Danemark, Paris, France • Collection Beetle Chair, Beetle Bar Chair, TS Column Table • Interior GamFratesi', '', 1, 1, '0000-00-00 00:00:00', '2019-08-19 05:47:02'),
 (2, 'copen.png', 'Copenhague', 'copenhague', 'COPENHAGUE', 'Project Maison du Danemark, Paris, France • Collection Masculo Chair, Cobra Wall Lamp • Interior GamFratesi', '', 1, 1, '0000-00-00 00:00:00', '2019-08-17 12:27:01'),
 (3, 'standard-image.png', 'THE STANDARD', 'the-standard', 'THE STANDARD', 'Project The Standard, Copenhagen, Denmark • Collection Beetle Chair, Beetle Bar Chair, TS Table, Bestlite BL3 Floor Lamp, Cobra Wall Lamp • Interior GamFratesi', '', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'roch.png', 'LE ROCH', 'le-roch', 'LE ROCH', 'Project Le Roch Hotel & Spa, Paris, France • Collection Beetle Chair, GUBI Table 2.0, Beetle Lounge Chair, Modern Line Sofa • Interior Maison Sarah Lavione • Photographer Francis Amiand', '', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'roch.png', 'LE ROCH', 'le-roch', 'LE ROCH', 'Project Le Roch Hotel & Spa, Paris, France • Collection Beetle Chair, GUBI Table 2.0, Beetle Lounge Chair, Modern Line Sofa • Interior Maison Sarah Lavione • Photographer Francis Amiand', '', 1, 1, '0000-00-00 00:00:00', '2019-08-18 18:34:21'),
 (5, 'amass.png', 'AMASS', 'amass', 'AMASS', 'Project Amass, Copenhagen, Denmark • Collection Masculo Chair, Aoyama Table, Bestlite BL9 XL, GUBI Table 1.0, Grand Piano Sofa, Cobra Wall Lamp, Cobra Floor Lamp • Interior GUBI', '', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (6, 'hotel.png', 'HOTEL MAURITZHOF', 'hotel-mauritzhof', 'HOTEL MAURITZHOF', 'Project Hotel Mauritzhof, Münster, Germany • Collection Beetle Chair, Beetle Lounge Chair, TS Table • Interior Lambs and Lions • Photographer Steve Herud', '', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (7, 'imp.png', 'IMPLEMENT', 'implement', 'IMPLEMENT', 'Project Implement Consulting Group, Copenhagen, Denmark • Collection Beetle Chair, Beetle Lounge Chair, TS Table • Interior GamFratesi', '', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (8, 'klub.png', 'KLUB', 'klub', 'KLUB', 'Project Klub, Copenhagen, Denmark • Collection Beetle Lounge Chair, Beetle Chair, Beetle Bar Chair, Masculo Chair, GUBI Bar Stool, Grand Piano Sofa, Bonaparte Lounge Chair, Adam Lounge Chair, GUBI Table 2.0, TS Table, Paper Table, Bestlite BL2 Table Lamp, Bestlite BL 9XL Pendant, Bestlite BL3 Floor Lamp, GOS3 Table • Interior GUBI', '', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (9, 'fam.png', 'SECOND FEMALE', 'second-famale', 'SECOND FEMALE', 'Project Second Female Showroom & Office, Copenhagen, Denmark • Collection Beetle Chair, Moon Table, GUBI Bar Stool, Y! Table, GOS3 Table, GOS4 Desk, Stay Lounge Chair, Modern Line Sofa, TS Table, Bestlite BL1 Table Lamp • Interior GUBI', '', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (10, 'v.png', 'HOTEL V', 'hotel-v', 'HOTEL V', 'Project Hotel V, Amsterdam, Netherlands • Collection Beetle Chair • Interior Pilou', '', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(11, 'parc.png', 'PARC BROEKHUIZEN', 'parc-broekhuizen', 'PARC BROEKHUIZEN', 'Project Parc Broekhuizen, Leersum, Netherlands • Collection Beetle Chair, Beetle Lounge Chair, Coco Chair, GUBI Table 2.0, TS Table, Grand Piano Sofa, Stay Sofa • Interior judithvanmourik • Photographer Marc van Praag & Mitchell van Voorbergen', '', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(11, 'parc.png', 'PARC BROEKHUIZEN', 'parc-broekhuizen', 'PARC BROEKHUIZEN', 'Project Parc Broekhuizen, Leersum, Netherlands • Collection Beetle Chair, Beetle Lounge Chair, Coco Chair, GUBI Table 2.0, TS Table, Grand Piano Sofa, Stay Sofa • Interior judithvanmourik • Photographer Marc van Praag & Mitchell van Voorbergen', '', 1, 0, '0000-00-00 00:00:00', '2019-08-18 18:25:39');
 
 -- --------------------------------------------------------
 
@@ -263,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `inspirations_images` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `inspirations_id` (`inspirations_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inspirations_images`
@@ -283,7 +295,17 @@ INSERT INTO `inspirations_images` (`id`, `inspirations_id`, `image`, `alt`, `cre
 (17, 2, 'cop2.jpg', 'Gubi-image', '2019-08-17 12:26:49', '2019-08-17 12:26:49'),
 (18, 2, 'cop3.jpg', 'Gubi-image', '2019-08-17 12:26:49', '2019-08-17 12:26:49'),
 (19, 2, 'cop4.jpg', 'Gubi-image', '2019-08-17 12:26:49', '2019-08-17 12:26:49'),
-(20, 2, 'cop5.jpg', 'Gubi-image', '2019-08-17 12:26:49', '2019-08-17 12:26:49');
+(20, 2, 'cop5.jpg', 'Gubi-image', '2019-08-17 12:26:49', '2019-08-17 12:26:49'),
+(21, 4, 'image-asset (1).jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11'),
+(22, 4, 'image-asset (2).jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11'),
+(23, 4, 'image-asset (3).jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11'),
+(24, 4, 'image-asset (4).jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11'),
+(25, 4, 'image-asset (5).jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11'),
+(26, 4, 'image-asset.jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11'),
+(27, 4, 'Le-Roch-0716_13.jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11'),
+(28, 4, 'Le-Roch-0716_24.jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11'),
+(29, 4, 'Le-Roch-0716_29.jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11'),
+(30, 4, 'Le-Roch-0716_31.jpg', 'Gubi-image', '2019-08-18 18:34:11', '2019-08-18 18:34:11');
 
 -- --------------------------------------------------------
 
@@ -297,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -328,7 +350,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2019_08_15_134109_create_news_table', 14),
 (23, '2019_08_15_181434_create_designers_table', 15),
 (24, '2019_08_16_124852_create_inquiries_table', 16),
-(25, '2019_08_17_124350_create_inspirations_images_table', 17);
+(25, '2019_08_17_124350_create_inspirations_images_table', 17),
+(26, '2019_08_19_103210_create_news_images_table', 18);
 
 -- --------------------------------------------------------
 
@@ -374,19 +397,55 @@ CREATE TABLE IF NOT EXISTS `news` (
   `headline` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci,
   `status` int(11) NOT NULL,
+  `gallery_status` bigint(20) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`id`, `image`, `alt`, `headline`, `location`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, '3days.png', '3 DAYS OF DESIGN', '3 DAYS OF DESIGN', '3-days-of-design', 'Позната је чињеница да ће читалац бити спутан правим читљивим текстом на страници када гледа њен распоред. Поента коришћења Lorem Ipsum модела је мање-више из разлога што је распор\r\n', 1, '2019-08-15 13:43:26', '2019-08-15 13:43:26'),
-(2, 'milan.png', 'MILAN DESIGN WEEK 2018', 'MILAN DESIGN WEEK 2018', 'milan-design-week-2018', 'We heartily thank you for the overwhelming attendance and positive responses during Milan Design Week! It was a pleasure to present our novelties and existing design icons in the 1200m2 universe of home, contract and hospitality sceneries, set within the historical backdrop of Palazzo Serbelloni.', 1, '2019-08-15 13:49:54', '2019-08-15 13:49:54');
+INSERT INTO `news` (`id`, `image`, `alt`, `headline`, `location`, `description`, `body`, `status`, `gallery_status`, `created_at`, `updated_at`) VALUES
+(1, '3days.png', '3 DAYS OF DESIGN', '3 DAYS OF DESIGN', '3-days-of-design', 'Позната је чињеница да ће читалац бити спутан правим читљивим текстом на страници када гледа њен распоред. Поента коришћења Lorem Ipsum модела је мање-више из разлога што је распор\r\n', '', 1, 0, '2019-08-15 13:43:26', '2019-08-15 13:43:26'),
+(2, 'milan.png', 'MILAN DESIGN WEEK 2018', 'MILAN DESIGN WEEK 2018', 'milan-design-week-2018', 'We heartily thank you for the overwhelming attendance and positive responses during Milan Design Week! It was a pleasure to present our novelties and existing design icons in the 1200m2 universe of home, contract and hospitality sceneries, set within the historical backdrop of Palazzo Serbelloni.', '', 1, 1, '2019-08-15 13:49:54', '2019-08-15 13:49:54'),
+(3, 'showroom.png', 'REDECORATED GUBI SHOWROOM', 'REDECORATED GUBI SHOWROOM', 'redecorated-gubi-showroom', '<p>Based in the rapidly growing seafront district of Copenhagen’s Nordhavn, the GUBI Showroom has recently been redecorated with the latest novelties and new inspiring spatial settings. Embracing an atmosphere characterized by warm colour schemes in playful combination with botanical and rich wall displays, the showroom takes you through colourful meeting settings to more sophisticated lounge areas.</p>\r\n<br>\r\n<p>A special highlight in our showroom is the un-upholstered <b>Beetle Chair</b> by GamFratesi, with options for seat and front upholstery, which allows endless of combinations in terms of seating shells, bases, colours and fabrics. Also displayed is the expanded versions of our <b>TS Collection</b> and <b>Masculo Collection</b> as well as new versions of the classic <b>Modern Line Sofa</b> and <b>Lounge Chair</b> by Greta M. Grossman.</p>\r\n<br>\r\n<p>We are very much looking forward to showing you the GUBI universe!</p>', '', 1, 1, '2019-08-19 08:56:59', '2019-08-19 09:35:49'),
+(4, 'paris.png', 'PARISIAN INFLUENCES', 'PARISIAN INFLUENCES FOR THE NEW TS COLUMN TABLE', 'parisian-influences-for-the-new-ts-column-table', 'At the Parisian main street, overlooking the Arc du Triumph, is where Maison du Danemark - the House of Denmark, is located and hosts the two world-class restaurants Flora Danica and Copenhague. After thorough renovation and refurbishment by the design duo GamFratesi, the space has been given new life with the aim to revive the combination of classic Danish design with a Danish culinary experience.', '', 1, 0, '2019-08-19 10:43:10', '2019-08-19 10:43:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_images`
+--
+
+DROP TABLE IF EXISTS `news_images`;
+CREATE TABLE IF NOT EXISTS `news_images` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `news_id` bigint(20) NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `news_images`
+--
+
+INSERT INTO `news_images` (`id`, `news_id`, `image`, `alt`, `created_at`, `updated_at`) VALUES
+(1, 2, 'milan.png', 'Milan', NULL, NULL),
+(2, 2, 'milan1.png', 'Milan', NULL, NULL),
+(3, 2, 'milan2.png', 'milan', NULL, NULL),
+(4, 3, 'image-asset (1).jpg', 'Gubi-image', '2019-08-19 09:07:41', '2019-08-19 09:07:41'),
+(5, 3, 'image-asset (2).jpg', 'Gubi-image', '2019-08-19 09:07:41', '2019-08-19 09:07:41'),
+(6, 3, 'image-asset (3).jpg', 'Gubi-image', '2019-08-19 09:07:41', '2019-08-19 09:07:41'),
+(7, 3, 'image-asset (4).jpg', 'Gubi-image', '2019-08-19 09:07:41', '2019-08-19 09:07:41'),
+(8, 3, 'image-asset.jpg', 'Gubi-image', '2019-08-19 09:07:41', '2019-08-19 09:07:41'),
+(9, 3, 'IMG_8662_1.jpg', 'Gubi-image', '2019-08-19 09:07:41', '2019-08-19 09:07:41');
 
 -- --------------------------------------------------------
 
@@ -428,26 +487,27 @@ CREATE TABLE IF NOT EXISTS `products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `designers_id`, `categories_id`, `sub_category_id`, `collections_id`, `image`, `alt`, `headline`, `price`, `price_status`, `currency`, `location`, `body`, `status`, `views`, `created_at`, `updated_at`) VALUES
-(1, 0, 1, 2, 0, 'floor.jpg', 'Canvas', '9602 Floor Lamp', '949.00', 0, '€', '9602-floor-lamp', '<p>The 9602 Floor Lamp, also known as &ldquo;Chinese Hat&rdquo; was designed by Paavo Tynell in 1935 for the Hotel Aulanko. Characterised by its elegant and airy lampshade and rattan-covered stem, the 9602 Floor Lamp shows the designer&rsquo;s limitless imagination and unparalleled ability to create designs of enduring beauty. Adding a playful, exuberant quality to the top, balanced by the more static form of the base, the 9602 Floor Lamp is perfectly suited for creating a gentle ambient light in the domestic living room.</p>', 1, 104, '2019-08-12 19:32:28', '2019-08-17 20:13:30'),
-(2, 0, 1, 0, 0, 'adnet.jpg', 'Adnet Wall Mirror', 'Adnet Wall Mirror - Circular - Dia. 58 Alcantara', '854.00', 0, '€', 'adnet-wall-mirror-circular-dia.-58-alcantara', 'We proudly present the iconic Adnet Circulaire Mirror with a new and contemporary Alcantara frame to further extend this classic collection designed in 1946 by Jacques Adnet. The remarkable and extremely durable Alcantara fabric has a tactile feel and aesthetic qualities, that is pleasing to the eye.\r\n\r\nKnown for being an innovative thinker, Adnet was one of the first designers to integrate metal and glass in the structure and decoration of furniture. Accordingly, he designed the elegant, distinctive round mirror with equestrian inspired detailing - the Adnet Circulaire Mirror.\r\n\r\nThe timeless Adnet Circulaire Mirror adds a sculptural value and outstanding expression to any hallway, bathroom or living room.', 1, 139, '2019-08-13 18:05:48', '2019-08-17 19:17:48'),
+(1, 0, 1, 2, 0, 'floor.jpg', 'Canvas', '9602 Floor Lamp', '949.00', 0, '€', '9602-floor-lamp', '<p>The 9602 Floor Lamp, also known as &ldquo;Chinese Hat&rdquo; was designed by Paavo Tynell in 1935 for the Hotel Aulanko. Characterised by its elegant and airy lampshade and rattan-covered stem, the 9602 Floor Lamp shows the designer&rsquo;s limitless imagination and unparalleled ability to create designs of enduring beauty. Adding a playful, exuberant quality to the top, balanced by the more static form of the base, the 9602 Floor Lamp is perfectly suited for creating a gentle ambient light in the domestic living room.</p>', 1, 110, '2019-08-12 19:32:28', '2019-08-19 12:14:52'),
+(2, 0, 1, 0, 0, 'adnet.jpg', 'Adnet Wall Mirror', 'Adnet Wall Mirror - Circular - Dia. 58 Alcantara', '854.00', 0, '€', 'adnet-wall-mirror-circular-dia.-58-alcantara', 'We proudly present the iconic Adnet Circulaire Mirror with a new and contemporary Alcantara frame to further extend this classic collection designed in 1946 by Jacques Adnet. The remarkable and extremely durable Alcantara fabric has a tactile feel and aesthetic qualities, that is pleasing to the eye.\r\n\r\nKnown for being an innovative thinker, Adnet was one of the first designers to integrate metal and glass in the structure and decoration of furniture. Accordingly, he designed the elegant, distinctive round mirror with equestrian inspired detailing - the Adnet Circulaire Mirror.\r\n\r\nThe timeless Adnet Circulaire Mirror adds a sculptural value and outstanding expression to any hallway, bathroom or living room.', 1, 142, '2019-08-13 18:05:48', '2019-08-19 11:13:13'),
 (3, 0, 1, 5, 0, 'bat.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Crisp 04115', '869.00', 0, '€', 'bat-dining-chair,-conic-base-fully-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Antique Brass Conic base and upholstery in Crisp, Gabriel (04115).', 1, 45, '2019-08-13 18:52:24', '2019-08-16 20:57:10'),
-(4, 0, 1, 5, 0, 'bat1.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Remix 123', '909.00', 0, '€', 'bat-dining-chair,-conic-base-fully-upholstered-in-remix-123', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Antique Brass Conic base and upholstery in Remix, Kvadrat (123).', 1, 30, '2019-08-13 19:17:33', '2019-08-17 20:28:36'),
-(5, 0, 1, 5, 0, 'batt.webp', 'Bat Dining Chair', 'Bat Dining Chair - Un-Upholstered, Conic base', '309.00', 0, '€', 'bat-dining-chair-un-upholstered-conic-base', 'The Bat Dining Chair, designed by Danish-Italian design-duo GamFratesi, carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat’s wingspan.\r\n\r\nBalancing between the traditional and surprising, the Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism while also\r\ncarrying a strong embedded story and associations expressed in a minimalist idiom. The wide range of upholstery options and different bases makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.', 1, 337, '2019-08-14 18:24:34', '2019-08-17 20:28:25'),
-(6, 0, 6, 0, 0, 'bed.jpg', 'Stay Bed', 'Stay Bed - Fully Upholstered, Low back', '3,886.00', 0, '€', 'stay-bed-fully-upholstered-low-back', 'Stay here, stay with me, stay relaxed, stay and read... with the Stay Bed you do not want to do anything else than stay in bed. With its soft shape and gentle lines, it is a statement furniture for the private home and hotels. The new Stay Bed, is perfectly suited for relaxed times, and unifies luxury with comfort to enjoy the ultimate homely feeling, even though you are in a hotel. The organic shape gives a contemporary look and is almost like a singular continuous pencil stroke wrapping a solid texture. Combine it with the Stay Lounge Chair to get the optimal relaxation.\r\n\r\nSlatted bed base and mattresses not included. Fits box, sprung and foam mattresses. If foam or sprung mattress is used, a slatted bed base is needed. Box mattresses can be used directly in the frame.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 57, '2019-08-15 06:01:45', '2019-08-17 17:04:39'),
-(7, 0, 8, 0, 0, 'metgot.jpg', 'Matégot Flower Pot', 'Matégot Flower Pot', '99.00', 0, '€', 'mategot-flower-pot', 'Designed in 1953 during Mathieu Matégot’s heydays, the Matégot Flower Pot is a proof of his success in turning perforated metal sheet into a refined, elegant material in which design, art and engineering are perfectly combined. This distinctive fabric-like metal sheet, which Matégot named Rigitulle, is crinkled and results in an airy grace that contributes to its genuine sculpture. \r\n\r\nAvailable in three different sizes, the Matégot Flower Pot allows playing with its appearance - whether the beauty is seen in pairs of the same sizes, one flower pot on its own or a number of flower pots in different sizes to create a perfect asymmetry. The largest pot can with its multipurpose nature, advantageously, also be used as a wastepaper basket.\r\n\r\nAvailable in Venetian Gold in Ø15.5 cm and Ø21 cm, and Midnight Black in all sizes.', 1, 42, '2019-08-15 10:16:46', '2019-08-16 19:46:48'),
-(8, 0, 8, 0, 0, 'bowl.jpg', 'Matégot Bowl', 'Mategot Bowl', '159.00', 0, '€', 'mategot-bowl', 'Ahead of his time and with a modern spirit, Mathieu Matégot designed his contemporary Matégot bowl in 1953. The characteristic appearance of the transparent metal adds a light expression to this unique and spacious fruit bowl. As for many of Matégot\'s designs, the Matégot Bowl is trademarked by the solid yet light material Rigitulle; a thin perforated metal sheet tantamount to metal lace, where the inspiration is drawn from the material itself to explore all sorts of expression possible to create. \r\n\r\nThis luxurious material permitted Matégot to revamp the regular fruit bowl into an artistic and decorative bowl that besides from storing fruit in an elegant way, also acts as a piece of great design adorning any room. The Matégot Bowl is an easy and beautiful way to add a pop of colour to any setting.', 1, 10, '2019-08-15 10:19:14', '2019-08-16 15:19:24'),
-(9, 0, 1, 12, 0, 'coffe.jpg', 'Adnet Coffee Table', 'Adnet Coffee Table - Circular, Ø70', '1,386.00', 0, '€', 'adnet-coffee-table-circular-070', 'The Adnet Coffee Table was originally designed by French Modernist Jacques Adnet (1901 - 1981) in the 1950’s. Adnet was always ahead of contemporary trends and became famous for his avant-garde designs and unusual combination of leather, metal and glass. The iconic Adnet Coffee Table exemplifies everything the French architect and interior designer stands for and perfectly merges his Art Deco style with his strong commitment to functionalist principles.\r\n\r\nPlaced on three soft curved metal legs, elegantly meeting in the heart of the table, the round glass top is edged with a hand-made leather rim and adorned with three gilded brass rings. The timeless design of the Adnet Coffee Table embodies modern materials and superb craftsmanship and adds a distinctive value to any home or professional space.', 1, 37, '2019-08-15 18:01:43', '2019-08-17 16:05:00'),
-(10, 0, 1, 5, 0, 'wood.jpg', 'Bat Dining Chair, Wood Base', 'Bat Dining Chair, Wood Base - Front Upholstered in Crisp 04115', '559.00', 0, '€', 'bat-dining-chair,-wood-base-front-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan.\r\n\r\nThe wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.\r\n\r\nDue to its unique design, the textile of the front upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Black Stained Beech wood base, New Beige Shell and upholstery in Crisp, Gabriel (04115).', 1, 46, '2019-08-16 10:37:24', '2019-08-17 22:04:54'),
+(4, 6, 1, 5, 0, 'bat1.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Remix 123', '909.00', 0, '€', 'bat-dining-chair,-conic-base-fully-upholstered-in-remix-123', '<p>The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat&rsquo;s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration. This Designers Choice product features a Antique Brass Conic base and upholstery in Remix, Kvadrat (123).</p>', 1, 31, '2019-08-13 19:17:33', '2019-08-19 06:33:58'),
+(5, 0, 1, 5, 0, 'batt.webp', 'Bat Dining Chair', 'Bat Dining Chair - Un-Upholstered, Conic base', '309.00', 0, '€', 'bat-dining-chair-un-upholstered-conic-base', 'The Bat Dining Chair, designed by Danish-Italian design-duo GamFratesi, carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat’s wingspan.\r\n\r\nBalancing between the traditional and surprising, the Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism while also\r\ncarrying a strong embedded story and associations expressed in a minimalist idiom. The wide range of upholstery options and different bases makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.', 1, 342, '2019-08-14 18:24:34', '2019-08-19 05:45:50'),
+(6, 0, 6, 0, 0, 'bed.jpg', 'Stay Bed', 'Stay Bed - Fully Upholstered, Low back', '3,886.00', 0, '€', 'stay-bed-fully-upholstered-low-back', 'Stay here, stay with me, stay relaxed, stay and read... with the Stay Bed you do not want to do anything else than stay in bed. With its soft shape and gentle lines, it is a statement furniture for the private home and hotels. The new Stay Bed, is perfectly suited for relaxed times, and unifies luxury with comfort to enjoy the ultimate homely feeling, even though you are in a hotel. The organic shape gives a contemporary look and is almost like a singular continuous pencil stroke wrapping a solid texture. Combine it with the Stay Lounge Chair to get the optimal relaxation.\r\n\r\nSlatted bed base and mattresses not included. Fits box, sprung and foam mattresses. If foam or sprung mattress is used, a slatted bed base is needed. Box mattresses can be used directly in the frame.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 61, '2019-08-15 06:01:45', '2019-08-19 10:07:35'),
+(7, 0, 8, 0, 0, 'metgot.jpg', 'Matégot Flower Pot', 'Matégot Flower Pot', '99.00', 0, '€', 'mategot-flower-pot', 'Designed in 1953 during Mathieu Matégot’s heydays, the Matégot Flower Pot is a proof of his success in turning perforated metal sheet into a refined, elegant material in which design, art and engineering are perfectly combined. This distinctive fabric-like metal sheet, which Matégot named Rigitulle, is crinkled and results in an airy grace that contributes to its genuine sculpture. \r\n\r\nAvailable in three different sizes, the Matégot Flower Pot allows playing with its appearance - whether the beauty is seen in pairs of the same sizes, one flower pot on its own or a number of flower pots in different sizes to create a perfect asymmetry. The largest pot can with its multipurpose nature, advantageously, also be used as a wastepaper basket.\r\n\r\nAvailable in Venetian Gold in Ø15.5 cm and Ø21 cm, and Midnight Black in all sizes.', 1, 47, '2019-08-15 10:16:46', '2019-08-19 05:05:28'),
+(8, 0, 8, 0, 0, 'bowl.jpg', 'Matégot Bowl', 'Mategot Bowl', '159.00', 0, '€', 'mategot-bowl', 'Ahead of his time and with a modern spirit, Mathieu Matégot designed his contemporary Matégot bowl in 1953. The characteristic appearance of the transparent metal adds a light expression to this unique and spacious fruit bowl. As for many of Matégot\'s designs, the Matégot Bowl is trademarked by the solid yet light material Rigitulle; a thin perforated metal sheet tantamount to metal lace, where the inspiration is drawn from the material itself to explore all sorts of expression possible to create. \r\n\r\nThis luxurious material permitted Matégot to revamp the regular fruit bowl into an artistic and decorative bowl that besides from storing fruit in an elegant way, also acts as a piece of great design adorning any room. The Matégot Bowl is an easy and beautiful way to add a pop of colour to any setting.', 1, 12, '2019-08-15 10:19:14', '2019-08-19 05:05:45'),
+(9, 0, 1, 12, 0, 'coffe.jpg', 'Adnet Coffee Table', 'Adnet Coffee Table - Circular, Ø70', '1,386.00', 0, '€', 'adnet-coffee-table-circular-070', 'The Adnet Coffee Table was originally designed by French Modernist Jacques Adnet (1901 - 1981) in the 1950’s. Adnet was always ahead of contemporary trends and became famous for his avant-garde designs and unusual combination of leather, metal and glass. The iconic Adnet Coffee Table exemplifies everything the French architect and interior designer stands for and perfectly merges his Art Deco style with his strong commitment to functionalist principles.\r\n\r\nPlaced on three soft curved metal legs, elegantly meeting in the heart of the table, the round glass top is edged with a hand-made leather rim and adorned with three gilded brass rings. The timeless design of the Adnet Coffee Table embodies modern materials and superb craftsmanship and adds a distinctive value to any home or professional space.', 1, 39, '2019-08-15 18:01:43', '2019-08-19 10:08:33'),
+(10, 0, 1, 5, 0, 'wood.jpg', 'Bat Dining Chair, Wood Base', 'Bat Dining Chair, Wood Base - Front Upholstered in Crisp 04115', '559.00', 0, '€', 'bat-dining-chair,-wood-base-front-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan.\r\n\r\nThe wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.\r\n\r\nDue to its unique design, the textile of the front upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Black Stained Beech wood base, New Beige Shell and upholstery in Crisp, Gabriel (04115).', 1, 47, '2019-08-16 10:37:24', '2019-08-19 05:43:06'),
 (11, 4, 3, 6, 0, 'carlo.png', 'CDC.1 Lounge Chair', 'CDC.1 Lounge Chair', '2,186.00', 0, '€', 'cdc.1-lounge-chair', 'CDC.1 Lounge Chair was designed by Carlo De Carli in 1954 and features the elegantly minimalist design style, typical of the era.\r\n\r\nThe CDC.1 Lounge Chair meets the ground in a graceful and slender way; its arms swooping like wings, giving the furniture a sense of poetic depth, whilst carrying a strong character. With its sleek silhouette and dynamic, angular lines the lounge chair marries streamlined functionalism with playful whimsy and is well-suited for conversation and relaxation in the modern residential environment.', 1, 5, '2019-08-16 20:50:39', '2019-08-17 12:30:21'),
-(12, 3, 2, 4, 0, 'mat.webp', 'Semi Pendant', 'Semi Pendant - Dia.30', '349.00', 0, '€', 'semi-pendant-dia-30', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 41, '2019-08-17 16:10:21', '2019-08-17 22:20:06'),
-(13, 3, 2, 4, 0, 'bond.jpg', 'Semi Pendant - Dia.47', 'Semi Pendant - Dia.47', '579.00', 0, '€', 'semi-pendant-dia-47', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 21, '2019-08-17 16:40:58', '2019-08-17 22:19:36');
+(12, 3, 2, 4, 0, 'mat.webp', 'Semi Pendant', 'Semi Pendant - Dia.30', '349.00', 0, '€', 'semi-pendant-dia-30', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 45, '2019-08-17 16:10:21', '2019-08-19 11:31:23'),
+(13, 3, 2, 4, 0, 'bond.jpg', 'Semi Pendant - Dia.47', 'Semi Pendant - Dia.47', '579.00', 0, '€', 'semi-pendant-dia-47', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 22, '2019-08-17 16:40:58', '2019-08-19 11:30:55'),
+(14, 0, 5, 16, 0, 'desk.jpg', '62 Desk', '62 Desk', '2,919.00', 0, '€', '62-desk', '<p>Designed in 1952 by Greta M. Grossman, but named the 62 Desk as it was deemed to be ten years ahead of its time. The 62 Desk appears characteristically light in weight and appears to defy gravity with its quirky asymmetric line and slender metal legs balancing on small wooden feet, a characteristic trait of its designer.</p> \r\n<br>\r\n<p>Its exceptional shape is emphasized with the elegant pairing of materials. The desk is made in American walnut and provided with a deep, black full gloss finish on table top and cabinet door. The desk features one left cabinet comprising of two low drawers and one high drawer.</p>', 1, 3, '2019-08-19 11:15:15', '2019-08-19 11:21:22');
 
 -- --------------------------------------------------------
 
@@ -465,7 +525,7 @@ CREATE TABLE IF NOT EXISTS `products_images` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `products_id` (`products_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products_images`
@@ -499,9 +559,11 @@ INSERT INTO `products_images` (`id`, `products_id`, `image`, `alt`, `created_at`
 (25, 12, 'chrome-shade.webp', 'Gubi-image', '2019-08-17 16:18:57', '2019-08-17 16:18:57'),
 (26, 12, 'chooper.webp', 'Gubi-image', '2019-08-17 16:20:27', '2019-08-17 16:20:27'),
 (27, 12, 'mat.webp', 'Gubi-image', '2019-08-17 16:39:11', '2019-08-17 16:39:11'),
-(28, 12, 'mat-w.webp', 'Gubi-image', '2019-08-17 16:39:11', '2019-08-17 16:39:11'),
 (29, 13, 'bond.jpg', 'Gubi image', '2019-08-17 16:40:58', '2019-08-17 16:40:58'),
-(30, 13, 'bond1.jpg', 'Gubi-image', '2019-08-17 16:43:01', '2019-08-17 16:43:01');
+(30, 13, 'bond1.jpg', 'Gubi-image', '2019-08-17 16:43:01', '2019-08-17 16:43:01'),
+(31, 12, 'mat-w.webp', 'Gubi-image', '2019-08-18 10:00:39', '2019-08-18 10:00:39'),
+(32, 14, 'desk.jpg', 'Gubi image', '2019-08-19 11:15:16', '2019-08-19 11:15:16'),
+(33, 14, 'desk1.jpg', 'Gubi image', '2019-08-19 11:15:16', '2019-08-19 11:15:16');
 
 -- --------------------------------------------------------
 
@@ -587,7 +649,7 @@ CREATE TABLE IF NOT EXISTS `sub_categories` (
   KEY `categories_id` (`categories_id`),
   KEY `designer_id` (`designer_id`),
   KEY `collection_id` (`collection_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sub_categories`
@@ -631,7 +693,7 @@ CREATE TABLE IF NOT EXISTS `sub_variations` (
   PRIMARY KEY (`id`),
   KEY `products_id` (`products_id`),
   KEY `variations_id` (`variations_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sub_variations`
@@ -658,16 +720,16 @@ INSERT INTO `sub_variations` (`id`, `products_id`, `variations_id`, `name`, `var
 (19, 7, 7, 'Ø21 cm', 'Ø21 cm', '', '2019-08-15 10:29:52', '2019-08-15 10:29:52'),
 (20, 7, 7, 'Ø27.5 cm', 'Ø27.5 cm', '', '2019-08-15 10:30:04', '2019-08-15 10:30:04'),
 (21, 7, 2, 'Midnight Black', '', 'metgot.jpg', '2019-08-15 10:31:05', '2019-08-15 10:31:05'),
-(22, 7, 2, 'Venetian Gold', '', 'metgot-gold.jpg', '2019-08-15 10:31:05', '2019-08-15 10:31:05'),
 (23, 9, 2, 'Black Leather', '', 'coffe.jpg', '2019-08-15 18:02:58', '2019-08-15 18:02:58'),
 (24, 9, 2, 'Tan Leather', '', 'coffe1.jpg', '2019-08-15 18:02:58', '2019-08-15 18:02:58'),
 (25, 12, 3, 'Brass Shade', '', 'semi.webp', '2019-08-17 16:11:54', '2019-08-17 16:11:54'),
 (26, 12, 3, 'Chrome Shade', '', 'chrome-shade.webp', '2019-08-17 16:15:06', '2019-08-17 16:15:06'),
 (27, 12, 3, 'Copper Shade', '', 'chooper.webp', '2019-08-17 16:19:45', '2019-08-17 16:19:45'),
 (28, 12, 3, 'Matt Black Shade', '', 'mat.webp', '2019-08-17 16:23:02', '2019-08-17 16:23:02'),
-(29, 12, 3, 'MatWhite Shade', '', 'mat-w.webp', '2019-08-17 16:39:39', '2019-08-17 16:39:39'),
+(29, 12, 3, 'Matt White Shade', '', 'mat-w.webp', '2019-08-17 16:39:39', '2019-08-17 16:39:39'),
 (30, 13, 3, 'Brass Shade', '', 'bond.jpg', '2019-08-17 16:42:33', '2019-08-17 16:42:33'),
-(31, 13, 3, 'Chrome Shade', '', 'bond1.jpg', '2019-08-17 16:42:33', '2019-08-17 16:42:33');
+(31, 13, 3, 'Chrome Shade', '', 'bond1.jpg', '2019-08-17 16:42:33', '2019-08-17 16:42:33'),
+(32, 7, 2, 'Venetian Gold', '', 'metgot-gold.jpg', '2019-08-18 18:16:37', '2019-08-18 18:16:37');
 
 -- --------------------------------------------------------
 
@@ -694,7 +756,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Marko', 'dbos1504@gmail.com', NULL, '$2y$10$TgQ7XfCYVj1YAj1I.S2G.uQdhMT8Sx72WA/uoZcqN2//QIbhraTla', NULL, '2019-08-12 17:16:36', '2019-08-12 17:16:36');
+(1, 'Gubi', 'test@gmail.com', NULL, '$2y$10$TgQ7XfCYVj1YAj1I.S2G.uQdhMT8Sx72WA/uoZcqN2//QIbhraTla', NULL, '2019-08-12 17:16:36', '2019-08-12 17:16:36');
 
 -- --------------------------------------------------------
 

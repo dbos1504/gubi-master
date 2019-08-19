@@ -25,11 +25,11 @@
                                     <div class="w-1/2">
                                         <div class="form-group border p-3">
                                             <label class="uppercase text-xs font-bold" for="name">Add Name:</label>
-                                            <input class="form-control" type="text" name="name" id="name">
+                                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name">
                                         </div>
                                         <div class="form-group border p-3">
                                             <label class="uppercase text-xs font-bold" for="description">Add Description for inspiration:</label>
-                                            <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
+                                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10"></textarea>
                                         </div>
                                         <div class="form-group border p-3">
                                             <label class="uppercase text-xs font-bold" for="body">Add Body for inspiration (optional):</label>

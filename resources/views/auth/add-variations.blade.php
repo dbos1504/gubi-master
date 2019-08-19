@@ -35,7 +35,7 @@
                                     @csrf
                                     <div class="form-group border p-3">
                                         <label class="text-xs font-bold uppercase" for="variation">Variation name:</label>
-                                        <input class="border p-1 w-full" type="text" name="name" id="variation" placeholder="Variation name..">
+                                        <input class="border p-1 w-full @error('name') is-invalid @enderror" type="text" name="name" id="variation" placeholder="Variation name..">
                                     </div>
                                     <div class="form-group p-3 text-right">
                                         <button class="text-xs font-bold py-2 px-10 uppercase bg-black text-white">Add variation</button>
