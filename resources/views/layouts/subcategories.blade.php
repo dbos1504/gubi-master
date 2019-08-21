@@ -45,21 +45,21 @@
         <article class="lg:w-3/4 border-t">
             <h1 class="text-3xl font-serif py-3 px-4 text-black">{{ $subcategory->headline }}</h1>
             <section class="products lg:flex lg:flex-wrap px-4 py-2 -mr-4">
-                @foreach($paginate as $product)
-                    <div class="shop-width text-center">
-                        <a href="/product/{{ $product->location }}">
-                            <img src="/img/products/{{ $product->image }}" alt="{{ $product->alt }}">
-                        </a>
-                        <h2 class="text-base mt-3">
+                    @foreach($paginate as $product)
+                        <div class="shop-width text-center">
                             <a href="/product/{{ $product->location }}">
-                                {{ $product->headline }}
+                                <img src="/img/products/{{ $product->image }}" alt="{{ $product->alt }}">
                             </a>
-                        </h2>
-                        @if ($product->price_status == 1)
-                            <p class="mt-2 text-base text-black font-medium">{{ $product->price }} {{ $product->currency }}</p>
-                        @endif
-                    </div>
-                @endforeach
+                            <h2 class="text-base mt-3">
+                                <a href="/product/{{ $product->location }}">
+                                    {{ $product->headline }}
+                                </a>
+                            </h2>
+                            @if ($product->price_status == 1)
+                                <p class="mt-2 text-base text-black font-medium">{{ $product->price }} {{ $product->currency }}</p>
+                            @endif
+                        </div>
+                    @endforeach
             </section>
             <div class="text-center">{{ $paginate->links() }}</div>
         </article>

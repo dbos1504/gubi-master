@@ -44,9 +44,14 @@
                     <article class="lg:w-1/2">
                         <!-- MAIN PRODUCT IMAGE -->
                             <img ref="image" src="/img/products/{{ $product->image }}" alt="{{ $product->alt }}">
+{{--                        <zoom-on-hover img-normal="/img/products/{{ $product->image }}" --}}
+{{--                                       img-zoom="/img/products/{{ $product->image }}" --}}
+{{--                                       :scale="2">--}}
+{{--                            --}}
+{{--                        </zoom-on-hover>--}}
                         <!-- END MAIN PRODUCT IMAGE -->
                         <!-- GALLERY -->
-                        <article class="lg:flex lg:flex-wrap mt-3">
+                        <article class="flex flex-wrap mt-3">
                             @foreach ($product->images as $image)
                                 <div class="product-gallery-width">
                                     <img class="cursor-pointer" ref="img" @click.prevent="promena({{ $image }})" src="/img/products/{{ $image->image }}" alt="{{ $image->alt }}">
@@ -83,7 +88,7 @@
                                  </div>
                         </div>
                         <div class="inquiry mt-6">
-                            <inquiry :img="img" :variacija="vari" :kolicina="qty" :upit="inquirys" :product="{{ $product }}"></inquiry>
+                            <inquiry :img="img" :variacija="izmena" :kolicina="qty" :upit="inquirys" :product="{{ $product }}"></inquiry>
                         </div>
                         <div class="product-body mt-8">
                             {!! $product->body !!}
@@ -111,15 +116,16 @@
                 <section class="lg:flex lg:flex-wrap">
                     @foreach($relateds as $related)
                         @if ($related->id == $product->id)
+
                         @else
                             <div class="shop-width text-center">
                                 <a href="/product/{{ $related->location }}">
                                     <img src="/img/products/{{ $related->image }}" alt="{{ $related->alt }}">
                                 </a>
                                 <h2 class="text-base mt-3">
-                                    <a href="/product/{{ $product->location }}">
+                                    <a href="/product/{{ $related->location }}">
                                         <a href="/product/{{ $related->location }}">
-                                            {{ $product->headline }}
+                                            {{ $related->headline }}
                                         </a>
                                     </a>
                                 </h2>

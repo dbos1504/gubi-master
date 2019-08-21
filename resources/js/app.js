@@ -27,8 +27,12 @@ Vue.component('flash', require('./components/Flash.vue').default);
 Vue.component('product', require('./components/Product.vue').default);
 Vue.component('inquiry', require('./components/Inquiry.vue').default);
 Vue.component('contact', require('./components/Contact.vue').default);
-Vue.component('slider', require('./components/Slider').default);
+Vue.component('slider-inspiration', require('./components/SliderInspiration').default);
 Vue.component('slider-news', require('./components/SliderNews').default);
+Vue.component('slider-main', require('./components/SliderMain').default);
+Vue.component('slider-collection', require('./components/SliderCollection').default);
+Vue.component('collection-product-slider', require('./components/CollectionProductSlider').default);
+Vue.component('collection-option-slider', require('./components/CollectionOptionSlider').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

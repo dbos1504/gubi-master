@@ -38,6 +38,9 @@
                                     </div>
                                     <div class="w-1/2 px-6">
                                         <div class="form-group border p-3">
+                                            <img src="/img/admin-insp.jpg" alt="img">
+                                        </div>
+                                        <div class="form-group border p-3">
                                             <label class="uppercase text-xs font-bold" for="insp-image">Inspiration image:</label>
                                             <div class="w-full text-center p-3">
                                                 <img id="blah" src="#" alt="Choose image.." />
@@ -50,6 +53,8 @@
                                         </div>
                                         <div class="form-group text-right">
                                             <button type="submit" class="text-xs uppercase text-white bg-gray-900 font-bold py-2 px-16 border">ADD INSPIRATION</button>
+                                            <br>
+                                            <small class="text-xs">More options will be available after you add new inspiration</small>
                                         </div>
                                     </div>
                                 </form>

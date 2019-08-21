@@ -42,6 +42,9 @@
                                                 <option value="€">€</option>
                                             </select>
                                         </div>
+                                        <br><br>
+                                        <h3 class="font-serif font-bold text-3xl">Optional:</h3>
+                                        <hr>
                                         <div class="form-group border p-3">
                                             <label class="uppercase text-xs font-bold" for="designers_id">Choose a designer (optional):</label>
                                             <select class="form-control" name="designers_id" id="designers_id">
@@ -51,15 +54,19 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        {{--<div class="form-group border p-3">--}}
-                                            {{--<label class="uppercase text-xs font-bold" for="collections_id">Choose collection (optional):</label>--}}
-                                            {{--<select class="form-control" name="collections_id" id="collections_id">--}}
-                                                {{--<option value="0">Choose collection...</option>--}}
-                                                {{--@foreach($collections as $collection)--}}
-                                                    {{--<option value="{{ $collection->id }}">{{ $collection->id }}. {{ $collection->headline }}</option>--}}
-                                                {{--@endforeach--}}
-                                            {{--</select>--}}
-                                        {{--</div>--}}
+                                        <div class="form-group border p-3">
+                                            <label class="uppercase text-xs font-bold" for="collections_id">Choose if a product belong to a collection (optional):</label>
+                                            <select class="form-control" name="collections_id" id="collections_id">
+                                                <option value="0">Choose collection...</option>
+                                                @foreach($collections as $collection)
+                                                    @if ($collection->headline == 'No')
+
+                                                        @else
+                                                        <option value="{{ $collection->id }}">{{ $collection->id }}. {{ $collection->headline }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="form-group border p-3">
                                             <label class="uppercase text-xs font-bold" for="duplicate_category">Choose if a product belongs to another category (optional):</label>
                                             <select class="form-control" name="duplicate_category" id="duplicate_category">
@@ -113,6 +120,8 @@
                                         <hr>
                                         <div class="form-group text-right">
                                             <button type="submit" class="text-xs uppercase text-white bg-gray-900 font-bold py-2 px-16 border">Bæta við vöru</button>
+                                            <br>
+                                            <small class="text-xs">More options will be available after you add new product</small>
                                         </div>
                                     </article>
                                 </form>

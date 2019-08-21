@@ -133,7 +133,7 @@
                                         @foreach ($inspiration->images as $img)
                                             <div class="mr-3 mb-3 w-2/12">
                                                 <img src="/img/inspirations/{{ $img->image }}" alt="img">
-                                                <form action="" method="POST">
+                                                <form action="/home/inspiration/{{ $inspiration->location }}/destroy-inspiration-gallery-images/{{ $img->id }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="text-red-600"><i class="far fa-trash-alt"></i></button>

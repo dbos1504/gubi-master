@@ -1,5 +1,5 @@
 <template>
-    <form :key="uuid">
+    <form>
         <button @click.prevent="$modal.show('inquiry')"
                 class="px-4 py-2 border font-bold text-xs"
         >
@@ -10,7 +10,7 @@
                 <button type="button" @click="$modal.hide('inquiry')">X</button>
             </div>
             <form action="" method="POST" class="lg:flex lg:flex-wrap lg:items-center">
-                <div class="lg:w-2/5">
+                <div class="lg:w-2/5 inquiry-image">
                     <img :src="'/img/products/' + img" :alt="product.alt">
                 </div>
                 <div class="lg:w-3/5 p-12">
@@ -18,7 +18,7 @@
                     <hr>
                     <div class="form-group lg:flex">
                         <div class="w-full mr-2">
-                            <input class="p-2 w-full"
+                            <input class="lg:p-2 md:p-2 w-full first-name"
                                    type="text"
                                    v-model="firstname"
                                    v-validate.persist="'required'"
@@ -29,7 +29,7 @@
                             <span class="text-red-500 italic text-xs greska">{{ errors.first('firstname') }}</span>
                         </div>
                         <div class="w-full">
-                            <input class="p-2 w-full"
+                            <input class="lg:p-2 md:p-2 w-full"
                                    type="text"
                                    v-model="lastname"
                                    v-validate.persist="'required'"
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input class="p-2 w-full"
+                        <input class="lg:p-2 md:p-2 w-full"
                                v-model="phone"
                                type="text"
                                name="phone"
@@ -51,7 +51,7 @@
                         <span class="text-red-500 italic text-xs greska">{{ errors.first('phone') }}</span>
                     </div>
                     <div class="form-group">
-                        <input class="p-2 w-full"
+                        <input class="lg:p-2 md:p-2 w-full"
                                type="email"
                                v-model="email"
                                :class="errors.first('email') ? 'border-b border-red-700' : 'border'"
@@ -62,13 +62,13 @@
                         <span class="text-red-500 italic text-xs greska">{{ errors.first('email') }}</span>
                     </div>
                     <div class="form-group flex">
-                        <p class="inquiry-border p-2 w-full border border-black text-black mr-2">{{ product.headline }} | {{ upit }}</p>
-                        <p v-if="variacija" class="inquiry-border product-inquiry-width p-2 border border-black text-black text-center mr-2">{{ variacija }}</p>
+                        <p class="inquiry-border p-2 w-full border border-black text-black mr-2">{{ product.headline }} | <span class="text-xs">{{ upit }}</span></p>
+                        <p v-if="variacija" class="inquiry-border text-xs product-inquiry-width p-2 border border-black text-black text-center mr-2">{{ variacija }}</p>
                         <p class="inquiry-border product-inquiry-width p-2 border border-black text-black text-center">{{ kolicina }}</p>
                     </div>
                     <div class="form-group">
                         <textarea placeholder="Message*"
-                                  class="w-full p-2 border-black"
+                                  class="w-full lg:p-2 md:p-2 border-black"
                                   name="message"
                                   id="" cols="30" rows="5"
                                   v-model="message"
@@ -85,7 +85,7 @@
             </form>
         </modal>
         <modal name="success" classes="bg-white relative" height="auto">
-            Proslo
+            <p class="p-20 text-green-700 font-bold">Success.</p>
         </modal>
     </form>
 </template>
@@ -107,8 +107,6 @@
                 image: '',
                 inq: '',
                 qty: '',
-                uuid: 22
-
             }
         },
 

@@ -41,7 +41,9 @@ import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import VModal from 'vue-js-modal';
 import Viewer from 'v-viewer';
+import ZoomOnHover from "vue-zoom-on-hover";
 
+Vue.use(ZoomOnHover);
 Vue.use(Viewer);
 Vue.use(VeeValidate);
 Vue.use(VModal);

@@ -47,8 +47,8 @@
                                                         <form action="/home/messages/{{  $message->id }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <confirm-dialog></confirm-dialog>
-{{--                                                            <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>--}}
+{{--                                                            <confirm-dialog></confirm-dialog>--}}
+                                                            <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
                                                         </form>
                                                     </td>
                                                 </tr>

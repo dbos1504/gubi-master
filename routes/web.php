@@ -1,8 +1,28 @@
 <?php
 
+use App\Categories;
+use App\Products;
+
 Route::get('/', 'ProjectController@index');
 
+Route::any('/search', function () {
+    if (request()->has('search')) {
+        $p = request('search');
+
+        $categories = Categories::with('subcategory')->where('status', 1)->get();
+        $products = Products::where('headline', 'like', '%' . $p . '%')->paginate(21);
+
+        if (count($products) > 0) {
+            return view('layouts.pretraga', compact('products', 'categories', 'p'));
+        } else {
+            return view('layouts.pretraga-prazno', compact('products', 'categories', 'p'));
+        }
+    }
+});
+
 Route::get('/vorur', 'CategoriesController@index');
+
+Route::get('/collections/{collection}', 'CollectionsController@show');
 
 Route::get('/product/{product}', 'ProductsController@show');
 Route::post('/product/{product}/inquiry', 'ProductsController@inquiry');
@@ -78,6 +98,7 @@ Route::get('/home/inspiration/{inspiration}/edit', 'HomeController@inspirationsE
 Route::post('/home/inspiration/{inspiration}/add-inspiration-gallery-images', 'HomeController@inspirationsAddGalleryImages');
 Route::patch('/home/inspiration/{inspiration}/gallery-status', 'HomeController@galleryStatus');
 Route::patch('/home/inspiration/{inspiration}/status', 'HomeController@inspirationsStatus');
+Route::delete('/home/inspiration/{inspiration}/destroy-inspiration-gallery-images/{id}', 'HomeController@destroyInspirationsGalleryImages');
 /* DESIGNERS */
 Route::get('/home/designers', 'HomeController@designers')->name('home-designers');
 Route::get('/home/add-designer', 'HomeController@addDesigner')->name('home-add-designer');
@@ -94,3 +115,11 @@ Route::patch('/home/news/{new}/gallery-status', 'HomeController@newsGalleryStatu
 Route::post('/home/news/{new}/add-news-gallery-images', 'HomeController@newsAddGalleryImages');
 Route::patch('/home/news/{new}/status', 'HomeController@newsStatus');
 Route::delete('/home/news/{new}/destroy', 'HomeController@destroyNews');
+/* HOME PAGE SLIDER */
+Route::get('/home/home-slider', 'HomeController@slider')->name('home-slider');
+Route::get('/home/add-slider', 'HomeController@addSlider');
+Route::post('/home/add-slider', 'HomeController@storeSlider');
+Route::patch('/home/slider/{collection}/gallery-status', 'HomeController@sliderStatus');
+Route::get('/home/slider/{slider}', 'HomeController@editSlider');
+/* INSTAGRAM */
+Route::get('/home/instagram', 'HomeController@instagram')->name('home-instagram');

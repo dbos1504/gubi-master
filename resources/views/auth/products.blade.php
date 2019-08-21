@@ -47,23 +47,23 @@
                                                 </td>
                                                 <td class="border-r px-2 text-center">{{ $product->views }}</td>
                                                 <td class="border-r px-2 text-center">
-                                                    @if ($product->status == 1)
-                                                        <form action="/home/{{ $product->location }}/disable" method="POST">
-                                                            @csrf
-                                                            @method('PATCH')
-                                                            <button class="text-red-400 text-xs" type="submit">
-                                                                <i class="far fa-eye-slash"></i> Disable
-                                                            </button>
-                                                        </form>
-                                                    @else
-                                                        <form action="/home/{{ $product->location }}/enable" method="POST">
-                                                            @csrf
-                                                            @method('PATCH')
-                                                            <button class="text-green-500 text-xs" type="submit">
-                                                                <i class="far fa-eye"></i> Enable
-                                                            </button>
-                                                        </form>
-                                                    @endif
+                                                    <form action="/home/{{ $product->location }}/product-status" method="POST">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        @if ($product->status == 1)
+                                                                <input type="hidden" value="0" name="status">
+                                                                <button class="text-xs font-bold py-1 px-2 text-red-400 uppercase" type="submit">
+                                                                    <i class="far fa-eye-slash"></i> &nbsp;
+                                                                    Disable
+                                                                </button>
+                                                        @else
+                                                                <input type="hidden" value="1" name="status">
+                                                                <button class="text-xs font-bold py-1 px-2 text-green-500 uppercase" type="submit">
+                                                                    <i class="far fa-eye"></i> &nbsp;
+                                                                    Enable
+                                                                </button>
+                                                        @endif
+                                                    </form>
                                                 </td>
                                                 <td class="px-2 bg-gray-100 border-r px-2 text-center">
                                                     <a class="text-xs" href="/home/{{ $product->location }}/edit"><i class="far fa-edit"></i></a>

@@ -7,7 +7,7 @@
         <hr>
         <article class="inspiration-images my-8">
             @if ($inspiration->gallery_status == 1)
-                <slider :data="{{ $inspiration->images }}"></slider>
+                <slider-inspiration :data="{{ $inspiration->images }}"></slider-inspiration>
             @endif
         </article>
         <div class="insp-body">

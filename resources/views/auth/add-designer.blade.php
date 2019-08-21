@@ -38,11 +38,18 @@
                                     </div>
                                     <div class="w-1/2 px-6">
                                         <div class="form-group border p-3">
+                                            <img src="/img/admin-designer.jpg" alt="img">
+                                        </div>
+                                        <div class="form-group border p-3">
                                             <label class="uppercase text-xs font-bold" for="insp-image">Designer image:</label>
                                             <div class="w-full text-center p-3">
                                                 <img id="blah" src="#" alt="Choose image.." />
                                             </div>
                                             <input class="form-control" type="file" name="image" id="insp-image" onchange="readURL(this);">
+                                        </div>
+                                        <div class="form-group border p-3">
+                                            <label class="uppercase text-xs font-bold" for="insp-image">Designer main image (preview):</label>
+                                            <img src="/img/admin-designer1.jpg" alt="img">
                                         </div>
                                         <div class="form-group border p-3">
                                             <label class="uppercase text-xs font-bold" for="insp-image">Designer main image:</label>

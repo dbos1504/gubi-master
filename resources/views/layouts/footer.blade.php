@@ -12,7 +12,7 @@
     {{--        <p class="text-xs font-bold mt-4 mb-4">We respect your privacy.</p>--}}
     {{--    </article>--}}
     <article class="footer-menu">
-        @foreach(\App\Navigation::where('status', 1)->get() as $nav)
+        @foreach($navigation as $nav)
             <a class="font-serif mx-2" href="{{ $nav->location }}">{{ $nav->name }}</a>
         @endforeach
     </article>

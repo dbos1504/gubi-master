@@ -11,7 +11,7 @@
                 inquirys: '',
                 img: this.data.image,
                 qty: 1,
-                vari: '',
+                izmena: '',
             }
         },
 
@@ -37,7 +37,7 @@
             },
 
             variacija(e) {
-                this.vari = e.name;
+                this.izmena = e.name;
             }
         }
     }

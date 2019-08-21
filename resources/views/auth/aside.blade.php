@@ -6,9 +6,9 @@
         </a>
     </li>
     <li class="border-b py-2">
-        <a class="text-sm font-bold {{ \Request::route()->getName() == 'home-slider' ? 'text-green-700' : 'text-white' }}" href="/home/slider">
+        <a class="text-sm font-bold {{ \Request::route()->getName() == 'home-slider' ? 'text-green-700' : 'text-white' }}" href="/home/home-slider">
             <i class="fas fa-sliders-h text-white pr-2 text-sm"></i>
-            Home page slider
+            Home page sliders
         </a>
     </li>
     <li class="border-b py-2">
@@ -66,6 +66,12 @@
             <i class="fas fa-plus-circle text-white pr-2 text-sm"></i>
             Add News
         </a>
+    </li>
+    <li class="border-b py-2">
+        <a class="text-sm font-bold {{ \Request::route()->getName() == 'home-instagram' ? 'text-green-700' : 'text-white' }}" href="/home/instagram">
+            <i class="fab fa-instagram text-white pr-2 text-sm"></i>
+            Instagram
+        </a> <br>
     </li>
 
     <li class="mt-5 border-b py-2">
