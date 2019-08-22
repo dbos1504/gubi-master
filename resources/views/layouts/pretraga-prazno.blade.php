@@ -47,7 +47,11 @@
             <section class="products lg:flex lg:flex-wrap px-4 py-2 -mr-4">
                 <h2 class="w-full text-3xl text-center font-serif py-3 px-4 font-bold text-black">Sorry no matches, <br> please try again</h2>
             </section>
-            <div class="text-center">{{ $products->links() }}</div>
+            @if($p == '')
+                @else
+                <div class="text-center">{{ $products->links() }}</div>
+            @endif
+
         </article>
     </section>
 @stop

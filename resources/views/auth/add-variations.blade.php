@@ -26,7 +26,11 @@
                                         @foreach($variations as $variation)
                                             <li class="flex justify-between border-b py-2">
                                                 - {{ $variation->name }} &nbsp; &nbsp;
-                                                <a href="/home/add-new-variation/{{ $variation->id }}/destroy"><i class="far fa-trash-alt"></i></a>
+                                                <form action="/home/add-new-variation/{{ $variation->id }}/destroy" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"><i class="far fa-trash-alt"></i></button>
+                                                </form>
                                             </li>
                                         @endforeach
                                     </ul>

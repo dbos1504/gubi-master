@@ -34,6 +34,6 @@ class ProductsController extends Controller
 
         Inquiry::create($podaci);
 
-        return back()->with('flash', 'Thanks. Your inquiry in its the way, we will contact you as soon as possible.');
+        return back()->with('flash', 'Thanks. Your inquiry is on the way, we will contact you as soon as possible.');
     }
 }

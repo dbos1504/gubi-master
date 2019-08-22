@@ -33,8 +33,14 @@
             <footer>
                 @include('layouts.footer')
             </footer>
-            <flash message="{{ session('flash') }}"></flash>
+{{--            <flash message="{{ session('flash') }}"></flash>--}}
+            @include('flash::message')
         </div>
     </body>
 </html>
 <script src="/js/app.js"></script>
+<script>
+    $('div.alert').not('.alert-important').delay(4000).fadeOut(350);
+
+    $('#flash-overlay-modal').modal();
+</script>

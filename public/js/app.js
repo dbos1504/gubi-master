@@ -2300,6 +2300,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Variation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Variation */ "./resources/js/components/Variation.vue");
 /* harmony import */ var _Inquiry__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Inquiry */ "./resources/js/components/Inquiry.vue");
+/* harmony import */ var viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! viewerjs/dist/viewer.css */ "./node_modules/viewerjs/dist/viewer.css");
+/* harmony import */ var viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -54575,7 +54578,7 @@ var render = function() {
   return _c(
     "viewer",
     {
-      staticClass: "flex",
+      staticClass: "flex flex-wrap",
       attrs: { images: _vm.images, options: { tooltip: false, title: false } }
     },
     _vm._l(_vm.images, function(img) {

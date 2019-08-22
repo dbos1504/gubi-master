@@ -43,12 +43,9 @@
                 <section class="lg:flex lg:flex-wrap px-4 py-2 -mr-4 mt-3">
                     <article class="lg:w-1/2">
                         <!-- MAIN PRODUCT IMAGE -->
-                            <img ref="image" src="/img/products/{{ $product->image }}" alt="{{ $product->alt }}">
-{{--                        <zoom-on-hover img-normal="/img/products/{{ $product->image }}" --}}
-{{--                                       img-zoom="/img/products/{{ $product->image }}" --}}
-{{--                                       :scale="2">--}}
-{{--                            --}}
-{{--                        </zoom-on-hover>--}}
+                        <viewer :image="img" :options="{navbar: false, toolbar: false, tooltip: false, title: false}">
+                            <img class="cursor-pointer" ref="image" src="/img/products/{{ $product->image }}" alt="{{ $product->alt }}">
+                        </viewer>
                         <!-- END MAIN PRODUCT IMAGE -->
                         <!-- GALLERY -->
                         <article class="flex flex-wrap mt-3">

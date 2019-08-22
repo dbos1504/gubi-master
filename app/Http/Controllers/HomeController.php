@@ -20,6 +20,7 @@ use App\SubCategory;
 use App\SubVariations;
 use App\Variations;
 
+
 class HomeController extends Controller
 {
     /**
@@ -39,9 +40,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Products::orderBy('views', 'DESC')->take(3)->get();
-        $inquiry = Inquiry::orderBy('created_at', 'DESC')->take(4)->get();
-        $messages = Contact::orderBy('created_at', 'DESC')->take(5)->get();
+        $products = Products::latest('views')->take(4)->get();
+        $inquiry = Inquiry::latest('created_at')->take(5)->get();
+        $messages = Contact::latest('created_at')->take(5)->get();
 
         return view('home', compact('products','inquiry', 'messages'));
     }
@@ -117,7 +118,9 @@ class HomeController extends Controller
             }
         }
 
-        return redirect('/home/' . $prod->location . '/edit')->with('flash', 'New product is added, great');
+        flash()->success('New product is added, great. Start adding variations, if product has one.');
+
+        return redirect('/home/' . $prod->location . '/edit');
     }
 
     public function editProduct(Products $product)
@@ -162,6 +165,22 @@ class HomeController extends Controller
 
         return back()->with('flash', 'Success. Product edited.');
     }
+
+    public function destroyProduct(Products $product)
+    {
+        $product->delete();
+
+        flash()->success('Success. Product deleted');
+
+        return back();
+    }
+
+    public function destroyProductVariation(Products $product, ProductsVariations $id)
+    {
+        $id->delete();
+
+        return back()->with('flash', 'Success. Variation deleted');
+    }
                   /*  PRICE  PRODUCT STATUS  */
     public function editPriceStatus(Products $product)
     {
@@ -198,7 +217,7 @@ class HomeController extends Controller
             ProductsImages::create($podaci);
         }
 
-        return back()->with('flash', 'Images are added');
+        return back()->with('flash', 'Great. New images are added.');
     }
 
     public function destroyProductGalleryImage(Products $product, ProductsImages $img)
@@ -280,6 +299,13 @@ class HomeController extends Controller
         Variations::create($podaci);
 
         return back()->with('flash', 'New variation is added.');
+    }
+
+    public function variationsDestroy(Variations $id)
+    {
+        $id->delete();
+
+        return back()->with('flash', 'Success. Variation deleted.');
     }
 
     public function destroyProductGalleryVariationImage(Products $product, SubVariations $img)
@@ -494,6 +520,13 @@ class HomeController extends Controller
         $id->delete();
 
         return back()->with('flash', 'Success. Gallery image deleted.');
+    }
+
+    public function inspirationsDestroy(Inspirations $inspiration)
+    {
+        $inspiration->delete();
+
+        return back()->with('flash', 'Success. Inspiration deleted.');
     }
     /*  DESIGNERS  */
     public function designers()

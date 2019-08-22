@@ -16,7 +16,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -87,11 +87,13 @@
                 </div>
             @endif
         </main>
+        @include('flash::message')
         <flash message="{{ session('flash') }}"></flash>
     </div>
 </body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdn.tiny.cloud/1/pqzo8668c0pqg1f82x0vh2w9c9uzzmaic494i8jwhzx9aemq/tinymce/5/tinymce.min.js"></script>
 <script>
     tinymce.init({
@@ -115,6 +117,11 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+</script>
+<script>
+    $('div.alert').not('.alert-important').delay(4000).fadeOut(350);
+
+    $('#flash-overlay-modal').modal();
 </script>
 <script>
     function readURLL(input) {
@@ -247,5 +254,5 @@
 <script>
     setTimeout(() => {
         $('.alert-danger').css('display', 'none')
-    }, 5000)
+    }, 4000)
 </script>

@@ -115,7 +115,7 @@
                                         </div>
                                         <div class="form-group border p-3">
                                             <label class="uppercase text-xs font-bold" for="designers_id">Breyta a designer (optional):</label>
-                                            <select class="form-control" name="designers_id" id="designers_id" size="{{ count($designers) + 1 }}">
+                                            <select class="form-control" name="designers_id" id="designers_id">
                                                 <option value="0">Breyta designer...</option>
                                                 @foreach($designers as $designer)
                                                     <option {{ $product->designers_id == $designer->id ? 'selected' : '' }} value="{{ $designer->id }}">{{ $designer->id }}. {{ $designer->name }}</option>
@@ -139,23 +139,6 @@
                                                     <option {{ $product->sub ==  $categorie->id ? 'selected' : '' }} value="{{ $categorie->id }}">{{ $categorie->id }}. {{ $categorie->name }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
-                                        <br>
-                                        <h3 class="font-serif font-bold text-3xl flex justify-between items-center">
-                                            Variations
-                                        </h3>
-                                        <hr>
-                                        <div class="form-group border p-3">
-                                            <label class="uppercase text-xs font-bold" for="">Product variation:</label>
-                                            @foreach ($subvariations as $variation)
-                                                @foreach(\App\Variations::where('id', $variation->variations_id)->get() as $id)
-                                                    <div class="mt-3 flex justify-between items-center">
-                                                        {{-- <input type="checkbox" {{ $option->id == $id ? 'checked' : '' }} name="{{ $option->variation }}" id="{{ $option->variation }}" value="{{ $option->id }}"> &nbsp; &nbsp;--}}
-                                                        <label class="text-base font-bold uppercase mb-0" for="color">- {{ $id->name }}</label>
-                                                        <button><i class="far fa-trash-alt"></i></button>
-                                                    </div>
-                                                @endforeach
-                                            @endforeach
                                         </div>
                                         <br>
                                     </article>
@@ -199,38 +182,60 @@
                                         </div>
                                     </article>
                                 </form>
-                                <div class="form-group border p-3">
-                                    <h4 class="font-bold text-2xl font-serif" for="insp-image">Current Product variations images / Text:</h4>
-                                    <hr>
-                                    <div class="w-full text-center relative flex flex-wrap">
-                                        @foreach ($product->subvariations as $img)
-                                            @if ($img->image == '')
-                                                <div class="admin-product-gallery-width relative">
-                                                <p class="">
-                                                    {{ $img->variation_name }}
-                                                </p><br>
-                                                <form action="/home/{{ $product->location }}/destroy-variation-image/{{ $img->id }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
-                                                </form>
-                                                </div>
-                                            @else
-                                                <div class="admin-product-gallery-width relative">
-                                                    <img width="150" height="150" id="blah" src="{{ $img->image ? '/img/products/' . $img->image : '#' }}" alt="Choose image.." />
-                                                    <p class="w-full p-1 mt-1 text-xs">{{ $img->name }}</p>
-{{--                                                    <input class="w-full border p-1 mt-1 text-xs" type="text" value="{{ $img->name }}">--}}
-                                                    <form action="/home/{{ $product->location }}/destroy-variation-image/{{ $img->id }}" method="POST">
+                                <h3 class="font-serif font-bold text-3xl flex justify-between items-center">
+                                    Variations
+                                </h3>
+                                <hr>
+                                <div class="flex justify-between border py-4">
+                                    <div class="form-group w-1/4 border-r p-3">
+                                        <h4 class="font-bold text-base font-serif" for="insp-image">Product variation:</h4>
+                                        <hr>
+                                        @foreach ($subvariations as $variation)
+                                            @foreach(\App\Variations::where('id', $variation->variations_id)->get() as $id)
+                                                <div class="mt-3">
+                                                    <form action="/home/{{ $product->location }}/variation/{{ $variation->id }}" method="POST" class="flex justify-between items-center">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
+                                                        <p class="text-base font-bold uppercase mb-0" for="color">- {{ $id->name }}</p>
+                                                        <button><i class="far fa-trash-alt"></i></button>
                                                     </form>
                                                 </div>
-                                            @endif
+                                            @endforeach
                                         @endforeach
                                     </div>
-                                    <br>
+                                    <div class="form-group w-3/4 ml-4 w-full p-3">
+                                        <h4 class="font-bold text-2xl font-serif" for="insp-image">Current Product variations images / Text:</h4>
+                                        <hr>
+                                        <div class="w-full text-center relative flex flex-wrap">
+                                            @foreach ($product->subvariations as $img)
+                                                @if ($img->image == '')
+                                                    <div class="admin-product-gallery-width relative">
+                                                        <p class="">
+                                                            {{ $img->variation_name }}
+                                                        </p><br>
+                                                        <form action="/home/{{ $product->location }}/destroy-variation-image/{{ $img->id }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
+                                                        </form>
+                                                    </div>
+                                                @else
+                                                    <div class="admin-product-gallery-width relative">
+                                                        <img width="150" height="150" id="blah" src="{{ $img->image ? '/img/products/' . $img->image : '#' }}" alt="Choose image.." />
+                                                        <p class="w-full p-1 mt-1 text-xs">{{ $img->name }}</p>
+                                                        {{--                                                    <input class="w-full border p-1 mt-1 text-xs" type="text" value="{{ $img->name }}">--}}
+                                                        <form action="/home/{{ $product->location }}/destroy-variation-image/{{ $img->id }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
+                                                        </form>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </div>
+                                <br>
                                 <div class="w-full flex justify-between mx-auto p-4 border bg-white">
                                     <div class="p-4 w-1/3 border-r">
                                         <h4 class="text-xs font-serif font-bold text-3xl">Add new variation</h4>

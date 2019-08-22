@@ -11,19 +11,17 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
                         <section class="flex flex-wrap">
                             <aside class="w-1/6 bg-gray-900 p-6">
                                 @include('auth.aside')
                             </aside>
                             <main class="w-10/12 p-6">
-                               <section class="flex border-b pb-8">
-                                   <article class="w-1/2 px-4 py-6">
+                                   <article class=" px-4 py-6">
                                        <h3 class="font-bold font-serif text-2xl">Most viewed products</h3>
                                        <hr>
                                        <div class="flex flex-wrap">
                                            @foreach($products as $product)
-                                               <div class="w-1/3 p-2 text-left">
+                                               <div class="w-1/4 p-2 text-center">
                                                    <a href="/home/{{ $product->location }}/edit">
                                                         <img src="/img/products/{{ $product->image }}" alt="img">
                                                    </a>
@@ -36,6 +34,8 @@
                                            <a class="text-xs font-bold" href="/home/products">View all</a>
                                        </p>
                                    </article>
+                                <hr>
+                                <section class="flex border-b pb-8">
                                    <article class="w-1/2 px-4 py-6">
                                        <h3 class="font-bold font-serif text-2xl">Latest Order inquiry</h3>
                                        <hr>
@@ -72,12 +72,6 @@
                                                <a class="text-xs font-bold" href="/home/inquiry">View all</a>
                                            </p>
                                    </article>
-                               </section>
-                                <section class="flex">
-                                    <article class="w-1/2 px-4 py-6">
-                                        <h3 class="font-bold font-serif text-2xl">Numbers</h3>
-                                        <hr>
-                                    </article>
                                     <article class="w-1/2 px-4 py-6">
                                         <h3 class="font-bold font-serif text-2xl">New messages</h3>
                                         <hr>

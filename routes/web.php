@@ -12,6 +12,10 @@ Route::any('/search', function () {
         $categories = Categories::with('subcategory')->where('status', 1)->get();
         $products = Products::where('headline', 'like', '%' . $p . '%')->paginate(21);
 
+        if ($p == '') {
+            return view('layouts.pretraga-prazno', compact('products', 'categories', 'p'));
+        }
+
         if (count($products) > 0) {
             return view('layouts.pretraga', compact('products', 'categories', 'p'));
         } else {
@@ -73,6 +77,8 @@ Route::get('/home/{product}/edit', 'HomeController@editProduct');
 Route::post('/home/{product}/edit', 'HomeController@editProductStore');
 Route::patch('/home/{product}/price-status', 'HomeController@editPriceStatus');
 Route::patch('/home/{product}/product-status', 'HomeController@editProductStatus');
+Route::delete('/home/{product}/destroy-product', 'HomeController@destroyProduct');
+Route::delete('/home/{product}/variation/{id}', 'HomeController@destroyProductVariation');
 /* BIND PRODUCT VARIATION - ADD IMAGE */
 Route::post('/home/{product}/add-variation', 'HomeController@addVariation');
 Route::post('/home/{product}/add-variation-images', 'HomeController@addVariationImages');
@@ -82,6 +88,7 @@ Route::delete('/home/{product}/destroy-variation-image/{img}', 'HomeController@d
 /* ADD NEW PRODUCT VARIATION */
 Route::get('/home/add-new-variation', 'HomeController@variations')->name('home-add-new-variations');
 Route::post('/home/add-new-variation', 'HomeController@variationsStore');
+Route::delete('/home/add-new-variation/{id}/destroy', 'HomeController@variationsDestroy');
 /* MESSAGES */
 Route::get('/home/messages', 'HomeController@messages')->name('home-messages');
 Route::get('/home/messages/{message}', 'HomeController@showMessages');
@@ -98,6 +105,7 @@ Route::get('/home/inspiration/{inspiration}/edit', 'HomeController@inspirationsE
 Route::post('/home/inspiration/{inspiration}/add-inspiration-gallery-images', 'HomeController@inspirationsAddGalleryImages');
 Route::patch('/home/inspiration/{inspiration}/gallery-status', 'HomeController@galleryStatus');
 Route::patch('/home/inspiration/{inspiration}/status', 'HomeController@inspirationsStatus');
+Route::delete('/home/inspiration/{inspiration}/destroy', 'HomeController@inspirationsDestroy');
 Route::delete('/home/inspiration/{inspiration}/destroy-inspiration-gallery-images/{id}', 'HomeController@destroyInspirationsGalleryImages');
 /* DESIGNERS */
 Route::get('/home/designers', 'HomeController@designers')->name('home-designers');

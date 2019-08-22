@@ -1,6 +1,7 @@
 <script>
     import Variation from "./Variation";
     import Inquiry from './Inquiry';
+    import 'viewerjs/dist/viewer.css';
 
     export default {
         props: ['data'],

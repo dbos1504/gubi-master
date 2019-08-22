@@ -86,7 +86,7 @@
                                                     </form>
                                                 </td>
                                                 <td class="px-2 text-center">
-                                                    <form action="/home/{{ $product->location }}/destroy" method="POST">
+                                                    <form action="/home/{{ $product->location }}/destroy-product" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="text-red-500 text-xs" type="submit">

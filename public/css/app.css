@@ -21971,7 +21971,7 @@ html, body {
 }
 
 .designer-product-width {
-  width: 31.4%;
+  width: 23.1%;
   margin-right: 20px;
   margin-bottom: 20px;
 }
@@ -22111,6 +22111,31 @@ iframe {
   color: #fff;
   padding: 15px 20px;
   font-weight: 700;
+}
+
+.alert {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  font-weight: 700;
+}
+
+.page-link {
+  color: #797979;
+  background-color: #fff;
+  border: none;
+  font-weight: 700;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.hooper {
+  outline: none !important;
 }
 
 @media (max-width: 640px) {
