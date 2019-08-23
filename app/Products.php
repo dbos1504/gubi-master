@@ -8,6 +8,8 @@ class Products extends Model
 {
     protected $guarded = [];
 
+    protected $with = ['subvariations'];
+
     public function getRouteKeyName()
     {
         return 'location';

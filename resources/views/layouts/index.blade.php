@@ -23,7 +23,7 @@
         </section>
         <section class="home-products mb-12">
             <h2 class="text-3xl text-center uppercase font-serif p-4 text-black">NEW ARRIVALS</h2>
-            <section class="products lg:flex lg:flex-wrap py-2 -mr-4">
+            <section class="products flex flex-wrap py-2 -mr-4">
                 @foreach($featured as $product)
                     <div class="shop-width text-center">
                         <a href="/product/{{ $product->location }}">
@@ -49,7 +49,7 @@
             <h2 class="text-3xl text-center uppercase font-serif p-4 text-black mb-3">FEATURED COLLECTIONS</h2>
             <section class="collections lg:flex">
                 @foreach($collections as $collection)
-                    <article class="collection mr-4">
+                    <article class="collection lg:mr-4">
                         <a href="/collections/{{ $collection->location }}">
                             <img src="/img/{{ $collection->image }}" alt="{{ $collection->alt }}">
                         </a>
@@ -62,6 +62,19 @@
         <section class="home-instagram mb-12">
             <h2 class="text-3xl text-center uppercase font-serif p-4 text-black">GUBI á Instagram</h2>
             <p class="text-center text-base italic text-gray-500 font-serif">@gubiofficial</p>
+            <section class="instagram flex flex-wrap mt-6">
+                @if ($instagram_images == 'nista')
+                        <p class="w-full text-center font-bold text-2xl">No feeds, check again</p>
+                    @else
+                    @foreach($instagram_images as $key => $image)
+                        <div class="instagram-feed">
+                            <viewer :images="{{ $instagram_images }}" :options="{navbar: false, toolbar: false, tooltip: false, title: false}">
+                                <img src="{{ $image }}" alt="Instagram Feed" class="img-responsive">
+                            </viewer>
+                        </div>
+                    @endforeach
+                @endif
+            </section>
         </section>
     </section>
 @stop

@@ -2542,14 +2542,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data', 'product'],
   data: function data() {
     return {
       subvariations: this.data,
       image: '',
-      variation: ''
+      variation: '',
+      options: ''
     };
+  },
+  computed: {
+    filterDistricts: function filterDistricts() {
+      for (var i = 0; i < this.product.subvariations.length; i++) {
+        for (var u = 0; u < this.product.subvariations[i].options.length; u++) {
+          if (this.product.subvariations[i].options[u].sub_variations_id == this.product.subvariations[i].id) {// this.variation.push(this.product.subvariations[i].options[u])
+          }
+        }
+      }
+    },
+    broj: function broj() {
+      return this.variation;
+    }
   },
   methods: {
     onChange: function onChange(event) {
@@ -2570,6 +2594,22 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$emit('created', event);
       this.$emit('inquiry', event);
+    },
+    onChangee: function onChangee(event) {
+      console.log(event.image); // this.image = event.image ? event.image : this.product.image;
+      //
+      // if (event.variations_id == 6) {
+      //     this.$emit('varijacija', event);
+      // }
+      // if (event.variations_id == 1)  {
+      //     this.$emit('varijacija', event);
+      //     console.log(event);
+      // }
+      // if (event.variations_id == 7) {
+      //     this.$emit('varijacija', event);
+      // }
+      // this.$emit('created', event);
+      // this.$emit('inquiry', event);
     }
   }
 });
@@ -55774,56 +55814,103 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "select",
-    {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.variation,
-          expression: "variation"
-        }
-      ],
-      staticClass: "bg-gray-200 p-1",
-      on: {
-        change: [
-          function($event) {
-            var $$selectedVal = Array.prototype.filter
-              .call($event.target.options, function(o) {
-                return o.selected
-              })
-              .map(function(o) {
-                var val = "_value" in o ? o._value : o.value
-                return val
-              })
-            _vm.variation = $event.target.multiple
-              ? $$selectedVal
-              : $$selectedVal[0]
-          },
-          function($event) {
-            return _vm.onChange(_vm.variation)
+  return _c("div", [
+    _c(
+      "select",
+      {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.variation,
+            expression: "variation"
           }
-        ]
-      }
-    },
-    _vm._l(_vm.subvariations, function(subvariation) {
-      return subvariation.products_id == _vm.product.id
-        ? _c("option", { domProps: { value: subvariation } }, [
-            _vm._v(
-              "\n        " +
-                _vm._s(
-                  subvariation.name
-                    ? subvariation.name
-                    : subvariation.variation_name
-                ) +
-                "\n    "
-            )
-          ])
-        : _vm._e()
-    }),
-    0
-  )
+        ],
+        staticClass: "bg-gray-200 p-1",
+        on: {
+          change: [
+            function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.variation = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            },
+            function($event) {
+              return _vm.onChange(_vm.variation)
+            }
+          ]
+        }
+      },
+      _vm._l(_vm.subvariations, function(subvariation) {
+        return subvariation.products_id == _vm.product.id
+          ? _c("option", { domProps: { value: subvariation } }, [
+              _vm._v(
+                "\n        " +
+                  _vm._s(
+                    subvariation.name
+                      ? subvariation.name
+                      : subvariation.variation_name
+                  ) +
+                  "\n    "
+              )
+            ])
+          : _vm._e()
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _vm.variation.options
+      ? _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.options,
+                expression: "options"
+              }
+            ],
+            staticClass: "bg-gray-200 p-1 sub-var",
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.options = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                function($event) {
+                  return _vm.onChange(_vm.options)
+                }
+              ]
+            }
+          },
+          _vm._l(_vm.variation.options, function(vari) {
+            return vari.sub_variations_id == _vm.variation.id
+              ? _c("option", { domProps: { value: vari } }, [
+                  _vm._v("\n        " + _vm._s(vari.name) + "\n    ")
+                ])
+              : _vm._e()
+          }),
+          0
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

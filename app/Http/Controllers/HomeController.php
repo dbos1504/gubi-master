@@ -11,6 +11,7 @@ use App\Designers;
 use App\Inquiry;
 use App\Inspirations;
 use App\InspirationsImages;
+use App\InstagramToken;
 use App\News;
 use App\NewsImages;
 use App\Products;
@@ -247,9 +248,9 @@ class HomeController extends Controller
     public function addVariationImages(Products $product)
     {
         request()->validate([
-            'images' => 'required'
+            'variations_id' => 'required'
         ], [
-            'images.required' => 'Image is required',
+            'variations_id.required' => 'Variation is required',
         ]);
 
         $images = request()->file('images');
@@ -741,6 +742,13 @@ class HomeController extends Controller
     /* INSTAGRAM */
     public function instagram()
     {
-        return view('auth.instagram');
+        $instagram = InstagramToken::all();
+        return view('auth.instagram', compact('instagram'));
+    }
+    public function instagramStore(InstagramToken $id)
+    {
+        $id->update(['token' => request('token')]);
+
+        return back()->with('flash', 'Success. Instagram token added.');
     }
 }

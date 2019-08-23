@@ -6,7 +6,7 @@
         <hr>
         <article class="news lg:flex lg:flex-wrap lg:items-center mt-16">
             @foreach($news as $new)
-                <div class="lg:w-1/2 pr-10 text-center mb-6">
+                <div class="news-width text-center mb-6">
                     <a href="/frettir/{{ $new->location }}">
                         <img src="/img/{{ $new->image }}" alt="{{ $new->alt }}">
                     </a>

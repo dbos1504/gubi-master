@@ -16,7 +16,7 @@
                     <a href="/honnudir/{{ $designer->location }}">
                         <img src="/img/{{ $designer->image }}" alt="{{ $designer->alt }}">
                     </a>
-                    <p class="designer-name text-2xl text-center uppercase font-serif p-4 text-black">
+                    <p class="designer-name lg:text-2xl text-center uppercase font-serif lg:p-4 text-black">
                         <a class="inspiration-link p-12 tracking-widest hover:no-underline hover:text-black" href="/honnudir/{{ $designer->location }}">
                             {{ $designer->name }}
                         </a>

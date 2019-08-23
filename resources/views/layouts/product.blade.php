@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="container lg:flex lg:flex-wrap">
-        <aside class="lg:w-1/4 border-t pr-6">
+        <aside class="lg:w-1/4 border-t lg:pr-6">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="navbar navbar-expand-lg navbar-light">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cate" aria-controls="cate" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@
                         </article>
                         <!-- END GALLERY -->
                     </article>
-                    <article class="lg:w-1/2 pl-12">
+                    <article class="lg:w-1/2 lg:pl-12">
                         <h1 class="text-2xl font-serif py-2 text-black">
                             <a href="/product/{{ $product->location }}">
                                 {{ $product->headline }}
@@ -66,9 +66,9 @@
                         @if ($product->price_status == 1)
                             <p class="mt-2 text-2xl text-black font-medium">Price: {{ $product->price }} {{ $product->currency }}</p>
                         @endif
-                        <div class="lg:flex mt-2">
+                        <div class="flex mt-2">
                             @foreach($product->variations as $variation)
-                                <div class="mr-3">
+                                <div class="mr-3 relative">
                                     <label class="text-xs" for="">{{ $variation->name }}</label> <br>
                                     <variation @inquiry="upit"
                                                @varijacija="variacija"
@@ -110,7 +110,7 @@
             <section class="related px-4 py-2">
                 <hr>
                 <h3 class="text-3xl font-serif py-3 text-black mb-6">Tengdar vörur</h3>
-                <section class="lg:flex lg:flex-wrap">
+                <section class="flex flex-wrap">
                     @foreach($relateds as $related)
                         @if ($related->id == $product->id)
 

@@ -8,10 +8,10 @@
         </div>
         <section class="collection-options my-8">
                @foreach($collection->options as $option)
-                   <section class="lg:flex items-center mb-8">
+                   <section class="lg:flex single-collection items-center mb-8">
                         <article class="lg:w-1/2 pr-16">
                             <h3 class="text-3xl uppercase mb-3 font-serif py-4 text-black">{{ $option->headline }}</h3>
-                            <p class="">{{ $option->body }}</p>
+                            <p class="mb-6">{{ $option->body }}</p>
                         </article>
                         <article class="lg:w-1/2 lg:pl-16">
                             <collection-option-slider :data="{{ $option->images }}"></collection-option-slider>

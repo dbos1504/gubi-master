@@ -131,15 +131,15 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group border p-3">
-                                            <label class="uppercase text-xs font-bold" for="sub">Choose if a product belongs to another category (optional):</label>
-                                            <select class="form-control" name="sub" id="sub">
-                                                <option value="0">Choose category...</option>
-                                                @foreach($categories as $categorie)
-                                                    <option {{ $product->sub ==  $categorie->id ? 'selected' : '' }} value="{{ $categorie->id }}">{{ $categorie->id }}. {{ $categorie->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+{{--                                        <div class="form-group border p-3">--}}
+{{--                                            <label class="uppercase text-xs font-bold" for="sub">Choose if a product belongs to another category (optional):</label>--}}
+{{--                                            <select class="form-control" name="sub" id="sub">--}}
+{{--                                                <option value="0">Choose category...</option>--}}
+{{--                                                @foreach($categories as $categorie)--}}
+{{--                                                    <option {{ $product->sub ==  $categorie->id ? 'selected' : '' }} value="{{ $categorie->id }}">{{ $categorie->id }}. {{ $categorie->name }}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+{{--                                        </div>--}}
                                         <br>
                                     </article>
                                     <article class="ml-2 w-2/5">
@@ -160,7 +160,7 @@
                                             <select class="form-control" name="subcategory_id" id="subcategory_id" size="{{ count($categories) }}">
                                                 <option value="0">Choose subcategory...</option>
                                                 @foreach($subcategories as $subcategorie)
-                                                    <option {{ $product->subcategory_id ==  $subcategorie->id ? 'selected' : '' }} value="{{ $subcategorie->id }}">{{ $subcategorie->id }}. {{ $subcategorie->headline }}</option>
+                                                    <option {{ $product->sub_category_id == $subcategorie->id ? 'selected' : '' }} value="{{ $subcategorie->id }}">{{ $subcategorie->id }}. {{ $subcategorie->headline }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -262,23 +262,25 @@
                                         <br>
                                         <form action="/home/{{ $product->location }}/add-variation-images" method="POST" enctype="multipart/form-data">
                                             @csrf
+                                            <div class="mt-3" >
+                                                <label class="uppercase text-base text-red-800 font-bold" for="variations_id">* Image is for variation? </label><br>
+                                                <select class="border p-1 w-full" name="variations_id" required>
+                                                    <option value="0">Choose...</option>
+                                                    @foreach($subvariations as $id)
+                                                        @foreach(\App\Variations::where('id', $id->variations_id)->get() as $var)
+                                                            <option value="{{ $var->id }}">{{ $var->name }}</option>
+                                                        @endforeach
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <br>
                                             <input id="variations" type="file" name="images[]"  multiple/>
                                             <div>
                                                 <output class="result-add-var" id="results-var" />
                                             </div>
+                                            <hr>
                                             <label class="uppercase text-xs font-bold mt-6" for="">Variation name (if no variations images are provided)</label><br>
                                             <input type="text" name="variation_name" class="border p-1 w-full" placeholder="Variation name...">
-                                            <div class="mt-3" >
-                                                <label class="uppercase text-xs text-black font-bold" for="">Image is for variation?</label><br>
-                                                <select class="border p-1 w-full" name="variations_id">
-                                                    <option value="0">Choose...</option>
-                                                        @foreach($subvariations as $id)
-                                                            @foreach(\App\Variations::where('id', $id->variations_id)->get() as $var)
-                                                                <option value="{{ $var->id }}">{{ $var->name }}</option>
-                                                            @endforeach
-                                                        @endforeach
-                                                </select>
-                                            </div>
                                             <div class="text-right w-full border-t">
                                                 <button class="uppercase mt-2 text-xs font-bold bg-gray-900 text-white py-1 px-4" type="submit">ADD Variation images</button>
                                             </div>

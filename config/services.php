@@ -44,4 +44,9 @@ return [
         ],
     ],
 
+    'instagram' => [
+        'access-token' => '8379178889.1677ed0.1751966ae72a4047a0c278b841dfd97a',
+        //replace xxx with your actual access token
+    ],
+
 ];

@@ -37,6 +37,10 @@
                 <img src="/img/instagram.svg" alt="Instagram">
             </a>
         </div>
+        <hr class="w-1/2 mx-auto">
+        <div class="my-4">
+            <p>© 2019 <strong>Gubi EHF</strong>, all rights reserved.</p>
+        </div>
     </article>
 </section>
 

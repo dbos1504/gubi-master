@@ -131,3 +131,4 @@ Route::patch('/home/slider/{collection}/gallery-status', 'HomeController@sliderS
 Route::get('/home/slider/{slider}', 'HomeController@editSlider');
 /* INSTAGRAM */
 Route::get('/home/instagram', 'HomeController@instagram')->name('home-instagram');
+Route::patch('/home/instagram/{id}', 'HomeController@instagramStore');
