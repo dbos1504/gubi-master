@@ -13,6 +13,7 @@
                 img: this.data.image,
                 qty: 1,
                 izmena: '',
+                plu: '',
             }
         },
 
@@ -39,6 +40,10 @@
 
             variacija(e) {
                 this.izmena = e.name;
+            },
+
+            utikac(e) {
+                this.plu = e.name;
             }
         }
     }

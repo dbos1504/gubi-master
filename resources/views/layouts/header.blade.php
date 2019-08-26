@@ -1,4 +1,4 @@
-<div class="container border-b py-1">
+<div class="container border-b header-pretraga py-1">
     <form action="/search" method="GET">
         <button class="p-2" type="submit"><i class="fas fa-search"></i></button>
         <input type="text" class="p-1" name="search" placeholder="Search...">

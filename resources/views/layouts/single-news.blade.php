@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('content')
-    <section class="container">
+    <section class="container tablet-cont">
         <h1 class="text-3xl text-center uppercase font-serif font-bold mt-4 mb-6">{{ $news->headline }}</h1>
         <p class="mt-3 italic font-serif text-center text-xs mb-3">{{ $news->created_at->format('F j, Y') }}</p>
         <div class="mb-6 lg:w-9/12 m-auto text-gray-800 mb-4">{!! $news->description !!} </div>

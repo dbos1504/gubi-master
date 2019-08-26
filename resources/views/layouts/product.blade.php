@@ -1,11 +1,11 @@
 @extends('welcome')
 
 @section('content')
-    <section class="container lg:flex lg:flex-wrap">
-        <aside class="lg:w-1/4 border-t lg:pr-6">
+    <section class="container lg:flex lg:flex-wrap md:flex md:flex-wrap tablet-width">
+        <aside class="lg:w-1/4 md:w-1/4 border-t lg:pr-6">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="navbar navbar-expand-lg navbar-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cate" aria-controls="cate" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="navbar tablet navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#cate" aria-controls="cate" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="cate">
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </aside>
-        <article class="lg:w-3/4 border-t">
+        <article class="lg:w-3/4 md:w-3/4 main-shop border-t">
             <product :data="{{ $product }}" inline-template>
                 <section class="lg:flex lg:flex-wrap px-4 py-2 -mr-4 mt-3">
                     <article class="lg:w-1/2">
@@ -66,12 +66,13 @@
                         @if ($product->price_status == 1)
                             <p class="mt-2 text-2xl text-black font-medium">Price: {{ $product->price }} {{ $product->currency }}</p>
                         @endif
-                        <div class="flex mt-2">
+                        <div class="mt-2">
                             @foreach($product->variations as $variation)
-                                <div class="mr-3 relative">
-                                    <label class="text-xs" for="">{{ $variation->name }}</label> <br>
-                                    <variation @inquiry="upit"
+                                <div class="mr-3">
+                                    <label class="text-xs mb-0" for="">{{ $variation->name }}</label> <br>
+                                    <variation class="relative" @inquiry="upit"
                                                @varijacija="variacija"
+                                               @plug="utikac"
                                                @created="slika"
                                                :data="{{ $variation->subvariations }}"
                                                :product="{{ $product }}"
@@ -79,13 +80,13 @@
                                     </variation>
                                 </div>
                             @endforeach
-                                 <div class="{{ count($product->variations) == 0 ? '' : 'ml-1' }}">
-                                     <label class="text-xs">Quantity</label>
-                                     <input class="p-1 bg-gray-200 w-full" type="number" v-model="qty">
-                                 </div>
+                        </div>
+                        <div class="{{ count($product->variations) == 0 ? '' : 'ml-1' }} w-1/2">
+                            <label class="text-xs mb-0">Quantity</label><br>
+                            <input class="p-1 bg-gray-200 w-1/3" type="number" v-model="qty">
                         </div>
                         <div class="inquiry mt-6">
-                            <inquiry :img="img" :variacija="izmena" :kolicina="qty" :upit="inquirys" :product="{{ $product }}"></inquiry>
+                            <inquiry :img="img" :utikac="plu" :variacija="izmena" :kolicina="qty" :upit="inquirys" :product="{{ $product }}"></inquiry>
                         </div>
                         <div class="product-body mt-8">
                             {!! $product->body !!}

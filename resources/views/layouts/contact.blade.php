@@ -6,7 +6,7 @@
     <section class="container">
         <h1 class="text-3xl text-center uppercase font-serif p-4 text-black">Hafðu samband</h1>
         <hr>
-        <article class="lg:flex lg:flex-wrap py-10 border-b">
+        <article class="lg:flex lg:flex-wrap md:flex md:flex-wrap py-10 border-b">
             <div class="contact-addresse">
                 <h2 class="text-2xl uppercase font-serif text-black mb-8">GUBI</h2>
                 <p class="font-bold text-black mb-3"><strong>Opnunartími</strong></p>
@@ -21,7 +21,7 @@
                 {!! $map['html'] !!}
             </div>
         </article>
-        <article class="contact-forma lg:flex lg:flex-wrap py-10">
+        <article class="contact-forma lg:flex lg:flex-wrap md:flex md:flex-wrap py-10">
             <div class="contact-addresse">
                 <h2 class="text-3xl uppercase font-serif">Hafðu Samband</h2>
             </div>

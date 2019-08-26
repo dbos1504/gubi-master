@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 22, 2019 at 11:57 AM
+-- Generation Time: Aug 26, 2019 at 02:40 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.1
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `categories_products` (
   UNIQUE KEY `products_id` (`products_id`,`categories_id`),
   KEY `categories_products_categories_id_foreign` (`categories_id`),
   KEY `categories_products_product_id_foreign` (`products_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories_products`
@@ -132,7 +132,18 @@ INSERT INTO `categories_products` (`id`, `categories_id`, `products_id`, `create
 (54, 1, 23, '2019-08-22 05:43:30', '2019-08-22 05:43:30'),
 (55, 2, 23, '2019-08-22 05:43:30', '2019-08-22 05:43:30'),
 (56, 1, 24, '2019-08-22 05:48:28', '2019-08-22 05:48:28'),
-(57, 3, 24, '2019-08-22 05:48:28', '2019-08-22 05:48:28');
+(57, 3, 24, '2019-08-22 05:48:28', '2019-08-22 05:48:28'),
+(58, 1, 25, '2019-08-23 08:47:54', '2019-08-23 08:47:54'),
+(59, 3, 25, '2019-08-23 08:47:54', '2019-08-23 08:47:54'),
+(60, 1, 26, '2019-08-23 08:55:39', '2019-08-23 08:55:39'),
+(61, 3, 26, '2019-08-23 08:55:39', '2019-08-23 08:55:39'),
+(62, 1, 27, '2019-08-23 08:59:29', '2019-08-23 08:59:29'),
+(63, 3, 27, '2019-08-23 08:59:29', '2019-08-23 08:59:29'),
+(64, 1, 28, '2019-08-23 09:17:52', '2019-08-23 09:17:52'),
+(65, 3, 28, '2019-08-23 09:17:52', '2019-08-23 09:17:52'),
+(66, 2, 29, '2019-08-23 21:00:49', '2019-08-23 21:00:49'),
+(67, 2, 30, '2019-08-25 15:39:28', '2019-08-25 15:39:28'),
+(68, 2, 31, '2019-08-26 09:09:11', '2019-08-26 09:09:11');
 
 -- --------------------------------------------------------
 
@@ -165,8 +176,8 @@ CREATE TABLE IF NOT EXISTS `collections` (
 --
 
 INSERT INTO `collections` (`id`, `designers_id`, `image`, `alt`, `headline`, `collection_desc`, `inspiration_desc`, `location`, `where_to_buy`, `body`, `status`, `gallery_status`, `slider_name`, `created_at`, `updated_at`) VALUES
-(1, 5, 'bat-collection.png', 'THE BAT COLLECTION', 'THE BAT COLLECTION', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.', 'Get inspired by interior architects, professionals, renown restaurants & hotels or private homes.', 'bat-collection', '/subcategories/bat-collection', '<div class=\'w-9/12 mx-auto\'>\r\n<img src=\'/img/collections/bat.png\' alt=\'Bat collection\'>\r\n<p class=\'text-center my-10\'>\r\nThe Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.\r\n</p>\r\n</div>\r\n<hr>\r\n<div class=\'w-9/12 mx-auto\'>\r\n<h3 class=\"text-3xl text-center uppercase mb-3 font-serif p-4 text-black\">CREATE & COMBINE</h3>\r\n<p class=\'text-center mt-2 mb-10\'>\r\nThe Bat Chair can fulfil your dreams of a personalised chair, specifically made for your needs and interior style. In few steps, you are able to design a bespoke chair manufactured by GUBI just for you.\r\n</p>\r\n<img src=\'/img/collections/bat1.png\' alt=\'Bat collection\'>\r\n<h3 class=\"text-3xl text-center uppercase mb-3 font-serif mt-3 p-4 text-black\">BAT - FOR LIFE™</h3>\r\n<p class=\'text-center mt-1 mb-10\'>\r\nGUBI introduces the modular concept, BAT - For Life, which is similar to the successful BEETLE - For Life™ concept. The Bat Chair is a chair with a longer lifetime, as it can be adapted to needs and styles through its life. The modular structure makes it easy to change or replace textile upholstery. \r\n<br><br>\r\nA timeless armchair – The Bat Chair surprises by its matte texture and soft touch, its light expression combined with outstanding sitting comfort and durable material.\r\n</p>\r\n</div>', 1, 1, 'BAT DINING CHAIR COLLECTION', '2019-08-20 08:57:28', '2019-08-21 11:34:59'),
-(2, 5, 'beetle-collection.png', 'THE BEETLE COLLECTION', 'THE BEETLE COLLECTION', 'The inspiration of the Beetle Collection was found in the insect world as GamFratesi has been looking closely at the anatomy, aesthetics and movement of a beetle. Selecting a beetle as source of inspiration is based on the design duo\'s fascination of how the external shell supports and protects the creature\'s body, and its gentle and charming look. The design of the collection reinterprets the characteristic elements of the beetles’ sections: shape, shells, sutures, rigid outside and soft inside.', 'Get inspired by interior architects, professionals, renown restaurants & hotels, private homes featuring the Beetle Collection. The appealing design, outstanding comfort and unique customization possibilities of the Beetle are largely appreciated around the world.', 'beetle-collection', '/subcategories/beetle-collection', '<div class=\'w-9/12 mx-auto\'>\r\n<img src=\'/img/collections/beetle.png\' alt=\'Bat collection\'>\r\n<p class=\'text-center my-10\'>\r\nThe inspiration of the Beetle Collection was found in the insect world as GamFratesi has been looking closely at the anatomy, aesthetics and movement of a beetle. Selecting a beetle as source of inspiration is based on the design duo\'s fascination of how the external shell supports and protects the creature\'s body, and its gentle and charming look. The design of the collection reinterprets the characteristic elements of the beetles’ sections: shape, shells, sutures, rigid outside and soft inside.\r\n</p>\r\n</div>\r\n<div class=\'lg:flex\'>\r\n<div class=\'mr-4 single-collection-image\'>\r\n<img src=\'/img/collections/beetle2.png\' alt=\'Bat collection\'>\r\n</div>\r\n<div class=\'mr-4 single-collection-image\'>\r\n<img src=\'/img/collections/beetle3.png\' alt=\'Bat collection\'>\r\n</div>\r\n<div class=\'mr-4 single-collection-image\'>\r\n<img src=\'/img/collections/beetle4.png\' alt=\'Bat collection\'>\r\n</div>\r\n</div>\r\n<div class=\'w-9/12 mx-auto\'>\r\n<p class=\'text-center my-10\'>\r\nThe result is a collection that cunningly interprets the shell of this four-legged creature. The comfortable yet dynamic design makes this collection suitable for multiple environments whether it is in the home or the workplace. The Beetle Collection consists of Beetle Dining Chair, Beetle Stool, Beetle Lounge Chair, Beetle Footstool, Beetle Sofa as well as a Beetle Table.\r\n</p>\r\n</div>\r\n<hr>\r\n<div class=\'w-9/12 mx-auto\'>\r\n<h3 class=\"text-3xl text-center uppercase mb-3 font-serif p-4 text-black\">CREATE & COMBINE</h3>\r\n<p class=\'text-center mt-2 mb-10\'>\r\nThe Beetle Chair can fulfil your dreams of a personalised chair, specifically made for your needs and interior style. In few steps, you are able to design a bespoke chair manufactured by GUBI just for you.\r\n</p>\r\n<img src=\'/img/collections/beetle1.png\' alt=\'Bat collection\'>\r\n<h3 class=\"text-3xl text-center uppercase mb-3 font-serif mt-3 p-4 text-black\">BEETLE - FOR LIFE™</h3>\r\n<p class=\'text-center mt-1 mb-10\'>\r\nWith the wish of offering the Beetle Chair to people in different stages of their lives and prolonging the chair’s life span, GUBI is pleased to introduce the modular concept, Beetle – For Life. \r\n<br><br>\r\nThe unupholstered Beetle Chair in polypropylene plastic gives the chair a light expression with notable durability at an advantageous price level. The chair’s subtle matte texture offers a soft tactility where its outstanding sitting comfort is obtained.\r\n</p>\r\n</div>', 1, 0, 'BEETLE CHAIR COLLECTION', '2019-08-20 08:59:00', '2019-08-21 11:30:33');
+(1, 5, 'bat-collection.png', 'THE BAT COLLECTION', 'THE BAT COLLECTION', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.', 'Get inspired by interior architects, professionals, renown restaurants & hotels or private homes.', 'bat-collection', '/subcategories/bat-collection', '<div class=\'lg:w-9/12 mx-auto\'>\r\n<img src=\'/img/collections/bat.png\' alt=\'Bat collection\'>\r\n<p class=\'text-center my-10\'>\r\nThe Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.\r\n</p>\r\n</div>\r\n<hr>\r\n<div class=\'lg:w-9/12 mx-auto\'>\r\n<h3 class=\"text-3xl text-center uppercase mb-3 font-serif p-4 text-black\">CREATE & COMBINE</h3>\r\n<p class=\'text-center mt-2 mb-10\'>\r\nThe Bat Chair can fulfil your dreams of a personalised chair, specifically made for your needs and interior style. In few steps, you are able to design a bespoke chair manufactured by GUBI just for you.\r\n</p>\r\n<img src=\'/img/collections/bat1.png\' alt=\'Bat collection\'>\r\n<h3 class=\"text-3xl text-center uppercase mb-3 font-serif mt-3 p-4 text-black\">BAT - FOR LIFE™</h3>\r\n<p class=\'text-center mt-1 mb-10\'>\r\nGUBI introduces the modular concept, BAT - For Life, which is similar to the successful BEETLE - For Life™ concept. The Bat Chair is a chair with a longer lifetime, as it can be adapted to needs and styles through its life. The modular structure makes it easy to change or replace textile upholstery. \r\n<br><br>\r\nA timeless armchair – The Bat Chair surprises by its matte texture and soft touch, its light expression combined with outstanding sitting comfort and durable material.\r\n</p>\r\n</div>', 1, 1, 'BAT DINING CHAIR COLLECTION', '2019-08-20 08:57:28', '2019-08-21 11:34:59'),
+(2, 5, 'beetle-collection.png', 'THE BEETLE COLLECTION', 'THE BEETLE COLLECTION', 'The inspiration of the Beetle Collection was found in the insect world as GamFratesi has been looking closely at the anatomy, aesthetics and movement of a beetle. Selecting a beetle as source of inspiration is based on the design duo\'s fascination of how the external shell supports and protects the creature\'s body, and its gentle and charming look. The design of the collection reinterprets the characteristic elements of the beetles’ sections: shape, shells, sutures, rigid outside and soft inside.', 'Get inspired by interior architects, professionals, renown restaurants & hotels, private homes featuring the Beetle Collection. The appealing design, outstanding comfort and unique customization possibilities of the Beetle are largely appreciated around the world.', 'beetle-collection', '/subcategories/beetle-collection', '<div class=\'lg:w-9/12 mx-auto\'>\r\n<img src=\'/img/collections/beetle.png\' alt=\'Bat collection\'>\r\n<p class=\'text-center my-10\'>\r\nThe inspiration of the Beetle Collection was found in the insect world as GamFratesi has been looking closely at the anatomy, aesthetics and movement of a beetle. Selecting a beetle as source of inspiration is based on the design duo\'s fascination of how the external shell supports and protects the creature\'s body, and its gentle and charming look. The design of the collection reinterprets the characteristic elements of the beetles’ sections: shape, shells, sutures, rigid outside and soft inside.\r\n</p>\r\n</div>\r\n<div class=\'lg:flex beetle-collection-images\'>\r\n<div class=\'mr-4 single-collection-image\'>\r\n<img src=\'/img/collections/beetle2.png\' alt=\'Bat collection\'>\r\n</div>\r\n<div class=\'mr-4 single-collection-image\'>\r\n<img src=\'/img/collections/beetle3.png\' alt=\'Bat collection\'>\r\n</div>\r\n<div class=\'mr-4 single-collection-image\'>\r\n<img src=\'/img/collections/beetle4.png\' alt=\'Bat collection\'>\r\n</div>\r\n</div>\r\n<div class=\'lg:w-9/12 mx-auto\'>\r\n<p class=\'text-center my-10\'>\r\nThe result is a collection that cunningly interprets the shell of this four-legged creature. The comfortable yet dynamic design makes this collection suitable for multiple environments whether it is in the home or the workplace. The Beetle Collection consists of Beetle Dining Chair, Beetle Stool, Beetle Lounge Chair, Beetle Footstool, Beetle Sofa as well as a Beetle Table.\r\n</p>\r\n</div>\r\n<hr>\r\n<div class=\'lg:w-9/12 mx-auto\'>\r\n<h3 class=\"text-3xl text-center uppercase mb-3 font-serif p-4 text-black\">CREATE & COMBINE</h3>\r\n<p class=\'text-center mt-2 mb-10\'>\r\nThe Beetle Chair can fulfil your dreams of a personalised chair, specifically made for your needs and interior style. In few steps, you are able to design a bespoke chair manufactured by GUBI just for you.\r\n</p>\r\n<img src=\'/img/collections/beetle1.png\' alt=\'Bat collection\'>\r\n<h3 class=\"text-3xl text-center uppercase mb-3 font-serif mt-3 p-4 text-black\">BEETLE - FOR LIFE™</h3>\r\n<p class=\'text-center mt-1 mb-10\'>\r\nWith the wish of offering the Beetle Chair to people in different stages of their lives and prolonging the chair’s life span, GUBI is pleased to introduce the modular concept, Beetle – For Life. \r\n<br><br>\r\nThe unupholstered Beetle Chair in polypropylene plastic gives the chair a light expression with notable durability at an advantageous price level. The chair’s subtle matte texture offers a soft tactility where its outstanding sitting comfort is obtained.\r\n</p>\r\n</div>', 1, 0, 'BEETLE CHAIR COLLECTION', '2019-08-20 08:59:00', '2019-08-21 11:30:33');
 
 -- --------------------------------------------------------
 
@@ -182,7 +193,8 @@ CREATE TABLE IF NOT EXISTS `collections_images` (
   `alt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `collections_id` (`collections_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -207,7 +219,8 @@ CREATE TABLE IF NOT EXISTS `collections_options` (
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `collections_id` (`collections_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -236,7 +249,8 @@ CREATE TABLE IF NOT EXISTS `collections_options_images` (
   `headline` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `collections_options_id` (`collections_options_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -289,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `contacts`
@@ -374,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `inquiries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inquiries`
@@ -383,7 +397,10 @@ CREATE TABLE IF NOT EXISTS `inquiries` (
 INSERT INTO `inquiries` (`id`, `firstname`, `lastname`, `email`, `phone`, `products`, `variation`, `inq`, `qty`, `message`, `image`, `status`, `created_at`, `updated_at`) VALUES
 (34, 'dfgdfg', 'Boskovic', 'info@greyapartments.is', '345345', 'Bat Dining Chair - Un-Upholstered, Conic base', 'Black Base', 'Pure White Shell Black', '1', '345345345', 'white.webp', 1, '2019-08-17 20:28:24', '2019-08-17 20:35:40'),
 (36, 'dfgdfg', 'Boskovic', 'info@greyapartments.is', '12321312', '9602 Floor Lamp', '', 'Wicker Willow', '1', '1231231232', 'floor1.jpg', 1, '2019-08-19 05:49:06', '2019-08-19 05:49:17'),
-(37, 'Marko', 'Boskovic', 'test@gmail.com', '123123 4', '62 Desk', '', '', '1', 'test', 'desk.jpg', 1, '2019-08-19 11:21:22', '2019-08-19 11:21:27');
+(37, 'Marko', 'Boskovic', 'test@gmail.com', '123123 4', '62 Desk', '', '', '1', 'test', 'desk.jpg', 1, '2019-08-19 11:21:22', '2019-08-19 11:21:27'),
+(38, 'Marko', 'Boskovic', 'info@test.com', '1231234', 'Bat Dining Chair - Un-Upholstered, Conic base', 'Black Chrome Base', 'Pure white Shell', '2', 'Tests', 'pure-white.jpg', 1, '2019-08-23 20:48:48', '2019-08-23 20:48:53'),
+(39, 'Marko', 'Boskovic', 'test@gmail.com', '231234', 'BL1 Table Lamp - Dia.16 - Black Brass Base', 'EU Plug', 'EU Plug', '1', 'test', 'bl1.jpg', 1, '2019-08-26 12:18:28', '2019-08-26 12:18:35'),
+(40, 'Marko', 'Boskovic', 'test@gmail.com', '123123', 'BL1 Table Lamp - Dia.16 - Black Brass Base', 'UK Plug', 'Classic White Shade', '1', 'test', 'Bestlite_BL1_TableLamp_BlackBrass_ClassicWhite_1024x1024.webp', 1, '2019-08-26 12:24:51', '2019-08-26 12:24:57');
 
 -- --------------------------------------------------------
 
@@ -533,6 +550,28 @@ INSERT INTO `inspirations_images` (`id`, `inspirations_id`, `image`, `alt`, `cre
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `instagram_tokens`
+--
+
+DROP TABLE IF EXISTS `instagram_tokens`;
+CREATE TABLE IF NOT EXISTS `instagram_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `instagram_tokens`
+--
+
+INSERT INTO `instagram_tokens` (`id`, `token`, `created_at`, `updated_at`) VALUES
+(1, '8379178889.1677ed0.1751966ae72a4047a0c278b841dfd97a', NULL, '2019-08-23 08:18:08');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -542,7 +581,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -579,7 +618,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (28, '2019_08_20_104246_create_home_sliders_table', 20),
 (29, '2019_08_20_124850_create_collections_images_table', 21),
 (30, '2019_08_21_134448_create_collections_options_table', 22),
-(31, '2019_08_21_135606_create_collections_options_images_table', 23);
+(31, '2019_08_21_135606_create_collections_options_images_table', 23),
+(32, '2019_08_22_203331_create_sub_sub_variations_table', 24),
+(33, '2019_08_23_095257_create_instagrams_table', 25),
+(34, '2019_08_23_095745_create_instagram_tokens_table', 26),
+(35, '2019_08_23_131334_create_sub_variations_options_table', 27);
 
 -- --------------------------------------------------------
 
@@ -657,7 +700,8 @@ CREATE TABLE IF NOT EXISTS `news_images` (
   `alt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `news_id` (`news_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -714,36 +758,47 @@ CREATE TABLE IF NOT EXISTS `products` (
   `views` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `designers_id` (`designers_id`),
+  KEY `categories_id` (`categories_id`),
+  KEY `sub_category_id` (`sub_category_id`),
+  KEY `collections_id` (`collections_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `designers_id`, `categories_id`, `sub_category_id`, `collections_id`, `image`, `alt`, `headline`, `price`, `price_status`, `currency`, `location`, `body`, `status`, `views`, `created_at`, `updated_at`) VALUES
-(1, 0, 1, 2, 0, 'floor.jpg', 'Canvas', '9602 Floor Lamp', '949.00', 0, '€', '9602-floor-lamp', '<p>The 9602 Floor Lamp, also known as &ldquo;Chinese Hat&rdquo; was designed by Paavo Tynell in 1935 for the Hotel Aulanko. Characterised by its elegant and airy lampshade and rattan-covered stem, the 9602 Floor Lamp shows the designer&rsquo;s limitless imagination and unparalleled ability to create designs of enduring beauty. Adding a playful, exuberant quality to the top, balanced by the more static form of the base, the 9602 Floor Lamp is perfectly suited for creating a gentle ambient light in the domestic living room.</p>', 1, 119, '2019-08-12 19:32:28', '2019-08-22 07:52:53'),
-(2, 0, 1, 0, 0, 'adnet.jpg', 'Adnet Wall Mirror', 'Adnet Wall Mirror - Circular - Dia. 58 Alcantara', '854.00', 0, '€', 'adnet-wall-mirror-circular-dia.-58-alcantara', 'We proudly present the iconic Adnet Circulaire Mirror with a new and contemporary Alcantara frame to further extend this classic collection designed in 1946 by Jacques Adnet. The remarkable and extremely durable Alcantara fabric has a tactile feel and aesthetic qualities, that is pleasing to the eye.\r\n\r\nKnown for being an innovative thinker, Adnet was one of the first designers to integrate metal and glass in the structure and decoration of furniture. Accordingly, he designed the elegant, distinctive round mirror with equestrian inspired detailing - the Adnet Circulaire Mirror.\r\n\r\nThe timeless Adnet Circulaire Mirror adds a sculptural value and outstanding expression to any hallway, bathroom or living room.', 1, 146, '2019-08-13 18:05:48', '2019-08-22 06:30:56'),
-(4, 6, 1, 5, 0, 'bat1.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Remix 123', '909.00', 0, '€', 'bat-dining-chair,-conic-base-fully-upholstered-in-remix-123', '<p>The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat&rsquo;s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration. This Designers Choice product features a Antique Brass Conic base and upholstery in Remix, Kvadrat (123).</p>', 1, 37, '2019-08-13 19:17:33', '2019-08-22 06:36:05'),
-(5, 6, 1, 5, 1, 'bat-black.jpg', 'Bat Dining Chair', 'Bat Dining Chair - Un-Upholstered, Conic base', '309.00', 0, '€', 'bat-dining-chair-un-upholstered-conic-base', '<p>The Bat Dining Chair, designed by Danish-Italian design-duo GamFratesi, carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat&rsquo;s wingspan. Balancing between the traditional and surprising, the Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism while also carrying a strong embedded story and associations expressed in a minimalist idiom. The wide range of upholstery options and different bases makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.</p>', 1, 404, '2019-08-14 18:24:34', '2019-08-22 09:41:01'),
-(6, 0, 6, 0, 0, 'bed.jpg', 'Stay Bed', 'Stay Bed - Fully Upholstered, Low back', '3,886.00', 0, '€', 'stay-bed-fully-upholstered-low-back', 'Stay here, stay with me, stay relaxed, stay and read... with the Stay Bed you do not want to do anything else than stay in bed. With its soft shape and gentle lines, it is a statement furniture for the private home and hotels. The new Stay Bed, is perfectly suited for relaxed times, and unifies luxury with comfort to enjoy the ultimate homely feeling, even though you are in a hotel. The organic shape gives a contemporary look and is almost like a singular continuous pencil stroke wrapping a solid texture. Combine it with the Stay Lounge Chair to get the optimal relaxation.\r\n\r\nSlatted bed base and mattresses not included. Fits box, sprung and foam mattresses. If foam or sprung mattress is used, a slatted bed base is needed. Box mattresses can be used directly in the frame.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 62, '2019-08-15 06:01:45', '2019-08-22 06:29:49'),
-(7, 0, 8, 0, 0, 'metgot.jpg', 'Matégot Flower Pot', 'Matégot Flower Pot', '99.00', 0, '€', 'mategot-flower-pot', 'Designed in 1953 during Mathieu Matégot’s heydays, the Matégot Flower Pot is a proof of his success in turning perforated metal sheet into a refined, elegant material in which design, art and engineering are perfectly combined. This distinctive fabric-like metal sheet, which Matégot named Rigitulle, is crinkled and results in an airy grace that contributes to its genuine sculpture. \r\n\r\nAvailable in three different sizes, the Matégot Flower Pot allows playing with its appearance - whether the beauty is seen in pairs of the same sizes, one flower pot on its own or a number of flower pots in different sizes to create a perfect asymmetry. The largest pot can with its multipurpose nature, advantageously, also be used as a wastepaper basket.\r\n\r\nAvailable in Venetian Gold in Ø15.5 cm and Ø21 cm, and Midnight Black in all sizes.', 1, 55, '2019-08-15 10:16:46', '2019-08-22 09:44:55'),
+(1, 0, 1, 2, 0, 'floor.jpg', 'Canvas', '9602 Floor Lamp', '949.00', 0, '€', '9602-floor-lamp', '<p>The 9602 Floor Lamp, also known as &ldquo;Chinese Hat&rdquo; was designed by Paavo Tynell in 1935 for the Hotel Aulanko. Characterised by its elegant and airy lampshade and rattan-covered stem, the 9602 Floor Lamp shows the designer&rsquo;s limitless imagination and unparalleled ability to create designs of enduring beauty. Adding a playful, exuberant quality to the top, balanced by the more static form of the base, the 9602 Floor Lamp is perfectly suited for creating a gentle ambient light in the domestic living room.</p>', 1, 139, '2019-08-12 19:32:28', '2019-08-26 11:27:47'),
+(2, 0, 1, 0, 0, 'adnet.jpg', 'Adnet Wall Mirror', 'Adnet Wall Mirror - Circular - Dia. 58 Alcantara', '854.00', 0, '€', 'adnet-wall-mirror-circular-dia.-58-alcantara', 'We proudly present the iconic Adnet Circulaire Mirror with a new and contemporary Alcantara frame to further extend this classic collection designed in 1946 by Jacques Adnet. The remarkable and extremely durable Alcantara fabric has a tactile feel and aesthetic qualities, that is pleasing to the eye.\r\n\r\nKnown for being an innovative thinker, Adnet was one of the first designers to integrate metal and glass in the structure and decoration of furniture. Accordingly, he designed the elegant, distinctive round mirror with equestrian inspired detailing - the Adnet Circulaire Mirror.\r\n\r\nThe timeless Adnet Circulaire Mirror adds a sculptural value and outstanding expression to any hallway, bathroom or living room.', 1, 157, '2019-08-13 18:05:48', '2019-08-26 11:44:00'),
+(4, 6, 1, 5, 0, 'bat1.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Remix 123', '909.00', 0, '€', 'bat-dining-chair,-conic-base-fully-upholstered-in-remix-123', '<p>The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat&rsquo;s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration. This Designers Choice product features a Antique Brass Conic base and upholstery in Remix, Kvadrat (123).</p>', 1, 38, '2019-08-13 19:17:33', '2019-08-25 11:07:19'),
+(5, 6, 1, 5, 1, 'bat-black.jpg', 'Bat Dining Chair', 'Bat Dining Chair - Un-Upholstered, Conic base', '309.00', 0, '€', 'bat-dining-chair-un-upholstered-conic-base', '<p>The Bat Dining Chair, designed by Danish-Italian design-duo GamFratesi, carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat&rsquo;s wingspan. Balancing between the traditional and surprising, the Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism while also carrying a strong embedded story and associations expressed in a minimalist idiom. The wide range of upholstery options and different bases makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.</p>', 1, 713, '2019-08-14 18:24:34', '2019-08-26 12:36:57'),
+(6, 0, 6, 0, 0, 'bed.jpg', 'Stay Bed', 'Stay Bed - Fully Upholstered, Low back', '3,886.00', 0, '€', 'stay-bed-fully-upholstered-low-back', 'Stay here, stay with me, stay relaxed, stay and read... with the Stay Bed you do not want to do anything else than stay in bed. With its soft shape and gentle lines, it is a statement furniture for the private home and hotels. The new Stay Bed, is perfectly suited for relaxed times, and unifies luxury with comfort to enjoy the ultimate homely feeling, even though you are in a hotel. The organic shape gives a contemporary look and is almost like a singular continuous pencil stroke wrapping a solid texture. Combine it with the Stay Lounge Chair to get the optimal relaxation.\r\n\r\nSlatted bed base and mattresses not included. Fits box, sprung and foam mattresses. If foam or sprung mattress is used, a slatted bed base is needed. Box mattresses can be used directly in the frame.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 66, '2019-08-15 06:01:45', '2019-08-25 17:02:07'),
+(7, 0, 8, 0, 0, 'metgot.jpg', 'Matégot Flower Pot', 'Matégot Flower Pot', '99.00', 0, '€', 'mategot-flower-pot', 'Designed in 1953 during Mathieu Matégot’s heydays, the Matégot Flower Pot is a proof of his success in turning perforated metal sheet into a refined, elegant material in which design, art and engineering are perfectly combined. This distinctive fabric-like metal sheet, which Matégot named Rigitulle, is crinkled and results in an airy grace that contributes to its genuine sculpture. \r\n\r\nAvailable in three different sizes, the Matégot Flower Pot allows playing with its appearance - whether the beauty is seen in pairs of the same sizes, one flower pot on its own or a number of flower pots in different sizes to create a perfect asymmetry. The largest pot can with its multipurpose nature, advantageously, also be used as a wastepaper basket.\r\n\r\nAvailable in Venetian Gold in Ø15.5 cm and Ø21 cm, and Midnight Black in all sizes.', 1, 93, '2019-08-15 10:16:46', '2019-08-26 12:36:29'),
 (8, 0, 8, 0, 0, 'bowl.jpg', 'Matégot Bowl', 'Mategot Bowl', '159.00', 0, '€', 'mategot-bowl', 'Ahead of his time and with a modern spirit, Mathieu Matégot designed his contemporary Matégot bowl in 1953. The characteristic appearance of the transparent metal adds a light expression to this unique and spacious fruit bowl. As for many of Matégot\'s designs, the Matégot Bowl is trademarked by the solid yet light material Rigitulle; a thin perforated metal sheet tantamount to metal lace, where the inspiration is drawn from the material itself to explore all sorts of expression possible to create. \r\n\r\nThis luxurious material permitted Matégot to revamp the regular fruit bowl into an artistic and decorative bowl that besides from storing fruit in an elegant way, also acts as a piece of great design adorning any room. The Matégot Bowl is an easy and beautiful way to add a pop of colour to any setting.', 1, 17, '2019-08-15 10:19:14', '2019-08-22 06:34:03'),
-(9, 0, 1, 12, 0, 'coffe.jpg', 'Adnet Coffee Table', 'Adnet Coffee Table - Circular, Ø70', '1,386.00', 0, '€', 'adnet-coffee-table-circular-070', 'The Adnet Coffee Table was originally designed by French Modernist Jacques Adnet (1901 - 1981) in the 1950’s. Adnet was always ahead of contemporary trends and became famous for his avant-garde designs and unusual combination of leather, metal and glass. The iconic Adnet Coffee Table exemplifies everything the French architect and interior designer stands for and perfectly merges his Art Deco style with his strong commitment to functionalist principles.\r\n\r\nPlaced on three soft curved metal legs, elegantly meeting in the heart of the table, the round glass top is edged with a hand-made leather rim and adorned with three gilded brass rings. The timeless design of the Adnet Coffee Table embodies modern materials and superb craftsmanship and adds a distinctive value to any home or professional space.', 1, 53, '2019-08-15 18:01:43', '2019-08-22 07:29:37'),
-(10, 6, 1, 5, 0, 'wood.jpg', 'Bat Dining Chair, Wood Base', 'Bat Dining Chair, Wood Base - Front Upholstered in Crisp 04115', '559.00', 0, '€', 'bat-dining-chair,-wood-base-front-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan.\r\n\r\nThe wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.\r\n\r\nDue to its unique design, the textile of the front upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Black Stained Beech wood base, New Beige Shell and upholstery in Crisp, Gabriel (04115).', 1, 52, '2019-08-16 10:37:24', '2019-08-22 06:36:09'),
-(11, 4, 3, 6, 0, 'carlo.png', 'CDC.1 Lounge Chair', 'CDC.1 Lounge Chair', '2,186.00', 0, '€', 'cdc.1-lounge-chair', 'CDC.1 Lounge Chair was designed by Carlo De Carli in 1954 and features the elegantly minimalist design style, typical of the era.\r\n\r\nThe CDC.1 Lounge Chair meets the ground in a graceful and slender way; its arms swooping like wings, giving the furniture a sense of poetic depth, whilst carrying a strong character. With its sleek silhouette and dynamic, angular lines the lounge chair marries streamlined functionalism with playful whimsy and is well-suited for conversation and relaxation in the modern residential environment.', 1, 5, '2019-08-16 20:50:39', '2019-08-17 12:30:21'),
+(9, 0, 1, 12, 0, 'coffe.jpg', 'Adnet Coffee Table', 'Adnet Coffee Table - Circular, Ø70', '1,386.00', 0, '€', 'adnet-coffee-table-circular-070', 'The Adnet Coffee Table was originally designed by French Modernist Jacques Adnet (1901 - 1981) in the 1950’s. Adnet was always ahead of contemporary trends and became famous for his avant-garde designs and unusual combination of leather, metal and glass. The iconic Adnet Coffee Table exemplifies everything the French architect and interior designer stands for and perfectly merges his Art Deco style with his strong commitment to functionalist principles.\r\n\r\nPlaced on three soft curved metal legs, elegantly meeting in the heart of the table, the round glass top is edged with a hand-made leather rim and adorned with three gilded brass rings. The timeless design of the Adnet Coffee Table embodies modern materials and superb craftsmanship and adds a distinctive value to any home or professional space.', 1, 73, '2019-08-15 18:01:43', '2019-08-26 08:02:51'),
+(10, 6, 1, 5, 0, 'wood.jpg', 'Bat Dining Chair, Wood Base', 'Bat Dining Chair, Wood Base - Front Upholstered in Crisp 04115', '559.00', 0, '€', 'bat-dining-chair,-wood-base-front-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan.\r\n\r\nThe wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts.\r\n\r\nDue to its unique design, the textile of the front upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Black Stained Beech wood base, New Beige Shell and upholstery in Crisp, Gabriel (04115).', 1, 55, '2019-08-16 10:37:24', '2019-08-26 08:57:29'),
+(11, 4, 3, 6, 0, 'carlo.png', 'CDC.1 Lounge Chair', 'CDC.1 Lounge Chair', '2,186.00', 0, '€', 'cdc.1-lounge-chair', 'CDC.1 Lounge Chair was designed by Carlo De Carli in 1954 and features the elegantly minimalist design style, typical of the era.\r\n\r\nThe CDC.1 Lounge Chair meets the ground in a graceful and slender way; its arms swooping like wings, giving the furniture a sense of poetic depth, whilst carrying a strong character. With its sleek silhouette and dynamic, angular lines the lounge chair marries streamlined functionalism with playful whimsy and is well-suited for conversation and relaxation in the modern residential environment.', 1, 6, '2019-08-16 20:50:39', '2019-08-25 17:46:38'),
 (12, 3, 2, 4, 0, 'mat.webp', 'Semi Pendant', 'Semi Pendant - Dia.30', '349.00', 0, '€', 'semi-pendant-dia-30', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 46, '2019-08-17 16:10:21', '2019-08-20 11:50:31'),
 (13, 3, 2, 4, 0, 'bond.jpg', 'Semi Pendant - Dia.47', 'Semi Pendant - Dia.47', '579.00', 0, '€', 'semi-pendant-dia-47', 'The Semi Pendant is a unique pendant lamp, based on two quarter-circles put together, back-to-back. It\'s distinctive arch-shaped, enamelled metal shade creates a diffused, cone-shaped light, ideal over a dining table or kitchen work surface. With its lightness of form, unique timeless design and range of colours and sizes, the Semi Pendant is extremely versatile and well suited to both private and public spaces.\r\n\r\nThe Semi Pendant was designed in 1968 as a product of the creative partnership between Claus Bonderup and Torsten Thorup. Reacting against the soft organic forms, the so-called cosy era, that was dominating Denmark at the time, Bonderup and Thorup wanted to create a lamp that incorporated sharp, clean lines and a geometric shape. Their design was submitted for a competition at the Royal Danish Academy of Fine Arts, School of Architecture and won first prize. In the 1980’s the pendant achieved great success and became, at that time, the best-selling Danish design and gained worldwide recognition and iconic status.', 1, 24, '2019-08-17 16:40:58', '2019-08-22 05:45:47'),
-(14, 8, 5, 16, 0, 'desk.jpg', '62 Desk', '62 Desk', '2,919.00', 0, '€', '62-desk', '<p>Designed in 1952 by Greta M. Grossman, but named the 62 Desk as it was deemed to be ten years ahead of its time. The 62 Desk appears characteristically light in weight and appears to defy gravity with its quirky asymmetric line and slender metal legs balancing on small wooden feet, a characteristic trait of its designer.</p>\r\n<p>&nbsp;</p>\r\n<p>Its exceptional shape is emphasized with the elegant pairing of materials. The desk is made in American walnut and provided with a deep, black full gloss finish on table top and cabinet door. The desk features one left cabinet comprising of two low drawers and one high drawer.</p>', 1, 7, '2019-08-19 11:15:15', '2019-08-22 09:20:37'),
-(15, 0, 2, 1, 0, 'b-4.jpg', 'B-4 Table Lamp', 'B-4 Table Lamp', '299.00', 0, '€', 'b-4-table-lamp', 'The B-4 Table Lamp by Greta M. Grossman was designed in 1945 and bears her whimsical and powerful signature style. With playful angles and geometric elements, the table lamp is characterized by its colourful and movable visors allowing light to diffuse softly around any table it stands on. The lamp fits effortlessly into almost any environment, adding a dash of American modernism panache to the room. The silhouette of the B-4 Table Lamp, with its stilt base and alternating colour panels, resembles some of Greta M. Grossman’s most iconic architecture more than any other design item from her career. Typically, her houses were perched high up on stilts with cantilevered decks and walls of glass to take in the magnificent hillside views of Southern California – and with a fanciful style the B-4 Table Lamp beautifully reflects her modernist design principles.', 1, 8, '2019-08-20 08:27:16', '2019-08-21 18:15:22'),
-(16, 0, 1, 6, 0, 'pacha.webp', 'Pacha Lounge Chair', 'Pacha Lounge Chair - Fully Upholstered', '1,749.00', 0, '€', 'pacha-lounge-chair-fully-upholstered', 'Legendary French designer Pierre Paulin originally designed the Pacha Chair in 1975. Paulin designed the chair in harmony with the changing design style of its period, replacing the austerity of post-war design with a new, vigorous approach.\r\n\r\nPaulin managed to give a real elegance to the rounded forms of the Pacha Chair by finding the perfect proportions, raising it lightly on its base and tracing in the foam and upholstery with stitching lines inclined inwards. Through pieces like the Pacha Chair, Pierre Paulin pioneered low-level living; a modern way of living and sitting on the floor, by getting rid of chair legs.\r\n\r\nWith comfort as the constant starting-point in his designs, the curvaceous, whimsical and organic shapes of the Pacha Chair is conceived to serve the body, providing both comfort and cosiness. Looking as contemporary today as when it first was designed, the Pacha Chair is an honest, functional piece that brings life and character to any interior setting.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 30, '2019-08-20 11:43:42', '2019-08-21 18:51:23'),
-(17, 0, 1, 1, 0, 'lamp.jpg', '5321 Table Lamp', '5321 Table Lamp', '509.00', 0, '€', '5321-table-lamp', 'Paavo Tynell’s fanciful take on nature is gracefully echoed in the 5321 Table Lamp, designed by the Finnish designer in 1938. Under the distinctive shell-inspired brass shade, the bulb subtly appears from beneath; a picturesque detail resembling the desirable sea shell pearl and making the 5321 Table Lamp a perfect example on how Tynell brought a playful nature and romance to the simplified style of mid-century modernism. Blending timeless aesthetic with a unique sense of form, the 5321 Table Lamp adds an exquisite character to complement any modern space. Both decorative and functional, the lamp is a balance of elegance and curiosity, providing a design that is at once subtle and surprising.', 1, 8, '2019-08-20 11:54:11', '2019-08-22 06:43:18'),
-(18, 6, 3, 5, 2, 'beetle.jpg', 'Beetle Dining Chair', 'Beetle Dining Chair - Seat Upholstered - Conic base', '449.00', 0, '€', 'beetle-dining-chair-seat-upholstered-conic-base', 'Taking inspiration from the four-legged creature - the beetle, GamFratesi has been looking closely at its characteristic elements: shape, shells, sutures, rigid outside and soft inside. With its polypropylene plastic shell and seat upholstery, the Beetle Chair has a light expression with an additional comfort. Thanks to its wide spectrum of colour options and upholstery possibilities, the chair encourages for personalisation. Due to its unique design, the seat upholstery can also be changed with time to give the chair a different expression and new life to the interior decoration. The comfortable yet dynamic design makes the Beetle Chair suitable for multiple environments whether it is in the home or the workplace.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 10, '2019-08-21 08:39:59', '2019-08-21 19:05:37'),
-(19, 6, 3, 5, 2, 'beetle1.jpg', 'Beetle Dining Chair', 'Beetle Dining Chair - Fully Upholstered - Conic base', '829.00', 0, '€', 'beetle-dining-chair-fully-upholstered-conic-base', 'The Beetle Chair has since its introduction in 2013 being well received by end-consumers as well as interior architects. Due to its appealing design, outstanding comfort and unique customisation possibilities, the chair can be seen in many of the most renown restaurants around the world. The fully upholstered chair carries strong references to the design duo GamFratesi\'s inspirational source; the insect world, more specific the world of beetles. Not just the name indicates their inspiration, but also the characteristic elements of the beetles’ sections have been interpreted - shape, shells, sutures, rigid outside and soft inside. The wide range of upholstery options and different bases make it possible to put your personal touch to the chair and create one of its kind.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 6, '2019-08-21 09:18:46', '2019-08-21 18:50:58'),
+(14, 8, 5, 16, 0, 'desk.jpg', '62 Desk', '62 Desk', '2,919.00', 0, '€', '62-desk', '<p>Designed in 1952 by Greta M. Grossman, but named the 62 Desk as it was deemed to be ten years ahead of its time. The 62 Desk appears characteristically light in weight and appears to defy gravity with its quirky asymmetric line and slender metal legs balancing on small wooden feet, a characteristic trait of its designer.</p>\r\n<p>&nbsp;</p>\r\n<p>Its exceptional shape is emphasized with the elegant pairing of materials. The desk is made in American walnut and provided with a deep, black full gloss finish on table top and cabinet door. The desk features one left cabinet comprising of two low drawers and one high drawer.</p>', 1, 8, '2019-08-19 11:15:15', '2019-08-24 20:55:50'),
+(15, 0, 2, 1, 0, 'b-4.jpg', 'B-4 Table Lamp', 'B-4 Table Lamp', '299.00', 0, '€', 'b-4-table-lamp', 'The B-4 Table Lamp by Greta M. Grossman was designed in 1945 and bears her whimsical and powerful signature style. With playful angles and geometric elements, the table lamp is characterized by its colourful and movable visors allowing light to diffuse softly around any table it stands on. The lamp fits effortlessly into almost any environment, adding a dash of American modernism panache to the room. The silhouette of the B-4 Table Lamp, with its stilt base and alternating colour panels, resembles some of Greta M. Grossman’s most iconic architecture more than any other design item from her career. Typically, her houses were perched high up on stilts with cantilevered decks and walls of glass to take in the magnificent hillside views of Southern California – and with a fanciful style the B-4 Table Lamp beautifully reflects her modernist design principles.', 1, 32, '2019-08-20 08:27:16', '2019-08-26 07:50:41'),
+(16, 0, 1, 6, 0, 'pacha.webp', 'Pacha Lounge Chair', 'Pacha Lounge Chair - Fully Upholstered', '1,749.00', 0, '€', 'pacha-lounge-chair-fully-upholstered', 'Legendary French designer Pierre Paulin originally designed the Pacha Chair in 1975. Paulin designed the chair in harmony with the changing design style of its period, replacing the austerity of post-war design with a new, vigorous approach.\r\n\r\nPaulin managed to give a real elegance to the rounded forms of the Pacha Chair by finding the perfect proportions, raising it lightly on its base and tracing in the foam and upholstery with stitching lines inclined inwards. Through pieces like the Pacha Chair, Pierre Paulin pioneered low-level living; a modern way of living and sitting on the floor, by getting rid of chair legs.\r\n\r\nWith comfort as the constant starting-point in his designs, the curvaceous, whimsical and organic shapes of the Pacha Chair is conceived to serve the body, providing both comfort and cosiness. Looking as contemporary today as when it first was designed, the Pacha Chair is an honest, functional piece that brings life and character to any interior setting.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 35, '2019-08-20 11:43:42', '2019-08-26 08:03:36'),
+(17, 0, 1, 1, 0, 'lamp.jpg', '5321 Table Lamp', '5321 Table Lamp', '509.00', 0, '€', '5321-table-lamp', 'Paavo Tynell’s fanciful take on nature is gracefully echoed in the 5321 Table Lamp, designed by the Finnish designer in 1938. Under the distinctive shell-inspired brass shade, the bulb subtly appears from beneath; a picturesque detail resembling the desirable sea shell pearl and making the 5321 Table Lamp a perfect example on how Tynell brought a playful nature and romance to the simplified style of mid-century modernism. Blending timeless aesthetic with a unique sense of form, the 5321 Table Lamp adds an exquisite character to complement any modern space. Both decorative and functional, the lamp is a balance of elegance and curiosity, providing a design that is at once subtle and surprising.', 1, 11, '2019-08-20 11:54:11', '2019-08-24 20:56:08'),
+(18, 6, 3, 5, 2, 'beetle.jpg', 'Beetle Dining Chair', 'Beetle Dining Chair - Seat Upholstered - Conic base', '449.00', 0, '€', 'beetle-dining-chair-seat-upholstered-conic-base', 'Taking inspiration from the four-legged creature - the beetle, GamFratesi has been looking closely at its characteristic elements: shape, shells, sutures, rigid outside and soft inside. With its polypropylene plastic shell and seat upholstery, the Beetle Chair has a light expression with an additional comfort. Thanks to its wide spectrum of colour options and upholstery possibilities, the chair encourages for personalisation. Due to its unique design, the seat upholstery can also be changed with time to give the chair a different expression and new life to the interior decoration. The comfortable yet dynamic design makes the Beetle Chair suitable for multiple environments whether it is in the home or the workplace.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 16, '2019-08-21 08:39:59', '2019-08-25 11:14:57'),
+(19, 6, 3, 5, 2, 'beetle1.jpg', 'Beetle Dining Chair', 'Beetle Dining Chair - Fully Upholstered - Conic base', '829.00', 0, '€', 'beetle-dining-chair-fully-upholstered-conic-base', 'The Beetle Chair has since its introduction in 2013 being well received by end-consumers as well as interior architects. Due to its appealing design, outstanding comfort and unique customisation possibilities, the chair can be seen in many of the most renown restaurants around the world. The fully upholstered chair carries strong references to the design duo GamFratesi\'s inspirational source; the insect world, more specific the world of beetles. Not just the name indicates their inspiration, but also the characteristic elements of the beetles’ sections have been interpreted - shape, shells, sutures, rigid outside and soft inside. The wide range of upholstery options and different bases make it possible to put your personal touch to the chair and create one of its kind.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 7, '2019-08-21 09:18:46', '2019-08-23 06:44:45'),
 (20, 6, 3, 10, 1, 'bat.jpg', 'Bat Meeting Chair', 'Bat Meeting Chair - Un-upholstered - 4-Star Swivel Base', '469.00', 0, '€', 'bat-meeting-chair-un-upholstered-4-star-swivel-base', 'The Bat Meeting Chair fulfils the natural balance between corporate necessity and formal elegance. While the base embodies clean design with great functionality, the fully moulded seat with armrest ensures high level of comfort. The features are paired and provide a sophisticated expression to any meeting room or home office.\r\n\r\nFront Upholstered: The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Meeting Chair fit perfectly into a variety of public and private contexts.\r\nDue to its unique design, the textile of the front upholstered Bat Meeting Chair can be changed with time to give the chair a different expression and new life to the interior decoration. \r\nFully Upholstered: The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Meeting Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Meeting Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\nThe Bat Meeting Chair is designed by GamFratesi and carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat’s wingspan.', 1, 8, '2019-08-21 10:02:47', '2019-08-21 16:38:07'),
-(22, 6, 1, 6, 1, 'batt.webp', 'Bat Lounge Chair', 'Bat Lounge Chair - Fully Upholstered, High back, Conic base', '2,349.00', 0, '€', 'bat-lounge-chair-fully-upholstered-high-back-conic-base', 'The new Bat Lounge Chair, which comes in a high- and low-back version, is designed by Danish-Italian design-duo GamFratesi. The chair carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat’s wingspan.\r\n\r\n\r\nBalancing between the traditional and surprising, the Bat Lounge Chair is created with a Scandinavian approach to crafts, simplicity and functionalism while also carrying a strong embedded story and associations expressed in a minimalist idiom. The wide range of upholstery options and different bases makes the Bat Lounge Chair fit perfectly into a variety of public and private contexts.\r\n\r\n \r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 8, '2019-08-22 05:38:31', '2019-08-22 05:59:41'),
-(23, 0, 1, 4, 0, 'pen.jpg', 'Collar Pendant', 'Collar Pendant Ø42', '509.00', 0, '€', 'collar-pendant-ø42', 'The Collar Pendant, designed by the German designer Sebastian Herkner, is a series of pendant lights where special attention has been paid on its details. The pendant is made of mouth-blown glass and crafted in line with old traditional techniques that gives every lamp its unique and iconic look. Its strong character is achieved by the combination of the soft rounded glass, with a matte surface, and a steel \"collar\", used as a reflector, that together perfectly diffuses a warm light that sets just the right lighting atmosphere.\r\n\r\nThe lamp looks great as a single feature alone over a table, but by mixing colours and large and small Collar Pendants, it gives possibilities for strong personal and playful installations.', 1, 4, '2019-08-22 05:43:30', '2019-08-22 05:45:45'),
-(24, 6, 1, 5, 1, 'conicc.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Crisp 04115', '869.00', 0, '€', 'bat-dining-chair-conic-base-fully-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Antique Brass Conic base and upholstery in Crisp, Gabriel (04115).', 1, 4, '2019-08-22 05:48:28', '2019-08-22 05:59:47');
+(22, 6, 1, 6, 1, 'batt.webp', 'Bat Lounge Chair', 'Bat Lounge Chair - Fully Upholstered, High back, Conic base', '2,349.00', 0, '€', 'bat-lounge-chair-fully-upholstered-high-back-conic-base', 'The new Bat Lounge Chair, which comes in a high- and low-back version, is designed by Danish-Italian design-duo GamFratesi. The chair carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat’s wingspan.\r\n\r\n\r\nBalancing between the traditional and surprising, the Bat Lounge Chair is created with a Scandinavian approach to crafts, simplicity and functionalism while also carrying a strong embedded story and associations expressed in a minimalist idiom. The wide range of upholstery options and different bases makes the Bat Lounge Chair fit perfectly into a variety of public and private contexts.\r\n\r\n \r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 12, '2019-08-22 05:38:31', '2019-08-26 08:03:42'),
+(23, 0, 1, 4, 0, 'pen.jpg', 'Collar Pendant', 'Collar Pendant Ø42', '509.00', 0, '€', 'collar-pendant-ø42', 'The Collar Pendant, designed by the German designer Sebastian Herkner, is a series of pendant lights where special attention has been paid on its details. The pendant is made of mouth-blown glass and crafted in line with old traditional techniques that gives every lamp its unique and iconic look. Its strong character is achieved by the combination of the soft rounded glass, with a matte surface, and a steel \"collar\", used as a reflector, that together perfectly diffuses a warm light that sets just the right lighting atmosphere.\r\n\r\nThe lamp looks great as a single feature alone over a table, but by mixing colours and large and small Collar Pendants, it gives possibilities for strong personal and playful installations.', 1, 7, '2019-08-22 05:43:30', '2019-08-25 11:01:51'),
+(24, 6, 1, 5, 1, 'conicc.jpg', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Crisp 04115', '869.00', 0, '€', 'bat-dining-chair-conic-base-fully-upholstered-in-crisp-04115', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Antique Brass Conic base and upholstery in Crisp, Gabriel (04115).', 1, 8, '2019-08-22 05:48:28', '2019-08-23 06:44:30'),
+(25, 6, 1, 5, 0, 'green_bat.webp', 'Bat Dining Chair', 'Bat Dining Chair, Conic Base - Fully Upholstered in Remix 412', '909.00', 0, '€', 'bat-dining-chair-conic-base-fully-upholstered-in-remix-412', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Antique Brass Conic base and upholstery in Remix, Kvadrat (412).', 1, 3, '2019-08-23 08:47:54', '2019-08-23 08:49:05'),
+(26, 6, 1, 5, 0, 'brown_bat.jpg', 'Image', 'Bat Dining Chair Conic Base - Fully Upholstered in Chivasso CH1249/495', '709.00', 0, '€', 'bat-dining-chair-conic-base-fully-upholstered-in-chivasso-ch1249-495', 'The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat’s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration.\r\n\r\nThis Designers Choice product features a Black Matt Conic base and upholstery in Hot Madison Reloaded, Chivasso (CH1249/495).', 1, 2, '2019-08-23 08:55:39', '2019-08-23 08:59:01'),
+(27, 6, 1, 5, 0, 'dark_brown.jpg', 'Image', 'Bat Dining Chair, Conic Base - Fully Upholstered in Chivasso CH1249/715', '709.00', 0, '€', 'bat-dining-chair-conic-base-fully-upholstered-in-chivasso-ch1249-715', '<p>The Bat Dining Chair is created with a Scandinavian approach to crafts, simplicity and functionalism by Danish-Italian design-duo GamFratesi. The embracing shell with armrests equally embodies both aesthetics and comfort while carrying strong references to the interesting and distinctive shape of a bat&rsquo;s wingspan. The wide range of shell colours, upholstery options and diverse bases provides for a personalised expression that makes the Bat Dining Chair fit perfectly into a variety of public and private contexts. Due to its unique design, the textile of the fully upholstered Bat Dining Chair can be changed with time to give the chair a different expression and new life to the interior decoration. This Designers Choice product features a Black Matt Conic base and upholstery in Hot Madison Reloaded, Chivasso (CH1249/715).</p>', 1, 2, '2019-08-23 08:59:29', '2019-08-23 09:01:14'),
+(28, 6, 1, 6, 1, 'pink_lounge.jpg', 'Bat Lounge Chair', 'Bat Lounge Chair - Fully Upholstered, Low back, Wood base', '1,836.00', 0, '€', 'bat-lounge-chair-fully-upholstered-low-back-wood-base', 'The new Bat Lounge Chair, which comes in a high- and low-back version, is designed by Danish-Italian design-duo GamFratesi. The chair carries strong references to the interesting characteristics of bats, with its inviting, distinctive shell reminiscent of the shape of a bat’s wingspan. Balancing between the traditional and surprising, the Bat Lounge Chair is created with a Scandinavian approach to crafts, simplicity and functionalism while also carrying a strong embedded story and associations expressed in a minimalist idiom. The wide range of upholstery options and different bases makes the Bat Lounge Chair fit perfectly into a variety of public and private contexts.\r\n\r\nUpholstered products are not available for purchase online. Please contact us or find a dealer.', 1, 19, '2019-08-23 09:17:52', '2019-08-26 08:03:57'),
+(29, 24, 2, 1, 0, 'gravitt.jpg', 'Gravity Table Lamp - Small', 'Gravity Table Lamp - Small', '639.00', 0, '€', 'gravity-table-lamp-small', 'The new Gravity Collection designed by Space\r\nCopenhagen, consisting of a table lamp and a floor\r\nlamp, is aesthetically contrasting strength and fragility.\r\nTaking its name from the lamp’s distinctive balance\r\nbetween the anchoring of the heavy, cylindrical base\r\nand the lightweight, airy shade, it beautifully merges\r\ninto a sculptural whole. Blending understated elegance,\r\nclean functionality and effortless in its own succinct\r\nand simple way, the Gravity Lamp gives an ambient\r\nand subtle light display and creates different moods\r\nand expressions depending on the choice of size and\r\ncombination of materiality.', 1, 80, '2019-08-23 21:00:49', '2019-08-26 12:13:49'),
+(30, 22, 2, 1, 0, 'bl1.jpg', 'BL1 Table Lamp', 'BL1 Table Lamp - Dia.16 - Black Brass Base', '819.00', 0, '0', 'bl1-table-lamp-dia-16-black-brass-base', 'Designed by Robert Dudley Best in 1930, the Bestlite BL1 Table Lamp is a coveted design worldwide with strong references to Bauhaus. Winston Churchill, former Prime Minister of Great Britain, personally chose the Bestlite BL1 Table Lamp for his desk in the Whitehall and history records that Churchill even took the lamp with him on his countless trips around the world. This was the big breakthrough for the Bestlite, which has made it a design classic today. The minimalistic yet distinctive design makes it the perfect fit for any home office, workspace, creative corner or even as the lighting at your bedside table or in the living room.\r\n\r\nThe Bestlite design stays close to its industrial roots and true to its original design. Bestlite is held in permanent collections at both the Victoria & Albert Museum and the Design Museum in London. Loved by architects, designers and design aficionados throughout its long history, today, Bestlite has become a contemporary classic.', 1, 56, '2019-08-25 15:39:28', '2019-08-26 12:39:09'),
+(31, 24, 2, 1, 0, 'Gravity_TableLamp_Large_BlackMarble_White_Off_1024x1024.webp', 'Gravity Table Lamp - Large', 'Gravity Table Lamp - Large', '799.00', 0, '€', 'gravity-table-lamp-large', 'The new Gravity Collection designed by Space\r\nCopenhagen, consisting of a table lamp and a floor\r\nlamp, is aesthetically contrasting strength and fragility.\r\nTaking its name from the lamp’s distinctive balance\r\nbetween the anchoring of the heavy, cylindrical base\r\nand the lightweight, airy shade, it beautifully merges\r\ninto a sculptural whole. Blending understated elegance,\r\nclean functionality and effortless in its own succinct\r\nand simple way, the Gravity Lamp gives an ambient\r\nand subtle light display and creates different moods\r\nand expressions depending on the choice of size and\r\ncombination of materiality.', 1, 9, '2019-08-26 09:09:11', '2019-08-26 09:17:06');
 
 -- --------------------------------------------------------
 
@@ -761,7 +816,7 @@ CREATE TABLE IF NOT EXISTS `products_images` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `products_id` (`products_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products_images`
@@ -813,14 +868,58 @@ INSERT INTO `products_images` (`id`, `products_id`, `image`, `alt`, `created_at`
 (45, 19, 'beetle1.jpg', 'Gubi image', '2019-08-21 09:18:46', '2019-08-21 09:18:46'),
 (46, 20, 'bat.jpg', 'Gubi image', '2019-08-21 10:02:47', '2019-08-21 10:02:47'),
 (47, 5, 'bat-black.jpg', 'Gubi-image', '2019-08-22 05:35:12', '2019-08-22 05:35:12'),
-(48, 5, 'bat-black.jpg', 'Gubi-image', '2019-08-22 05:35:41', '2019-08-22 05:35:41'),
 (49, 22, 'batt.webp', 'Gubi image', '2019-08-22 05:38:31', '2019-08-22 05:38:31'),
 (50, 22, 'ant.webp', 'Gubi-image', '2019-08-22 05:40:25', '2019-08-22 05:40:25'),
 (51, 23, 'pen.jpg', 'Gubi image', '2019-08-22 05:43:30', '2019-08-22 05:43:30'),
 (52, 24, 'conicc.jpg', 'Gubi image', '2019-08-22 05:48:28', '2019-08-22 05:48:28'),
 (53, 24, 'conicc1.jpg', 'Gubi image', '2019-08-22 05:48:28', '2019-08-22 05:48:28'),
 (54, 4, 'bat-g.jpg', 'Gubi-image', '2019-08-22 06:00:37', '2019-08-22 06:00:37'),
-(55, 9, 'sto.jpg', 'Gubi-image', '2019-08-22 06:03:15', '2019-08-22 06:03:15');
+(55, 9, 'sto.jpg', 'Gubi-image', '2019-08-22 06:03:15', '2019-08-22 06:03:15'),
+(56, 25, 'green_bat.webp', 'Gubi image', '2019-08-23 08:47:54', '2019-08-23 08:47:54'),
+(57, 25, 'green_bat2.jpg', 'Gubi image', '2019-08-23 08:47:54', '2019-08-23 08:47:54'),
+(58, 26, 'brown_bat.jpg', 'Gubi image', '2019-08-23 08:55:39', '2019-08-23 08:55:39'),
+(59, 26, 'brown_bat1.jpg', 'Gubi image', '2019-08-23 08:55:39', '2019-08-23 08:55:39'),
+(60, 27, 'dark_brown.jpg', 'Gubi image', '2019-08-23 08:59:29', '2019-08-23 08:59:29'),
+(61, 27, 'dark_brown1.jpg', 'Gubi image', '2019-08-23 08:59:29', '2019-08-23 08:59:29'),
+(62, 28, 'pink_lounge.jpg', 'Gubi image', '2019-08-23 09:17:52', '2019-08-23 09:17:52'),
+(63, 28, 'oak_oiled.jpg', 'Gubi-image', '2019-08-23 09:32:53', '2019-08-23 09:32:53'),
+(64, 28, 'black_oiled.jpg', 'Gubi-image', '2019-08-23 09:35:41', '2019-08-23 09:35:41'),
+(65, 5, 'black-chrome-base.jpg', 'Gubi-image', '2019-08-23 20:55:54', '2019-08-23 20:55:54'),
+(66, 29, 'gravitt.jpg', 'Gubi image', '2019-08-23 21:00:49', '2019-08-23 21:00:49'),
+(67, 29, 'gray-mar.jpg', 'Gubi-image', '2019-08-23 21:10:03', '2019-08-23 21:10:03'),
+(68, 29, 'bl-ca.jpg', 'Gubi-image', '2019-08-23 21:10:17', '2019-08-23 21:10:17'),
+(69, 5, 'chrome-ba.jpg', 'Gubi-image', '2019-08-24 21:01:05', '2019-08-24 21:01:05'),
+(70, 5, 'antique-br.jpg', 'Gubi-image', '2019-08-24 21:03:21', '2019-08-24 21:03:21'),
+(71, 1, 'floor-lm.webp', 'Gubi-image', '2019-08-25 15:29:16', '2019-08-25 15:29:16'),
+(72, 1, 'floor-lm1.webp', 'Gubi-image', '2019-08-25 15:30:25', '2019-08-25 15:30:25'),
+(73, 1, 'floor-lm2.webp', 'Gubi-image', '2019-08-25 15:30:25', '2019-08-25 15:30:25'),
+(74, 1, 'floor-lm3.webp', 'Gubi-image', '2019-08-25 15:30:25', '2019-08-25 15:30:25'),
+(75, 2, 'adn1.webp', 'Gubi-image', '2019-08-25 15:32:21', '2019-08-25 15:32:21'),
+(76, 2, 'adn2.webp', 'Gubi-image', '2019-08-25 15:32:21', '2019-08-25 15:32:21'),
+(77, 2, 'adn3.webp', 'Gubi-image', '2019-08-25 15:32:21', '2019-08-25 15:32:21'),
+(78, 2, 'adn4.webp', 'Gubi-image', '2019-08-25 15:32:21', '2019-08-25 15:32:21'),
+(79, 2, 'adn5.webp', 'Gubi-image', '2019-08-25 15:32:21', '2019-08-25 15:32:21'),
+(80, 9, 'adn-coffe1.webp', 'Gubi-image', '2019-08-25 15:33:48', '2019-08-25 15:33:48'),
+(81, 9, 'adn-coffe2.webp', 'Gubi-image', '2019-08-25 15:33:48', '2019-08-25 15:33:48'),
+(82, 30, 'bl1.jpg', 'Gubi image', '2019-08-25 15:39:28', '2019-08-25 15:39:28'),
+(83, 5, 'new-beige-bat.webp', 'Gubi-image', '2019-08-26 06:32:38', '2019-08-26 06:32:38'),
+(84, 5, 'Bat_DiningChair_Conic_Unupholstered_Black_DarkGreen_F3Q_1024x1024.jpg', 'Gubi-image', '2019-08-26 07:14:08', '2019-08-26 07:14:08'),
+(85, 5, 'Bat_DiningChair_Conic_Unupholstered_Black_DarkPink_F3Q_1024x1024.jpg', 'Gubi-image', '2019-08-26 07:14:08', '2019-08-26 07:14:08'),
+(86, 30, 'Bestlite_BL1_TableLamp_BlackBrass_BoneChina_1024x1024.webp', 'Gubi-image', '2019-08-26 09:04:30', '2019-08-26 09:04:30'),
+(87, 30, 'Bestlite_BL1_TableLamp_BlackBrass_ClassicWhite_1024x1024.webp', 'Gubi-image', '2019-08-26 09:05:48', '2019-08-26 09:05:48'),
+(88, 30, 'Unknown-1_1024x1024.jpeg', 'Gubi-image', '2019-08-26 09:06:13', '2019-08-26 09:06:13'),
+(89, 31, 'Gravity_TableLamp_Large_BlackenedSteel_White_Off_1024x1024.webp', 'Gubi image', '2019-08-26 09:09:11', '2019-08-26 09:09:11'),
+(90, 31, 'Gravity_TableLamp_Large_BlackMarble_White_Off_1024x1024.webp', 'Gubi image', '2019-08-26 09:09:11', '2019-08-26 09:09:11'),
+(91, 31, 'Gravity_TableLamp_Large_GreyMarble_White_Off_1024x1024.webp', 'Gubi image', '2019-08-26 09:09:11', '2019-08-26 09:09:11'),
+(92, 31, 'Gravity_TableLamp_Large_BlackenedSteel_Canvas_Off_1024x1024.jpg', 'Gubi-image', '2019-08-26 09:15:26', '2019-08-26 09:15:26'),
+(93, 31, 'Gravity_TableLamp_Large_BlackMarble_Canvas_Off_1024x1024.jpg', 'Gubi-image', '2019-08-26 09:15:26', '2019-08-26 09:15:26'),
+(94, 31, 'Gravity_TableLamp_Large_GreyMarble_Canvas_Off_1024x1024.jpg', 'Gubi-image', '2019-08-26 09:15:26', '2019-08-26 09:15:26'),
+(95, 31, 'BatDiningChair_GravityFloorLamp_GUBIDiningTable_BeetleDiningChair_B-4TableLamp_MategotTrolley_GravityTableLamp_On_1f8f3ad5-9eec-4a4b-97fb-3d44e5d3be1d_1024x1024.jpg', 'Gubi-image', '2019-08-26 09:16:21', '2019-08-26 09:16:21'),
+(96, 31, 'GravityTableLamp_TSConsole_CocoDiningChair_Gubi2-0DiningTable_StaySofa_GrashoppaTableLamp_RandaccioWallMirror_42c14081-b370-4ec8-8a0f-6701edcf288b_1024x1024.jpg', 'Gubi-image', '2019-08-26 09:16:21', '2019-08-26 09:16:21'),
+(97, 31, 'ModernLineLoungeChair_TSCoffeeTable_9464WallLamp_StaySofa_StayLoungeChair_B-4TableLamp_GravityTableLamp_95ec5b61-ef50-4c31-8cc5-f3a14bcf2b0c_1024x1024.jpg', 'Gubi-image', '2019-08-26 09:16:21', '2019-08-26 09:16:21'),
+(98, 31, 'BeetleDiningChair_GUBIDiningTable_B-4TableLamp_BatDiningChair_MategotTrolley_GravityTableLamp_On_ce46c49c-5765-40a0-9929-178cfcebdc9d_1024x1024.jpg', 'Gubi-image', '2019-08-26 09:17:02', '2019-08-26 09:17:02'),
+(99, 31, 'GravityTableLamp_SatellitePendant_BeetleLoungeChair_TSPoufRound_TSCoffeeTable_RandaccioWallMirrorRound_1024x1024.jpg', 'Gubi-image', '2019-08-26 09:17:02', '2019-08-26 09:17:02'),
+(100, 31, 'TSCoffeeTableSquare_Gubi2-0DiningTable_GravityTableLamp_StaySofa_f6526646-3621-4da7-b38b-fa5878fec0b4_1024x1024.jpg', 'Gubi-image', '2019-08-26 09:17:02', '2019-08-26 09:17:02');
 
 -- --------------------------------------------------------
 
@@ -838,7 +937,7 @@ CREATE TABLE IF NOT EXISTS `products_variations` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `products_id` (`products_id`,`variations_id`),
   KEY `variations_id` (`variations_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products_variations`
@@ -863,8 +962,15 @@ INSERT INTO `products_variations` (`id`, `products_id`, `variations_id`, `create
 (21, 22, 1, '2019-08-22 05:39:30', '2019-08-22 05:39:30'),
 (22, 23, 2, '2019-08-22 05:44:35', '2019-08-22 05:44:35'),
 (23, 1, 3, '2019-08-22 07:52:48', '2019-08-22 07:52:48'),
-(24, 7, 7, '2019-08-22 09:41:58', '2019-08-22 09:41:58'),
-(25, 7, 2, '2019-08-22 09:42:04', '2019-08-22 09:42:04');
+(26, 28, 1, '2019-08-23 09:18:48', '2019-08-23 09:18:48'),
+(27, 7, 7, '2019-08-23 19:46:02', '2019-08-23 19:46:02'),
+(29, 7, 2, '2019-08-23 19:47:56', '2019-08-23 19:47:56'),
+(30, 29, 1, '2019-08-23 21:02:19', '2019-08-23 21:02:19'),
+(31, 29, 3, '2019-08-23 21:04:34', '2019-08-23 21:04:34'),
+(36, 30, 3, '2019-08-25 15:39:39', '2019-08-25 15:39:39'),
+(37, 31, 1, '2019-08-26 09:09:49', '2019-08-26 09:09:49'),
+(38, 31, 3, '2019-08-26 09:12:10', '2019-08-26 09:12:10'),
+(39, 30, 8, '2019-08-26 11:48:49', '2019-08-26 11:48:49');
 
 -- --------------------------------------------------------
 
@@ -961,8 +1067,9 @@ CREATE TABLE IF NOT EXISTS `sub_variations` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `products_id` (`products_id`),
-  KEY `variations_id` (`variations_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `variations_id` (`variations_id`),
+  KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sub_variations`
@@ -972,9 +1079,6 @@ INSERT INTO `sub_variations` (`id`, `products_id`, `variations_id`, `name`, `var
 (1, 2, 2, 'Dusty Cedar', '', 'adnet.jpg', '2019-08-13 21:43:38', '2019-08-13 21:43:38'),
 (3, 1, 3, 'Canvas', '', 'floor.jpg', '2019-08-14 17:16:07', '2019-08-14 17:16:07'),
 (4, 1, 3, 'Wicker Willow', '', 'floor1.jpg', '2019-08-14 17:16:07', '2019-08-14 17:16:07'),
-(7, 5, 4, 'Pure White Shell Black', '', 'white.webp', '2019-08-14 18:52:10', '2019-08-14 18:52:10'),
-(8, 5, 1, 'Brass Base', '', 'brass.jpg', '2019-08-14 19:05:59', '2019-08-14 19:05:59'),
-(9, 5, 4, 'Pure White Shell Brass', '', 'bras-wh.jpg', '2019-08-14 19:32:42', '2019-08-14 19:32:42'),
 (10, 6, 7, '140x200', '140x200', '', '2019-08-15 06:04:45', '2019-08-15 06:04:45'),
 (11, 6, 7, '160x200', '160x200', '', '2019-08-15 06:23:16', '2019-08-15 06:23:16'),
 (12, 6, 7, '180x200', '180x200', '', '2019-08-15 06:23:45', '2019-08-15 06:23:45'),
@@ -983,9 +1087,6 @@ INSERT INTO `sub_variations` (`id`, `products_id`, `variations_id`, `name`, `var
 (15, 2, 2, 'Wild Dove', '', 'adnet2.jpg', '2019-08-15 10:01:52', '2019-08-15 10:01:52'),
 (16, 8, 2, 'Midnight Black', '', 'bowl.jpg', '2019-08-15 10:19:51', '2019-08-15 10:19:51'),
 (17, 8, 2, 'Venetian Gold', '', 'bowl-gold.jpg', '2019-08-15 10:19:51', '2019-08-15 10:19:51'),
-(18, 7, 7, 'Ø15.5 cm', 'Ø15.5 cm', '', '2019-08-15 10:29:37', '2019-08-15 10:29:37'),
-(19, 7, 7, 'Ø21 cm', 'Ø21 cm', '', '2019-08-15 10:29:52', '2019-08-15 10:29:52'),
-(20, 7, 7, 'Ø27.5 cm', 'Ø27.5 cm', '', '2019-08-15 10:30:04', '2019-08-15 10:30:04'),
 (21, 7, 2, 'Midnight Black', '', 'metgot.jpg', '2019-08-15 10:31:05', '2019-08-15 10:31:05'),
 (23, 9, 2, 'Black Leather', '', 'coffe.jpg', '2019-08-15 18:02:58', '2019-08-15 18:02:58'),
 (25, 12, 3, 'Brass Shade', '', 'semi.webp', '2019-08-17 16:11:54', '2019-08-17 16:11:54'),
@@ -1005,12 +1106,83 @@ INSERT INTO `sub_variations` (`id`, `products_id`, `variations_id`, `name`, `var
 (39, 18, 1, 'Black Base', 'Black Base', '', '2019-08-21 08:44:10', '2019-08-21 08:44:10'),
 (40, 18, 4, 'Black Shell', 'Black Shell', '', '2019-08-21 08:45:07', '2019-08-21 08:45:07'),
 (41, 19, 1, 'Black Base', '', 'beetle1.jpg', '2019-08-21 09:22:08', '2019-08-21 09:22:08'),
-(42, 5, 1, 'Black Base', '', 'bat-black.jpg', '2019-08-22 05:36:11', '2019-08-22 05:36:11'),
 (43, 22, 1, 'Antique Brass', '', 'ant.webp', '2019-08-22 05:40:06', '2019-08-22 05:40:06'),
 (44, 23, 2, 'Carbon', '', 'pen.jpg', '2019-08-22 05:44:55', '2019-08-22 05:44:55'),
 (45, 22, 1, 'Black Matt', '', 'batt.webp', '2019-08-22 05:57:49', '2019-08-22 05:57:49'),
-(46, 5, 4, 'Black Shell', '', 'bat-black.jpg', '2019-08-22 06:27:29', '2019-08-22 06:27:29'),
-(47, 9, 2, 'Tan Leather', '', 'coffe1.jpg', '2019-08-22 07:29:23', '2019-08-22 07:29:23');
+(47, 9, 2, 'Tan Leather', '', 'coffe1.jpg', '2019-08-22 07:29:23', '2019-08-22 07:29:23'),
+(48, 5, 1, 'Black Base', 'Black Base', 'bat-black.jpg', '2019-08-22 18:18:25', '2019-08-22 18:18:25'),
+(49, 5, 1, 'Brass Base', 'Brass Base', 'black_shell_brass.webp', '2019-08-22 18:18:45', '2019-08-22 18:18:45'),
+(50, 28, 1, 'American Walnut Oiled', '', 'pink_lounge.jpg', '2019-08-23 09:27:01', '2019-08-23 09:27:01'),
+(51, 28, 1, 'Oak Oiled', '', 'oak_oiled.jpg', '2019-08-23 09:31:36', '2019-08-23 09:31:36'),
+(52, 28, 1, 'Black Stained Oak Semi Matt', '', 'black_oiled.jpg', '2019-08-23 09:35:19', '2019-08-23 09:35:19'),
+(53, 5, 1, 'Black Chrome Base', '', 'black-chrome-base.jpg', '2019-08-23 19:53:33', '2019-08-23 19:53:33'),
+(54, 29, 1, 'Black Marble', '', 'gravitt.jpg', '2019-08-23 21:03:09', '2019-08-23 21:03:09'),
+(55, 29, 1, 'Grey Marble', '', 'gray-mar.jpg', '2019-08-23 21:03:36', '2019-08-23 21:03:36'),
+(56, 29, 1, 'Blackened Steel', '', 'grwy1.jpg', '2019-08-23 21:04:24', '2019-08-23 21:04:24'),
+(57, 5, 1, 'Chrome Base', '', 'chrome-ba.jpg', '2019-08-24 20:59:23', '2019-08-24 20:59:23'),
+(58, 5, 1, 'Antique Brass Base', '', 'antique-br.jpg', '2019-08-24 21:02:15', '2019-08-24 21:02:15'),
+(59, 30, 3, 'Black Brass Shade', '', 'bl1.jpg', '2019-08-25 15:40:01', '2019-08-25 15:40:01'),
+(60, 30, 3, 'Bone China Shade', '', 'Bestlite_BL1_TableLamp_BlackBrass_BoneChina_1024x1024.webp', '2019-08-26 09:00:02', '2019-08-26 09:00:02'),
+(61, 30, 3, 'Classic White Shade', '', 'Bestlite_BL1_TableLamp_BlackBrass_ClassicWhite_1024x1024.webp', '2019-08-26 09:05:20', '2019-08-26 09:05:20'),
+(62, 31, 1, 'Black Marble', '', 'Gravity_TableLamp_Large_BlackMarble_White_Off_1024x1024.webp', '2019-08-26 09:10:54', '2019-08-26 09:10:54'),
+(63, 31, 1, 'Blackened Steel', '', 'Gravity_TableLamp_Large_BlackenedSteel_White_Off_1024x1024.webp', '2019-08-26 09:11:47', '2019-08-26 09:11:47'),
+(64, 31, 1, 'Grey Marble', '', 'Gravity_TableLamp_Large_GreyMarble_White_Off_1024x1024.webp', '2019-08-26 09:11:47', '2019-08-26 09:11:47'),
+(65, 30, 8, 'EU Plug', 'EU Plug', '', '2019-08-26 11:49:04', '2019-08-26 11:49:04'),
+(66, 30, 8, 'UK Plug', 'UK Plug', '', '2019-08-26 11:49:18', '2019-08-26 11:49:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_variations_options`
+--
+
+DROP TABLE IF EXISTS `sub_variations_options`;
+CREATE TABLE IF NOT EXISTS `sub_variations_options` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `sub_variations_id` bigint(20) NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sub_variations_id` (`sub_variations_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sub_variations_options`
+--
+
+INSERT INTO `sub_variations_options` (`id`, `sub_variations_id`, `name`, `image`, `created_at`, `updated_at`) VALUES
+(1, 49, 'Black Shell', 'black_shell_brass.webp', NULL, NULL),
+(2, 49, 'Pure White Shell', 'bras-wh.jpg', NULL, NULL),
+(3, 48, 'Pure White Shell ', 'white.webp', NULL, NULL),
+(4, 48, 'Black Shell', 'bat-black.jpg', NULL, NULL),
+(50, 53, 'Black Shell', 'black-chrome-base.jpg', NULL, NULL),
+(51, 53, 'Pure white Shell', 'pure-white.jpg', NULL, NULL),
+(52, 54, 'White', 'gravitt.jpg', NULL, NULL),
+(53, 54, 'Canvas', 'bl-ca.jpg', NULL, NULL),
+(54, 57, 'Black Shell', 'chrome-ba.jpg', NULL, NULL),
+(55, 58, 'Black Shell', 'antique-br.jpg', NULL, NULL),
+(56, 48, 'Smoke Blue Shell', 'smoke-blue-black.webp', NULL, NULL),
+(57, 48, 'New Beige Shell', 'new-beige-bat.webp', '2019-08-26 06:31:54', '2019-08-26 06:31:54'),
+(58, 21, 'ø15.5 cm', 'Mategot_Flower_Pot_S_Midnight_Black_1024x1024.webp', '2019-08-26 06:39:06', '2019-08-26 06:39:06'),
+(59, 21, 'ø21 cm', 'Mategot_Flower_Pot_M_Midnight_Black_1024x1024.jpg', '2019-08-26 06:39:50', '2019-08-26 06:39:50'),
+(60, 21, 'ø27.5 cm', 'Mategot_Flower_Pot_L_Midnight_Black_1024x1024.jpg', '2019-08-26 06:40:11', '2019-08-26 06:40:11'),
+(61, 32, 'ø15.5 cm', 'MategotFlowerPotSMidnight.jpg', '2019-08-26 07:02:51', '2019-08-26 07:02:51'),
+(62, 32, 'ø21 cm', 'MategotFlower_PMidnightYellow.jpg', '2019-08-26 07:03:28', '2019-08-26 07:03:28'),
+(63, 32, 'ø27.5 cm', 'MategotFlower_PMidnightYellow.jpg', '2019-08-26 07:05:23', '2019-08-26 07:05:23'),
+(64, 48, 'Dark Pink Shell', 'Bat_DiningChair_Conic_Unupholstered_Black_DarkPink_F3Q_1024x1024.jpg', '2019-08-26 07:07:30', '2019-08-26 07:07:30'),
+(66, 48, 'Dark Green Shell', 'Bat_DiningChair_Conic_Unupholstered_Black_DarkGreen_F3Q_1024x1024.jpg', '2019-08-26 07:10:25', '2019-08-26 07:10:25'),
+(67, 55, 'White', 'gray-mar.jpg', '2019-08-26 08:39:06', '2019-08-26 08:39:06'),
+(68, 55, 'Canvas', 'Gravity_TableLamp_Small_GreyMarble_Canvas_Off_1024x1024.jpg', '2019-08-26 08:39:41', '2019-08-26 08:39:41'),
+(69, 56, 'White', 'grwy1.jpg', '2019-08-26 08:40:28', '2019-08-26 08:40:28'),
+(70, 56, 'Canvas', 'Gravity_TableLamp_Small_BlackenedSteel_Canvas_Off_1024x1024.jpg', '2019-08-26 08:41:39', '2019-08-26 08:41:39'),
+(71, 62, 'White', 'Gravity_TableLamp_Large_BlackMarble_White_Off_1024x1024.webp', '2019-08-26 09:12:40', '2019-08-26 09:12:40'),
+(72, 63, 'White', 'Gravity_TableLamp_Large_BlackenedSteel_White_Off_1024x1024.webp', '2019-08-26 09:13:04', '2019-08-26 09:13:04'),
+(73, 64, 'White', 'Gravity_TableLamp_Large_GreyMarble_White_Off_1024x1024.webp', '2019-08-26 09:13:17', '2019-08-26 09:13:17'),
+(74, 62, 'Canvas', 'Gravity_TableLamp_Large_BlackMarble_Canvas_Off_1024x1024.jpg', '2019-08-26 09:14:29', '2019-08-26 09:14:29'),
+(75, 63, 'Canvas', 'Gravity_TableLamp_Large_BlackenedSteel_Canvas_Off_1024x1024.jpg', '2019-08-26 09:14:44', '2019-08-26 09:14:44'),
+(76, 64, 'Canvas', 'Gravity_TableLamp_Large_GreyMarble_Canvas_Off_1024x1024.jpg', '2019-08-26 09:14:56', '2019-08-26 09:14:56');
 
 -- --------------------------------------------------------
 
@@ -1065,7 +1237,8 @@ INSERT INTO `variations` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (4, 'Shell', NULL, NULL),
 (5, 'Material', NULL, NULL),
 (6, 'Top', NULL, NULL),
-(7, 'Size', NULL, NULL);
+(7, 'Size', NULL, NULL),
+(8, 'Plug', '2019-08-26 11:48:13', '2019-08-26 11:48:13');
 
 --
 -- Constraints for dumped tables

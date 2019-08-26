@@ -1,6 +1,6 @@
 <template>
     <form>
-        <div class="form-group lg:flex lg:justify-between">
+        <div class="form-group lg:flex lg:justify-between md:flex md:justify-between">
             <div class="mr-2 w-full">
             <input class="p-2 bg-transparent w-full"
                    type="text"

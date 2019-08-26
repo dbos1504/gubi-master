@@ -202,12 +202,15 @@
                                                 </div>
                                             @endforeach
                                         @endforeach
+                                        <br><br>
+                                        <p class="text-xs text-red-700 font-bold">* How to add variation and sub-variations?</p>
                                     </div>
-                                    <div class="form-group w-3/4 ml-4 w-full p-3">
+                                    <div class="form-group w-3/4 ml-4 w-full p-3 relative">
                                         <h4 class="font-bold text-2xl font-serif" for="insp-image">Current Product variations images / Text:</h4>
                                         <hr>
-                                        <div class="w-full text-center relative flex flex-wrap">
+                                        <div class="w-full text-center flex relative flex-wrap">
                                             @foreach ($product->subvariations as $img)
+
                                                 @if ($img->image == '')
                                                     <div class="admin-product-gallery-width relative">
                                                         <p class="">
@@ -218,17 +221,83 @@
                                                             @method('DELETE')
                                                             <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
                                                         </form>
+                                                            <div class="admin-acord" id="accordion" role="tablist" aria-multiselectable="true">
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading" role="tab" id="heading{{ $img->id }}">
+                                                                        <h4 class="panel-title">
+                                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $img->id }}" aria-expanded="true" aria-controls="collapse{{ $img->id }}">
+                                                                                Advanced
+                                                                            </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="collapse{{ $img->id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{ $img->id }}">
+                                                                        <div class="panel-body">
+                                                                            @foreach (\App\SubVariationsOption::where('sub_variations_id', $img->id)->get() as $a)
+                                                                                {{ $a->name }} <br>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                     </div>
                                                 @else
                                                     <div class="admin-product-gallery-width relative">
                                                         <img width="150" height="150" id="blah" src="{{ $img->image ? '/img/products/' . $img->image : '#' }}" alt="Choose image.." />
                                                         <p class="w-full p-1 mt-1 text-xs">{{ $img->name }}</p>
-                                                        {{--                                                    <input class="w-full border p-1 mt-1 text-xs" type="text" value="{{ $img->name }}">--}}
                                                         <form action="/home/{{ $product->location }}/destroy-variation-image/{{ $img->id }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
                                                         </form>
+                                                        <div class="accordion testAcord" id="accordionExample">
+                                                            <div class="card">
+                                                                <div id="heading{{ $img->id }}">
+                                                                    <h2 class="mb-0">
+                                                                        <button type="button"
+                                                                                class="text-xs text-black"
+                                                                                data-toggle="collapse"
+                                                                                data-target="#collapse{{ $img->id }}">
+                                                                             Sub Variations
+                                                                        </button>
+                                                                    </h2>
+                                                                </div>
+                                                                <div id="collapse{{ $img->id }}" class="collapse" aria-labelledby="heading{{ $img->id }}" data-parent="#accordionExample">
+                                                                    <div class="card-body">
+                                                                        <h5 class="text-xs font-bold">Add Sub Variation image</h5>
+                                                                        <hr>
+                                                                        <ul>
+                                                                        @foreach (\App\SubVariationsOption::where('sub_variations_id', $img->id)->get() as $a)
+                                                                            <li class="flex items-center justify-between my-3">
+                                                                                {{ $a->name }}
+                                                                                <img src="/img/products/{{ $a->image }}" alt="img" width="60">
+                                                                                <form action="/home/{{ $product->location }}/destroy-option/{{ $a->id }}" method="POST">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button class="text-red-400 text-xs" type="submit"><i class="far fa-trash-alt"></i></button>
+                                                                                </form>
+                                                                            </li>
+                                                                        @endforeach
+                                                                        </ul>
+                                                                        <hr>
+                                                                        <form action="/home/{{ $product->location }}/option/{{ $img->id }}"
+                                                                              method="POST"
+                                                                              enctype="multipart/form-data">
+                                                                            @csrf
+                                                                            <div class="w-full text-center p-3">
+                                                                                <img id="blahhh" src="#" alt="Choose image.." />
+                                                                            </div>
+                                                                            <input class="form-control" type="text" name="name" placeholder="Variation name...">
+                                                                            <br>
+                                                                            <input class="form-control" type="file" name="image" onchange="opti(this);">
+                                                                            <br>
+                                                                            <div class="form-group text-right">
+                                                                                <button class="text-xs uppercase border py-1 px-2" type="submit">Add variation image</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 @endif
                                             @endforeach

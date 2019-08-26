@@ -2231,8 +2231,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['product', 'upit', 'kolicina', 'img', 'variacija'],
+  props: ['product', 'upit', 'kolicina', 'img', 'variacija', 'utikac'],
   data: function data() {
     return {
       products: '',
@@ -2245,7 +2246,8 @@ __webpack_require__.r(__webpack_exports__);
       variation: '',
       image: '',
       inq: '',
-      qty: ''
+      qty: '',
+      test: ''
     };
   },
   methods: {
@@ -2261,7 +2263,7 @@ __webpack_require__.r(__webpack_exports__);
             phone: _this.phone,
             message: _this.message,
             products: _this.product.headline,
-            variation: _this.variacija,
+            variation: _this.variacija ? _this.variacija : _this.utikac,
             inq: _this.upit,
             qty: _this.kolicina,
             image: _this.img
@@ -2313,7 +2315,8 @@ __webpack_require__.r(__webpack_exports__);
       inquirys: '',
       img: this.data.image,
       qty: 1,
-      izmena: ''
+      izmena: '',
+      plu: ''
     };
   },
   components: {
@@ -2337,6 +2340,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     variacija: function variacija(e) {
       this.izmena = e.name;
+    },
+    utikac: function utikac(e) {
+      this.plu = e.name;
     }
   }
 });
@@ -2552,6 +2558,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data', 'product'],
   data: function data() {
@@ -2563,16 +2571,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
-    filterDistricts: function filterDistricts() {
-      for (var i = 0; i < this.product.subvariations.length; i++) {
-        for (var u = 0; u < this.product.subvariations[i].options.length; u++) {
-          if (this.product.subvariations[i].options[u].sub_variations_id == this.product.subvariations[i].id) {// this.variation.push(this.product.subvariations[i].options[u])
-          }
-        }
-      }
-    },
     broj: function broj() {
-      return this.variation;
+      if (this.variation.options) {
+        return this.variation.options.length;
+      }
     }
   },
   methods: {
@@ -2581,35 +2583,32 @@ __webpack_require__.r(__webpack_exports__);
 
       if (event.variations_id == 6) {
         this.$emit('varijacija', event);
+        console.log(event);
       }
 
       if (event.variations_id == 1) {
         this.$emit('varijacija', event);
-        console.log(event);
+      }
+
+      if (event.variations_id == 1) {
+        this.$emit('varijacija', event);
       }
 
       if (event.variations_id == 7) {
         this.$emit('varijacija', event);
       }
 
+      if (event.variations_id == 8) {
+        this.$emit('plug', event);
+      }
+
+      if (event.variations_id == 3) {
+        this.$emit('varijacija', event);
+        console.log(event.name);
+      }
+
       this.$emit('created', event);
       this.$emit('inquiry', event);
-    },
-    onChangee: function onChangee(event) {
-      console.log(event.image); // this.image = event.image ? event.image : this.product.image;
-      //
-      // if (event.variations_id == 6) {
-      //     this.$emit('varijacija', event);
-      // }
-      // if (event.variations_id == 1)  {
-      //     this.$emit('varijacija', event);
-      //     console.log(event);
-      // }
-      // if (event.variations_id == 7) {
-      //     this.$emit('varijacija', event);
-      // }
-      // this.$emit('created', event);
-      // this.$emit('inquiry', event);
     }
   }
 });
@@ -54733,86 +54732,97 @@ var render = function() {
   return _c(
     "form",
     [
-      _c("div", { staticClass: "form-group lg:flex lg:justify-between" }, [
-        _c("div", { staticClass: "mr-2 w-full" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "validate",
-                rawName: "v-validate",
-                value: "required",
-                expression: "'required'"
-              },
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.firstname,
-                expression: "firstname"
-              }
-            ],
-            staticClass: "p-2 bg-transparent w-full",
-            class: _vm.errors.first("firstname")
-              ? "border-b border-red-700"
-              : "border",
-            attrs: {
-              type: "text",
-              name: "firstname",
-              placeholder: "Nafn",
-              id: "firstname"
-            },
-            domProps: { value: _vm.firstname },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+      _c(
+        "div",
+        {
+          staticClass:
+            "form-group lg:flex lg:justify-between md:flex md:justify-between"
+        },
+        [
+          _c("div", { staticClass: "mr-2 w-full" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required",
+                  expression: "'required'"
+                },
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.firstname,
+                  expression: "firstname"
                 }
-                _vm.firstname = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "text-red-500 italic text-xs greska" }, [
-            _vm._v(_vm._s(_vm.errors.first("firstname")))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-full" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "validate",
-                rawName: "v-validate",
-                value: "required",
-                expression: "'required'"
+              ],
+              staticClass: "p-2 bg-transparent w-full",
+              class: _vm.errors.first("firstname")
+                ? "border-b border-red-700"
+                : "border",
+              attrs: {
+                type: "text",
+                name: "firstname",
+                placeholder: "Nafn",
+                id: "firstname"
               },
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.lastname,
-                expression: "lastname"
-              }
-            ],
-            staticClass: "p-2 w-full",
-            class: _vm.errors.first("lastname")
-              ? "border-b border-red-700"
-              : "border",
-            attrs: { type: "text", name: "lastname", placeholder: "Eftirnafn" },
-            domProps: { value: _vm.lastname },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              domProps: { value: _vm.firstname },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.firstname = $event.target.value
                 }
-                _vm.lastname = $event.target.value
               }
-            }
-          }),
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-red-500 italic text-xs greska" }, [
+              _vm._v(_vm._s(_vm.errors.first("firstname")))
+            ])
+          ]),
           _vm._v(" "),
-          _c("span", { staticClass: "text-red-500 italic text-xs greska" }, [
-            _vm._v(_vm._s(_vm.errors.first("lastname")))
+          _c("div", { staticClass: "w-full" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "validate",
+                  rawName: "v-validate",
+                  value: "required",
+                  expression: "'required'"
+                },
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.lastname,
+                  expression: "lastname"
+                }
+              ],
+              staticClass: "p-2 w-full",
+              class: _vm.errors.first("lastname")
+                ? "border-b border-red-700"
+                : "border",
+              attrs: {
+                type: "text",
+                name: "lastname",
+                placeholder: "Eftirnafn"
+              },
+              domProps: { value: _vm.lastname },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.lastname = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-red-500 italic text-xs greska" }, [
+              _vm._v(_vm._s(_vm.errors.first("lastname")))
+            ])
           ])
-        ])
-      ]),
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("input", {
@@ -55095,7 +55105,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\n        HAFĐU SAMBAND FYRIR UPPLÝSINGAR\n    ")]
+        [_vm._v("\n            HAFĐU SAMBAND FYRIR UPPLÝSINGAR\n        ")]
       ),
       _vm._v(" "),
       _c(
@@ -55127,7 +55137,7 @@ var render = function() {
           _c(
             "form",
             {
-              staticClass: "lg:flex lg:flex-wrap lg:items-center",
+              staticClass: "lg:flex lg:flex-wrap lg:items-center inq-form",
               attrs: { action: "", method: "POST" }
             },
             [
@@ -55140,12 +55150,12 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "lg:w-3/5 p-12" }, [
+              _c("div", { staticClass: "lg:w-3/5 lg:pt-6 lg:px-12" }, [
                 _c(
                   "h4",
                   {
                     staticClass:
-                      "font-serif uppercase text-center text-black text-3xl"
+                      "font-serif uppercase text-center text-black text-2xl"
                   },
                   [_vm._v("Upplýsingar um vöru")]
                 ),
@@ -55170,7 +55180,7 @@ var render = function() {
                           modifiers: { persist: true }
                         }
                       ],
-                      staticClass: "lg:p-2 md:p-2 w-full first-name",
+                      staticClass: "lg:p-1 md:p-1 w-full first-name",
                       class: _vm.errors.first("firstname")
                         ? "border-b border-red-700"
                         : "border",
@@ -55214,7 +55224,7 @@ var render = function() {
                           modifiers: { persist: true }
                         }
                       ],
-                      staticClass: "lg:p-2 md:p-2 w-full",
+                      staticClass: "lg:p-1 md:p-1 w-full",
                       class: _vm.errors.first("lastname")
                         ? "border-b border-red-700"
                         : "border",
@@ -55259,7 +55269,7 @@ var render = function() {
                         modifiers: { persist: true }
                       }
                     ],
-                    staticClass: "lg:p-2 md:p-2 w-full",
+                    staticClass: "lg:p-1 md:p-1 w-full",
                     class: _vm.errors.first("phone")
                       ? "border-b border-red-700"
                       : "border",
@@ -55303,7 +55313,7 @@ var render = function() {
                         modifiers: { persist: true }
                       }
                     ],
-                    staticClass: "lg:p-2 md:p-2 w-full",
+                    staticClass: "lg:p-1 md:p-1 w-full",
                     class: _vm.errors.first("email")
                       ? "border-b border-red-700"
                       : "border",
@@ -55330,12 +55340,12 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group flex" }, [
+                _c("div", { staticClass: "form-group flex items-center" }, [
                   _c(
                     "p",
                     {
                       staticClass:
-                        "inquiry-border p-2 w-full border border-black text-black mr-2"
+                        "inquiry-border p-1 w-full border border-black text-black mr-2"
                     },
                     [
                       _vm._v(_vm._s(_vm.product.headline) + " | "),
@@ -55350,7 +55360,7 @@ var render = function() {
                         "p",
                         {
                           staticClass:
-                            "inquiry-border text-xs product-inquiry-width p-2 border border-black text-black text-center mr-2"
+                            "inquiry-border text-xs product-inquiry-width p-1 border border-black text-black text-center mr-2"
                         },
                         [_vm._v(_vm._s(_vm.variacija))]
                       )
@@ -55360,7 +55370,7 @@ var render = function() {
                     "p",
                     {
                       staticClass:
-                        "inquiry-border product-inquiry-width p-2 border border-black text-black text-center"
+                        "inquiry-border product-inquiry-width p-1 border border-black text-black text-center"
                     },
                     [_vm._v(_vm._s(_vm.kolicina))]
                   )
@@ -55383,7 +55393,7 @@ var render = function() {
                         modifiers: { persist: true }
                       }
                     ],
-                    staticClass: "w-full lg:p-2 md:p-2 border-black",
+                    staticClass: "w-full lg:p-1 md:p-1 border-black",
                     class: _vm.errors.first("message")
                       ? "border-b border-red-700"
                       : "border",
@@ -55392,7 +55402,7 @@ var render = function() {
                       name: "message",
                       id: "",
                       cols: "30",
-                      rows: "5"
+                      rows: "3"
                     },
                     domProps: { value: _vm.message },
                     on: {
@@ -55826,7 +55836,7 @@ var render = function() {
             expression: "variation"
           }
         ],
-        staticClass: "bg-gray-200 p-1",
+        staticClass: "bg-gray-200 p-1 w-full",
         on: {
           change: [
             function($event) {
@@ -55848,25 +55858,25 @@ var render = function() {
           ]
         }
       },
-      _vm._l(_vm.subvariations, function(subvariation) {
-        return subvariation.products_id == _vm.product.id
-          ? _c("option", { domProps: { value: subvariation } }, [
-              _vm._v(
-                "\n        " +
-                  _vm._s(
-                    subvariation.name
-                      ? subvariation.name
-                      : subvariation.variation_name
-                  ) +
-                  "\n    "
-              )
-            ])
-          : _vm._e()
-      }),
-      0
+      [
+        _c("option", { attrs: { value: "0", disabled: "" } }, [
+          _vm._v("Choose...")
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.subvariations, function(subvariation) {
+          return subvariation.products_id == _vm.product.id
+            ? _c("option", { domProps: { value: subvariation } }, [
+                _vm._v(
+                  "\n            " + _vm._s(subvariation.name) + "\n        "
+                )
+              ])
+            : _vm._e()
+        })
+      ],
+      2
     ),
     _vm._v(" "),
-    _vm.variation.options
+    _vm.broj >= 1
       ? _c(
           "select",
           {
@@ -55878,7 +55888,7 @@ var render = function() {
                 expression: "options"
               }
             ],
-            staticClass: "bg-gray-200 p-1 sub-var",
+            staticClass: "bg-gray-200 p-1 sub-var w-full",
             on: {
               change: [
                 function($event) {
@@ -55900,14 +55910,20 @@ var render = function() {
               ]
             }
           },
-          _vm._l(_vm.variation.options, function(vari) {
-            return vari.sub_variations_id == _vm.variation.id
-              ? _c("option", { domProps: { value: vari } }, [
-                  _vm._v("\n        " + _vm._s(vari.name) + "\n    ")
-                ])
-              : _vm._e()
-          }),
-          0
+          [
+            _c("option", { attrs: { value: "0", disabled: "" } }, [
+              _vm._v("Choose...")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.variation.options, function(vari) {
+              return vari.sub_variations_id == _vm.variation.id
+                ? _c("option", { domProps: { value: vari } }, [
+                    _vm._v("\n            " + _vm._s(vari.name) + "\n        ")
+                  ])
+                : _vm._e()
+            })
+          ],
+          2
         )
       : _vm._e()
   ])

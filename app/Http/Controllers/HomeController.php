@@ -19,6 +19,7 @@ use App\ProductsImages;
 use App\ProductsVariations;
 use App\SubCategory;
 use App\SubVariations;
+use App\SubVariationsOption;
 use App\Variations;
 
 
@@ -119,9 +120,7 @@ class HomeController extends Controller
             }
         }
 
-        flash()->success('New product is added, great. Start adding variations, if product has one.');
-
-        return redirect('/home/' . $prod->location . '/edit');
+        return redirect('/home/' . $prod->location . '/edit')->with('flash', 'New product is added, great. Start adding variations, if product has one.');
     }
 
     public function editProduct(Products $product)
@@ -300,6 +299,32 @@ class HomeController extends Controller
         Variations::create($podaci);
 
         return back()->with('flash', 'New variation is added.');
+    }
+
+    public function addSubOption(Products $product, SubVariations $id)
+    {
+        request()->validate([
+            'image' => 'required',
+            'name' => 'required'
+        ]);
+
+        $podaci['sub_variations_id'] = $id->id;
+        $podaci['name'] = request('name') ? request('name') : request('name');
+        $image = request()->file('image');
+        $new_name = request()->file('image')->getClientOriginalName();
+        $image->move(public_path('img/products'), $new_name);
+        $podaci['image'] = $new_name;
+
+        SubVariationsOption::create($podaci);
+
+        return back()->with('flash', 'Success. Image and variation name added.');
+    }
+
+    public function destroySubOption(Products $product, SubVariationsOption $id)
+    {
+        $id->delete();
+
+        return back()->with('flash', 'Success. Sub option variation deleted');
     }
 
     public function variationsDestroy(Variations $id)

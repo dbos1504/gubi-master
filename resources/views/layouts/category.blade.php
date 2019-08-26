@@ -1,11 +1,11 @@
 @extends('welcome')
 
 @section('content')
-    <section class="container lg:flex lg:flex-wrap">
-        <aside class="lg:w-1/4 border-t lg:pr-6">
+    <section class="container lg:flex lg:flex-wrap md:flex md:flex-wrap tablet-width">
+        <aside class="lg:w-1/4 md:w-1/4 border-t lg:pr-6">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="navbar navbar-expand-lg navbar-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cate" aria-controls="cate" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="navbar tablet navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#cate" aria-controls="cate" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="cate">
@@ -38,9 +38,9 @@
                 </div>
             </div>
         </aside>
-        <article class="lg:w-3/4 border-t">
+        <article class="lg:w-3/4 md:w-3/4 main-shop border-t">
             <h1 class="text-3xl font-serif py-3 px-4 text-black">{{ $cat->name }}</h1>
-            <section class="products flex flex-wrap px-4 py-2 -mr-4">
+            <section class="products tablet flex flex-wrap px-4 py-2 -mr-4">
                 @foreach($cat->products as $product)
                     <div class="shop-width text-center">
                         <a href="/product/{{ $product->location }}">

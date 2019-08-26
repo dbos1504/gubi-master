@@ -83,6 +83,8 @@ Route::delete('/home/{product}/variation/{id}', 'HomeController@destroyProductVa
 Route::post('/home/{product}/add-variation', 'HomeController@addVariation');
 Route::post('/home/{product}/add-variation-images', 'HomeController@addVariationImages');
 Route::post('/home/{product}/add-images', 'HomeController@addImages');
+Route::post('/home/{product}/option/{id}', 'HomeController@addSubOption');
+Route::delete('/home/{product}/destroy-option/{id}', 'HomeController@destroySubOption');
 Route::delete('/home/{product}/destroy-image/{img}', 'HomeController@destroyProductGalleryImage');
 Route::delete('/home/{product}/destroy-variation-image/{img}', 'HomeController@destroyProductGalleryVariationImage');
 /* ADD NEW PRODUCT VARIATION */

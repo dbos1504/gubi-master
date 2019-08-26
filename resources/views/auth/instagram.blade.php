@@ -24,7 +24,7 @@
                                     <a class="text-black font-bold" target="_blank"
                                        href="https://instagram.pixelunion.net/?error_reason=user_denied&error=access_denied&error_description=The+user+denied+your+request.">
                                         link - access_token.
-                                    </a>
+                                    </a>, you must be signing in your instagram profiile, in order to get token.
                                 </p>
                                 <p class="my-2">Token format looks something like this <span class="font-bold text-gray-500">8370008889.1677ed0.1751966ae72a4047a0c278b841dfd97a</span></p>
                                 <p>After you get Access Token please paste it to required column. That is it.</p>

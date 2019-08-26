@@ -14,6 +14,7 @@
             {{--@endforeach--}}
         </article>
         <hr>
+        <p class="text-center font-serif text-xs my-6">View the new Home Stories catalogue <a class="text-black font-bold" href="">here.</a></p>
     </section>
 @stop
 

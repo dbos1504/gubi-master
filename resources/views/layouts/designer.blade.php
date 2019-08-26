@@ -1,13 +1,13 @@
 @extends('welcome')
 
 @section('content')
-    <section class="container">
+    <section class="container tablet-cont">
         <section class="lg:flex lg:flex-wrap pb-20 border-b mt-8">
             <article class="lg:w-1/2 lg:pr-20">
                 <img src="/img/{{ $designer->main_image }}" alt="{{ $designer->main_image_alt }}">
             </article>
             <article class="lg:w-1/2 lg:pl-20 designer-desc">
-                <h1 class="text-3xl uppercase font-serif mb-6">{{ $designer->name }}</h1>
+                <h1 class="text-3xl uppercase font-serif sm:mt-6 mb-6">{{ $designer->name }}</h1>
                 <div>
                     {!! $designer->body !!}
                 </div>

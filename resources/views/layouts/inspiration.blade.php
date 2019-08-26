@@ -14,7 +14,7 @@
             {!! $inspiration->body !!}
         </div>
         <hr>
-        <div class="designer-names text-center w-1/3 mx-auto mb-4 mt-6">
+        <div class="designer-names text-center lg:w-1/3 md:w-11/12 mx-auto mb-4 mt-6">
             <a class="font-serif font-bold text-xs" href="/innblastur">ALL</a>&nbsp; &bullet; &nbsp;
             @foreach($inspirations as $inspiration)
                 <a class="font-serif font-bold text-xs uppercase" href="/innblastur/{{ $inspiration->location }}">{{ $inspiration->name }}</a>&nbsp; &bullet; &nbsp;

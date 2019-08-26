@@ -9,16 +9,16 @@
             <div class="button-cancel">
                 <button type="button" @click="$modal.hide('inquiry')">X</button>
             </div>
-            <form action="" method="POST" class="lg:flex lg:flex-wrap lg:items-center">
+            <form action="" method="POST" class="lg:flex lg:flex-wrap lg:items-center inq-form">
                 <div class="lg:w-2/5 inquiry-image">
                     <img :src="'/img/products/' + img" :alt="product.alt">
                 </div>
-                <div class="lg:w-3/5 p-12">
-                    <h4 class="font-serif uppercase text-center text-black text-3xl">Upplýsingar um vöru</h4>
+                <div class="lg:w-3/5 lg:pt-6 lg:px-12">
+                    <h4 class="font-serif uppercase text-center text-black text-2xl">Upplýsingar um vöru</h4>
                     <hr>
                     <div class="form-group lg:flex">
                         <div class="w-full mr-2">
-                            <input class="lg:p-2 md:p-2 w-full first-name"
+                            <input class="lg:p-1 md:p-1 w-full first-name"
                                    type="text"
                                    v-model="firstname"
                                    v-validate.persist="'required'"
@@ -29,7 +29,7 @@
                             <span class="text-red-500 italic text-xs greska">{{ errors.first('firstname') }}</span>
                         </div>
                         <div class="w-full">
-                            <input class="lg:p-2 md:p-2 w-full"
+                            <input class="lg:p-1 md:p-1 w-full"
                                    type="text"
                                    v-model="lastname"
                                    v-validate.persist="'required'"
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input class="lg:p-2 md:p-2 w-full"
+                        <input class="lg:p-1 md:p-1 w-full"
                                v-model="phone"
                                type="text"
                                name="phone"
@@ -51,7 +51,7 @@
                         <span class="text-red-500 italic text-xs greska">{{ errors.first('phone') }}</span>
                     </div>
                     <div class="form-group">
-                        <input class="lg:p-2 md:p-2 w-full"
+                        <input class="lg:p-1 md:p-1 w-full"
                                type="email"
                                v-model="email"
                                :class="errors.first('email') ? 'border-b border-red-700' : 'border'"
@@ -61,16 +61,17 @@
                         >
                         <span class="text-red-500 italic text-xs greska">{{ errors.first('email') }}</span>
                     </div>
-                    <div class="form-group flex">
-                        <p class="inquiry-border p-2 w-full border border-black text-black mr-2">{{ product.headline }} | <span class="text-xs">{{ upit }}</span></p>
-                        <p v-if="variacija" class="inquiry-border text-xs product-inquiry-width p-2 border border-black text-black text-center mr-2">{{ variacija }}</p>
-                        <p class="inquiry-border product-inquiry-width p-2 border border-black text-black text-center">{{ kolicina }}</p>
+                    <div class="form-group flex items-center">
+                        <p class="inquiry-border p-1 w-full border border-black text-black mr-2">{{ product.headline }} | <span class="text-xs">{{ upit }}</span></p>
+                        <p v-if="variacija" class="inquiry-border text-xs product-inquiry-width p-1 border border-black text-black text-center mr-2">{{ variacija }}</p>
+<!--                        <p v-if="utikac" class="inquiry-border text-xs product-inquiry-width p-1 border border-black text-black text-center mr-2">{{ utikac }}</p>-->
+                        <p class="inquiry-border product-inquiry-width p-1 border border-black text-black text-center">{{ kolicina }}</p>
                     </div>
                     <div class="form-group">
                         <textarea placeholder="Message*"
-                                  class="w-full lg:p-2 md:p-2 border-black"
+                                  class="w-full lg:p-1 md:p-1 border-black"
                                   name="message"
-                                  id="" cols="30" rows="5"
+                                  id="" cols="30" rows="3"
                                   v-model="message"
                                   :class="errors.first('message') ? 'border-b border-red-700' : 'border'"
                                   v-validate.persist="'required|min:3'"
@@ -92,7 +93,7 @@
 
 <script>
     export default {
-        props: ['product', 'upit', 'kolicina', 'img', 'variacija'],
+        props: ['product', 'upit', 'kolicina', 'img', 'variacija', 'utikac'],
 
         data() {
             return {
@@ -107,6 +108,7 @@
                 image: '',
                 inq: '',
                 qty: '',
+                test: ''
             }
         },
 
@@ -121,7 +123,7 @@
                             phone: this.phone,
                             message: this.message,
                             products: this.product.headline,
-                            variation: this.variacija,
+                            variation: this.variacija ? this.variacija : this.utikac,
                             inq: this.upit,
                             qty: this.kolicina,
                             image: this.img,

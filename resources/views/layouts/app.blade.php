@@ -119,6 +119,22 @@
     }
 </script>
 <script>
+    function opti(input) {
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blahhh')
+                    .attr('src', e.target.result)
+                    .width(120)
+                    .height(120);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script>
     $('div.alert').not('.alert-important').delay(4000).fadeOut(350);
 
     $('#flash-overlay-modal').modal();

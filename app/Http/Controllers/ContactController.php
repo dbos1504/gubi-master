@@ -15,6 +15,7 @@ class ContactController extends Controller
         $config['styles'] = array(
             array("name"=>"GUBI", "definition"=>array(
                 array("featureType"=>"all", "stylers"=>array(array("saturation"=>"-120"))),
+//                array("featureType"=>"wather", "stylers"=>array(array("saturation"=>"-110"))),
                 array("featureType"=>"road.arterial", "elementType"=>"geometry", "stylers"=>array(array("hue"=>"#000000")))
             )),
         );

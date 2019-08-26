@@ -4,7 +4,7 @@
     <section class="container">
         <h1 class="text-3xl text-center uppercase font-serif p-4 text-black">Fréttir</h1>
         <hr>
-        <article class="news lg:flex lg:flex-wrap lg:items-center mt-16">
+        <article class="news lg:flex lg:flex-wrap lg:items-center md:flex md:flex-wrap md:items-center mt-16">
             @foreach($news as $new)
                 <div class="news-width text-center mb-6">
                     <a href="/frettir/{{ $new->location }}">
